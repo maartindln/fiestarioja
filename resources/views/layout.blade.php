@@ -5,70 +5,124 @@
         <meta charset="utf-8">
         <title>FiestaRioja</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        @yield(section: 'head')
         <link rel="icon" href="#" type="image/png">
         <script src="https://cdn.tailwindcss.com"></script>
+         <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            inter: ['Inter', 'sans-serif'],
+                        },
+                    },
+                },
+            };
+        </script>
     </head>
-    
+
     <nav class="bg-red-600">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div class="relative flex h-16 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <!-- Mobile menu button-->
-            <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
-            <span class="absolute -inset-0.5"></span>
-            <span class="sr-only">Open main menu</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-                <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-                <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+
+        <!-- Botón Menú Móvil -->
+        <div class="flex sm:hidden">
+            <button id="mobile-menu-button" class="group inline-flex w-12 h-12 text-slate-800 bg-white text-center items-center justify-center rounded shadow-[0_1px_0_theme(colors.slate.950/.04),0_1px_2px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] hover:shadow-[0_1px_0_theme(colors.slate.950/.04),0_4px_8px_theme(colors.slate.950/.12),inset_0_-2px_0_theme(colors.slate.950/.04)] transition" aria-pressed="false" onclick="this.setAttribute('aria-pressed', !(this.getAttribute('aria-pressed') === 'true'))">
+                <span class="sr-only">Menu</span>
+                    <svg class="w-6 h-6 fill-current pointer-events-none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="origin-center -translate-y-[5px] translate-x-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-x-0 group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[315deg]" y="7" width="9" height="2" rx="1"></rect>
+                        <rect class="origin-center transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.8)] group-[[aria-pressed=true]]:rotate-45" y="7" width="16" height="2" rx="1"></rect>
+                        <rect class="origin-center translate-y-[5px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-[[aria-pressed=true]]:translate-y-0 group-[[aria-pressed=true]]:rotate-[135deg]" y="7" width="9" height="2" rx="1"></rect>
+                    </svg>
             </button>
         </div>
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div class="flex shrink-0 items-center">
-            <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="h-8 w-auto" />
-            </div>
-            <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
-                <a href="#" aria-current="page" class="rounded-md bg-white px-3 py-2 text-sm font-medium text-black">Inicio</a>
-                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-red-400 hover:text-white">Calendario</a>
-                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-red-400 hover:text-white">Listado</a>
-            </div>
-            </div>
+
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Logo" />
         </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
-            <!-- Profile dropdown -->
-            <el-dropdown class="relative ml-3">
-            <button class="relative flex rounded-full bg-gray-800 text-sm focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">Open user menu</span>
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full" />
-            </button>
+        <!-- Navegación Escritorio -->
+        <div class="hidden sm:flex space-x-4">
+            <a href="#" class="bg-white text-black px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+            <a href="#" class="text-white hover:bg-red-400 px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
+            <a href="#" class="text-white hover:bg-red-400 px-3 py-2 rounded-md text-sm font-medium">Listado</a>
+        </div>
 
-            <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Your Profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-hidden">Sign out</a>
-            </el-menu>
-            </el-dropdown>
+        <!-- Perfil -->
+       <div class="relative ml-3 group">
+        <button id="profile-button" class="flex items-center text-sm rounded-full">
+            <img class="h-8 w-8 rounded-full transition-all duration-300 group-hover:h-10 group-hover:w-10" src="images/default-profile.jpg" alt="User" />
+        </button>
+        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 transition-all origin-top-right duration-150 ease-out">
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</a>
+        </div>
         </div>
         </div>
     </div>
 
-    <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
-        <div class="space-y-1 px-2 pt-2 pb-3">
-        <a href="#" aria-current="page" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Inicio</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendario</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Listado</a>
-        </div>
-    </el-disclosure>
+    <!-- Menú móvil -->
+    <div id="mobile-menu" class="sm:hidden hidden px-4 pt-2 pb-3 space-y-1 transition-all duration-300 ease-in-out">
+        <a href="#" class="block text-black bg-white px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+        <a href="#" class="block text-white px-3 py-2 rounded-md text-base font-medium">Calendario</a>
+        <a href="#" class="block text-white px-3 py-2 rounded-md text-base font-medium">Listado</a>
+    </div>
     </nav>
-
 
     <body>
         @yield('content')
     </body>
+
 </html>
+
+<script>
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const openIcon = document.getElementById('menu-open-icon');
+    const closeIcon = document.getElementById('menu-close-icon');
+
+    const profileBtn = document.getElementById('profile-button');
+    const profileDropdown = document.getElementById('profile-dropdown');
+
+    let isDropdownOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+
+    function openDropdown() {
+        profileDropdown.classList.remove('hidden');
+        profileDropdown.classList.add('block');
+        isDropdownOpen = true;
+    }
+
+    function closeDropdown() {
+        profileDropdown.classList.remove('block');
+        profileDropdown.classList.add('hidden');
+        isDropdownOpen = false;
+    }
+
+    profileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (isDropdownOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+        closeDropdown();
+        }
+    });
+</script>
