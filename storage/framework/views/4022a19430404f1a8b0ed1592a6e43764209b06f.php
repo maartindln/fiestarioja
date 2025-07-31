@@ -5,11 +5,12 @@
         <meta charset="utf-8">
         <title>FiestaRioja</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        @yield(section: 'head')
+        <?php echo $__env->yieldContent(section: 'head'); ?>
         <link rel="icon" href="#" type="image/png">
     </head>
 
     <body>
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </body>
 </html>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/layout.blade.php ENDPATH**/ ?>
