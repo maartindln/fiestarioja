@@ -1,5 +1,5 @@
-@extends('layout')
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <div class="relative bg-gray-900">
   <div class="absolute inset-x-0 bottom-0">
     <svg viewBox="0 0 224 12" fill="currentColor" class="w-full -mb-1 text-white" preserveAspectRatio="none">
@@ -61,4 +61,6 @@
     </div>
   </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\UniServerZ\www\FIESTARIOJA\fiestarioja\resources\views/index.blade.php ENDPATH**/ ?>
