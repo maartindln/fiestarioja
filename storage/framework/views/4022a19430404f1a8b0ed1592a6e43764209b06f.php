@@ -81,7 +81,7 @@
         <?php echo $__env->yieldContent('content'); ?>
     </body>
 
-    <footer class="bg-red-600 text-white rounded p-10 text-center">
+    <footer class="bg-red-600 text-white p-10 text-center">
         <!-- Enlaces principales -->
         <nav class="grid grid-flow-col gap-6 mb-6 justify-center">
             <a href="#" class="text-white hover:underline hover:text-gray-300 transition">About us</a>

@@ -7,13 +7,24 @@
   </div>
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
-      <h1 class="mb-6 font-sans text-2xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-        <span class="text-red-600">F</span><span class="text-white">I</span><span class="text-lime-500">E</span><span class="text-yellow-400">S</span><span>T</span><span>A</span><span>R</span><span>I</span><span>O</span><span>J</span><span>A</span>
+      <h1 class="mb-6 font-sans font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
+        <span class="text-red-600 text-8xl">F</span>
+        <span class="text-white text-8xl">I</span>
+        <span class="text-lime-500 text-8xl">E</span>
+        <span class="text-yellow-400 text-8xl">S</span>
+        <span class="text-red-600 text-8xl">T</span>
+        <span class="text-white text-8xl">A</span>
+        <span class="text-lime-500 text-8xl">R</span>
+        <span class="text-yellow-400 text-8xl">I</span>
+        <span class="text-red-600 text-8xl">O</span>
+        <span class="text-white text-8xl">J</span>
+        <span class="text-lime-500 text-8xl">A</span>
+
     </h1>
         <br class="hidden md:block" />
         <h2 class="mb-6 font-sans text-2xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
             <span class="relative inline-block">
-            lazy dog
+            ¡No te pierdas ninguna fiesta!
             <div class="w-full h-3 -mt-3 bg-purple-400"></div>
             </span>
         </h2>
