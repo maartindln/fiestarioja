@@ -8,17 +8,17 @@
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
       <h1 class="mb-6 font-sans font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-        <span class="text-red-600 text-8xl">F</span>
-        <span class="text-white text-8xl">I</span>
-        <span class="text-lime-500 text-8xl">E</span>
-        <span class="text-yellow-400 text-8xl">S</span>
-        <span class="text-red-600 text-8xl">T</span>
-        <span class="text-white text-8xl">A</span>
-        <span class="text-lime-500 text-8xl">R</span>
-        <span class="text-yellow-400 text-8xl">I</span>
-        <span class="text-red-600 text-8xl">O</span>
-        <span class="text-white text-8xl">J</span>
-        <span class="text-lime-500 text-8xl">A</span>
+        <span class="text-red-600 text-7xl md:text-8xl">F</span>
+        <span class="text-white text-7xl md:text-8xl">I</span>
+        <span class="text-lime-500 text-7xl md:text-8xl">E</span>
+        <span class="text-yellow-400 text-7xl md:text-8xl">S</span>
+        <span class="text-red-600 text-7xl md:text-8xl">T</span>
+        <span class="text-white text-7xl md:text-8xl">A</span>
+        <span class="text-lime-500 text-7xl md:text-8xl">R</span>
+        <span class="text-yellow-400 text-7xl md:text-8xl">I</span>
+        <span class="text-red-600 text-7xl md:text-8xl">O</span>
+        <span class="text-white text-7xl md:text-8xl">J</span>
+        <span class="text-lime-500 text-7xl md:text-8xl">A</span>
 
     </h1>
         <br class="hidden md:block" />
@@ -51,7 +51,7 @@
       <a
         href="/"
         aria-label="Scroll down"
-        class="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
+        class="flex items-center justify-center w-10 h-10 mx-auto mt-48 sm:mt-56 lg:mt-64 xl:mt-72 text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
           <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z"></path>
