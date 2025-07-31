@@ -1,0 +1,9 @@
+
+
+
+
+
+
+        <body>
+            @yield('content')
+        </body>
