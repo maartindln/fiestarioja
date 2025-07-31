@@ -12,6 +12,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script>
             tailwind.config = {
@@ -49,7 +50,7 @@
 
         <!-- Navegación Escritorio -->
         <div class="hidden sm:flex space-x-4">
-            <a href="#" class="bg-white text-black px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+            <a href="#" class="bg-white text-black px-3 py-2 rounded-md text-sm font-bold">Inicio</a>
             <a href="#" class="text-white hover:bg-red-400 px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
             <a href="#" class="text-white hover:bg-red-400 px-3 py-2 rounded-md text-sm font-medium">Listado</a>
         </div>
@@ -79,6 +80,34 @@
     <body>
         <?php echo $__env->yieldContent('content'); ?>
     </body>
+
+    <footer class="bg-red-600 text-white rounded p-10 text-center">
+        <!-- Enlaces principales -->
+        <nav class="grid grid-flow-col gap-6 mb-6 justify-center">
+            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">About us</a>
+            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">Contact</a>
+            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">Jobs</a>
+            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">Press kit</a>
+        </nav>
+
+        <!-- Redes sociales -->
+        <div class="flex justify-center gap-6 mb-6">
+            <a href="https://www.x.com" class="text-white hover:text-blue-500 transition">
+                <i class="fa-brands fa-twitter text-3xl"></i>
+            </a>
+
+            <a href="https://www.instagram.com" class="text-white hover:text-pink-600 transition">
+                <i class="fa-brands fa-instagram text-3xl"></i>
+            </a>
+
+            <a href="https://www.facebook.com" class="text-white hover:text-blue-700 transition">
+                <i class="fa-brands fa-facebook-f text-3xl"></i>
+            </a>
+        </div>
+
+        <!-- Pie de página -->
+        <p class="text-sm text-white">&copy; 2025 - All rights reserved by ACME Industries Ltd</p>
+    </footer>
 
 </html>
 
