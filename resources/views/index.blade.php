@@ -30,7 +30,11 @@
             </span>
         </h2>
       <p class="mb-6 text-base font-thin tracking-wide text-gray-300 md:text-lg">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
+        ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? Estás en el lugar correcto. En esta página encontrarás un calendario completo y actualizado con todas las fiestas oficiales de la comunidad: desde las grandes celebraciones regionales hasta las fiestas locales de pueblos, barrios y establecimientos.<br><br>
+
+        Nos encargamos de reunir en un solo sitio toda la información para que puedas organizarte, descubrir nuevas fiestas y no perderte ninguna cita importante. Ya sea una romería popular, una feria, una verbena de barrio o un evento cultural en algún rincón especial de La Rioja, aquí lo tendrás todo a mano.<br><br>
+
+        Explora, comparte y vive La Rioja…
       </p>
       <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
         <input

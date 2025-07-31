@@ -8,29 +8,33 @@
   </div>
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
-      <h1 class="mb-6 font-sans text-2xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-        <span class="text-red-600">F</span>
-        <span class="text-white">I</span>
-        <span class="text-lime-500">E</span>
-        <span class="text-yellow-400">S</span>
-        <span class="text-red-600">T</span>
-        <span class="text-white">A</span>
-        <span class="text-lime-500">R</span>
-        <span class="text-yellow-400">I</span>
-        <span class="text-red-600">O</span>
-        <span class="text-white">J</span>
-        <span class="text-lime-500">A</span>
+      <h1 class="mb-6 font-sans font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
+        <span class="text-red-600 text-7xl md:text-8xl">F</span>
+        <span class="text-white text-7xl md:text-8xl">I</span>
+        <span class="text-lime-500 text-7xl md:text-8xl">E</span>
+        <span class="text-yellow-400 text-7xl md:text-8xl">S</span>
+        <span class="text-red-600 text-7xl md:text-8xl">T</span>
+        <span class="text-white text-7xl md:text-8xl">A</span>
+        <span class="text-lime-500 text-7xl md:text-8xl">R</span>
+        <span class="text-yellow-400 text-7xl md:text-8xl">I</span>
+        <span class="text-red-600 text-7xl md:text-8xl">O</span>
+        <span class="text-white text-7xl md:text-8xl">J</span>
+        <span class="text-lime-500 text-7xl md:text-8xl">A</span>
 
     </h1>
         <br class="hidden md:block" />
         <h2 class="mb-6 font-sans text-2xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
             <span class="relative inline-block">
-            lazy dog
+            ¡No te pierdas ninguna fiesta!
             <div class="w-full h-3 -mt-3 bg-purple-400"></div>
             </span>
         </h2>
       <p class="mb-6 text-base font-thin tracking-wide text-gray-300 md:text-lg">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
+        ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? Estás en el lugar correcto. En esta página encontrarás un calendario completo y actualizado con todas las fiestas oficiales de la comunidad: desde las grandes celebraciones regionales hasta las fiestas locales de pueblos, barrios y establecimientos.<br><br>
+
+        Nos encargamos de reunir en un solo sitio toda la información para que puedas organizarte, descubrir nuevas fiestas y no perderte ninguna cita importante. Ya sea una romería popular, una feria, una verbena de barrio o un evento cultural en algún rincón especial de La Rioja, aquí lo tendrás todo a mano.<br><br>
+
+        Explora, comparte y vive La Rioja…
       </p>
       <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
         <input
@@ -52,7 +56,7 @@
       <a
         href="/"
         aria-label="Scroll down"
-        class="flex items-center justify-center w-10 h-10 mx-auto text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
+        class="flex items-center justify-center w-10 h-10 mx-auto mt-48 sm:mt-56 lg:mt-64 xl:mt-72 text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
           <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z"></path>
