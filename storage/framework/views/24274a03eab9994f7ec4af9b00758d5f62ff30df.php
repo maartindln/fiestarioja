@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<div class="relative bg-gray-900">
+<div class="relative bg-gray-900 pt-10">
   <div class="absolute inset-x-0 bottom-0">
     <svg viewBox="0 0 224 12" fill="currentColor" class="w-full -mb-1 text-white" preserveAspectRatio="none">
       <path d="M0,0 C48.8902582,6.27314026 86.2235915,9.40971039 112,9.40971039 C137.776408,9.40971039 175.109742,6.27314026 224,0 L224,12.0441132 L0,12.0441132 L0,0 Z"></path>
@@ -29,29 +29,16 @@
             </span>
         </h2>
       <p class="mb-6 text-base font-thin tracking-wide text-gray-300 md:text-lg">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae. explicabo. Sed ut perspiciatis unde omnis.
-      </p>
-      <form class="flex flex-col items-center w-full mb-4 md:flex-row md:px-16">
-        <input
-          placeholder="Email"
-          required=""
-          type="text"
-          class="flex-grow w-full h-12 px-4 mb-3 text-white transition duration-200 bg-transparent border-2 border-gray-400 rounded appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-200 focus:outline-none focus:shadow-outline"
-        />
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-        >
-          Subscribe
-        </button>
-      </form>
-      <p class="max-w-md mb-10 text-xs font-thin tracking-wide text-gray-500 sm:text-sm sm:mx-auto md:mb-16">
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+        ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? Estás en el lugar correcto. En esta página encontrarás un calendario completo y actualizado con todas las fiestas oficiales de la comunidad: desde las grandes celebraciones regionales hasta las fiestas locales de pueblos, barrios y establecimientos.<br><br>
+
+        Nos encargamos de reunir en un solo sitio toda la información para que puedas organizarte, descubrir nuevas fiestas y no perderte ninguna cita importante. Ya sea una romería popular, una feria, una verbena de barrio o un evento cultural en algún rincón especial de La Rioja, aquí lo tendrás todo a mano.<br><br>
+
+        Explora, comparte y vive La Rioja…
       </p>
       <a
         href="/"
         aria-label="Scroll down"
-        class="flex items-center justify-center w-10 h-10 mx-auto mt-48 sm:mt-56 lg:mt-64 xl:mt-72 text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
+        class="flex items-center justify-center w-10 h-10 mx-auto mt-40 sm:mt-48 lg:mt-56 xl:mt-64 text-white duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
           <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z"></path>
