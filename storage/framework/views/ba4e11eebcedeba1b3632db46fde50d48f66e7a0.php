@@ -1,35 +1,48 @@
 <?php if(session('success')): ?>
-    <div class="alert alert-success mt-28 p-4 rounded-lg bg-green-500 text-white shadow-md max-w-lg mx-auto" role="alert">
-        <?php echo e(session('success')); ?>
-
+    <div class="alert flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
+        <div class="bg-green-600 py-4 px-6 rounded-l-lg flex items-center">
+            <i class="fa-solid fa-circle-check text-white text-2xl"></i>
+        </div>
+        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+        <div><?php echo e(session('success')); ?></div>
+            <button onclick="closeAlert(this)">
+                <i class="fa-solid fa-xmark mr-4 ml-4"></i>
+            </button>
+        </div>
     </div>
 <?php endif; ?>
 
 <?php if(session('error')): ?>
-    <div class="alert alert-danger mt-28 p-4 rounded-lg bg-red-500 text-white shadow-md max-w-lg mx-auto" role="alert">
-        <?php echo e(session('error')); ?>
-
-    </div>
-<?php endif; ?>
-
-<?php if($errors->any()): ?>
-    <div class="alert alert-danger mt-28 p-4 rounded-lg bg-red-500 text-white shadow-md max-w-lg mx-auto" role="alert">
-        <ul>
-            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <li><?php echo e($error); ?></li>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </ul>
+    <div class="alert flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
+        <div class="bg-red-600 py-4 px-6 rounded-l-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-white fill-current" viewBox="0 0 16 16" width="20" height="20"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>
+        </div>
+        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+        <div><?php echo e(session('error')); ?></div>
+            <button onclick="closeAlert(this)">
+                <i class="fa-solid fa-xmark mr-4 ml-4"></i>
+            </button>
+        </div>
     </div>
 <?php endif; ?>
 
 <script>
-    window.addEventListener('DOMContentLoaded', function() {
-        const alerts = document.querySelectorAll('.alert');
-        alerts.forEach(function(alert) {
-            setTimeout(function() {
-                alert.style.display = 'none';
-            }, 5000);
-        });
-    });
+    function closeAlert(button) {
+        const alert = button.closest('.alert');
+        if (alert) {
+            alert.classList.remove('animate__fadeInDown');
+            alert.classList.add('animate__fadeOutUp');
+            setTimeout(() => alert.remove(), 800);
+        }
+    }
+
+     setTimeout(() => {
+            const alert = document.querySelector('.alert');
+            if (alert) {
+                alert.classList.remove('animate__fadeInDown');
+                alert.classList.add('animate__fadeOutUp');
+                setTimeout(() => alert.remove(), 800);
+            }
+        }, 5000);
 </script>
 <?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/alerts.blade.php ENDPATH**/ ?>
