@@ -42,7 +42,7 @@
     </div>
     <div class="flex justify-center items-center px-6 lg:px-8">
         <div class="sm:w-full sm:max-w-sm mx-auto w-full px-5">
-            <img class="mx-auto h-64 w-auto" src="images/png/logo.png" alt="Logo">
+            <img class="mx-auto h-64 w-auto" src="{{asset('images/logo_1.png') }}" alt="Logo">
             <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">Registra un usuario</h2>
             <div class="mt-10">
                 <form method="POST" action="{{ route('register') }}" class="space-y-6">

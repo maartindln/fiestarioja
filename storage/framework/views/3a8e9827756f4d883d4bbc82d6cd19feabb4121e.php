@@ -8,6 +8,33 @@
     <title>Regístrate</title>
 </head>
 <body class="bg-green-950 flex flex-col justify-center min-h-screen py-10">
+    <?php if(session('success')): ?>
+    <div class="alert flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
+        <div class="bg-green-600 py-4 px-6 rounded-l-lg flex items-center">
+            <i class="fa-solid fa-circle-check text-white text-2xl"></i>
+        </div>
+        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+        <div><?php echo e(session('success')); ?></div>
+            <button onclick="closeAlert(this)">
+                <i class="fa-solid fa-xmark mr-4 ml-4"></i>
+            </button>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if(session('error')): ?>
+    <div class="alert flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
+        <div class="bg-red-600 py-4 px-6 rounded-l-lg flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-white fill-current" viewBox="0 0 16 16" width="20" height="20"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>
+        </div>
+        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+        <div><?php echo e(session('error')); ?></div>
+            <button onclick="closeAlert(this)">
+                <i class="fa-solid fa-xmark mr-4 ml-4"></i>
+            </button>
+        </div>
+    </div>
+<?php endif; ?>
     <div class="absolute top-6 left-6">
         <button onclick="window.history.back()" class="px-4 py-2 text-sm font-semibold text-green-950 bg-yellow-400 border-2 border-yellow-400 rounded-md shadow-md hover:bg-yellow-500 focus:outline-none">
             VOLVER
@@ -15,7 +42,7 @@
     </div>
     <div class="flex justify-center items-center px-6 lg:px-8">
         <div class="sm:w-full sm:max-w-sm mx-auto w-full px-5">
-            <img class="mx-auto h-64 w-auto" src="images/png/logo.png" alt="Logo">
+            <img class="mx-auto h-64 w-auto" src="<?php echo e(asset('images/logo_1.png')); ?>" alt="Logo">
             <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">Registra un usuario</h2>
             <div class="mt-10">
                 <form method="POST" action="<?php echo e(route('register')); ?>" class="space-y-6">
@@ -89,4 +116,24 @@ unset($__errorArgs, $__bag); ?>
     </div>
 </body>
 </html>
+
+<script>
+    function closeAlert(button) {
+        const alert = button.closest('.alert');
+        if (alert) {
+            alert.classList.remove('animate__fadeInDown');
+            alert.classList.add('animate__fadeOutUp');
+            setTimeout(() => alert.remove(), 800);
+        }
+    }
+
+     setTimeout(() => {
+            const alert = document.querySelector('.alert');
+            if (alert) {
+                alert.classList.remove('animate__fadeInDown');
+                alert.classList.add('animate__fadeOutUp');
+                setTimeout(() => alert.remove(), 800);
+            }
+        }, 5000);
+</script>
 <?php /**PATH C:\UniServerZ\www\FIESTARIOJA\fiestarioja\resources\views/auth/register.blade.php ENDPATH**/ ?>
