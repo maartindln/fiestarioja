@@ -78,39 +78,53 @@
     </p>
   </div>
   <div class="grid gap-5 mb-8 md:grid-cols-2 lg:grid-cols-3">
-    <div data-aos="zoom-in" data-aos-duration="900" data-aos-delay="30" class="p-5 duration-300 transform bg-white border rounded shadow-sm hover:-translate-y-2">
-      <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
-        <svg class="w-10 h-10 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
-          <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-        </svg>
-      </div>
-      <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
-      <p class="text-sm text-gray-900">
-        Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
-      </p>
+
+    <div class="transition-transform duration-300 hover:-translate-y-2">
+        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" class="p-5 bg-white border rounded shadow-sm">
+            <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
+            <svg class="w-10 h-10 text-yellow-400" stroke="currentColor" viewBox="0 0 52 52">
+                <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
+                points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+            </svg>
+            </div>
+            <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
+            <p class="text-sm text-gray-900">
+            Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
+            </p>
+        </div>
     </div>
-    <div data-aos="zoom-in" data-aos-duration="900" data-aos-delay="30" class="p-5 duration-300 transform bg-white border rounded shadow-sm hover:-translate-y-2">
-      <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
-        <svg class="w-10 h-10 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
-          <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-        </svg>
-      </div>
-      <h6 class="mb-2 font-semibold leading-5">That is the true</h6>
-      <p class="text-sm text-gray-900">
-        We meet at one of those defining moments - a moment when our nation is at war, our economy is in turmoil, and the American promise has been threatened once more.
-      </p>
+
+
+    <div class="transition-transform duration-300 hover:-translate-y-2">
+        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" class="p-5 bg-white border rounded shadow-sm">
+            <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
+            <svg class="w-10 h-10 text-yellow-400" stroke="currentColor" viewBox="0 0 52 52">
+                <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
+                points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+            </svg>
+            </div>
+            <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
+            <p class="text-sm text-gray-900">
+            Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
+            </p>
+        </div>
     </div>
-    <div data-aos="zoom-in" data-aos-duration="900" data-aos-delay="30" class="p-5 duration-300 transform bg-white border rounded shadow-sm hover:-translate-y-2">
-      <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
-        <svg class="w-10 h-10 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
-          <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-        </svg>
-      </div>
-      <h6 class="mb-2 font-semibold leading-5">Those options</h6>
-      <p class="text-sm text-gray-900">
-        Strategic high-level 30,000 ft view. Drill down re-inventing the wheel at the end of the day but curate imagineer, or to be inspired is to become creative.
-      </p>
+
+    <div class="transition-transform duration-300 hover:-translate-y-2">
+        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" class="p-5 bg-white border rounded shadow-sm">
+            <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
+            <svg class="w-10 h-10 text-yellow-400" stroke="currentColor" viewBox="0 0 52 52">
+                <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
+                points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
+            </svg>
+            </div>
+            <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
+            <p class="text-sm text-gray-900">
+            Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
+            </p>
+        </div>
     </div>
+
   </div>
   <div class="text-center">
     <a href="#" class="inline-flex items-center justify-center w-full h-12 px-6 font-bold tracking-wide text-green-950 rounded shadow-md md:w-auto bg-yellow-400 hover:bg-yellow-500">

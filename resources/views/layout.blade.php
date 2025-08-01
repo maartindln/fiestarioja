@@ -109,6 +109,9 @@
         <!-- Pie de página -->
         <p class="text-sm text-amber-50">&copy; 2025 - All rights reserved by ACME Industries Ltd</p>
     </footer>
+    <a href="#" class="back-to-top rounded text-center" id="back-to-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
 </html>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
