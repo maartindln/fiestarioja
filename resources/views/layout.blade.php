@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -27,7 +28,7 @@
         </script>
     </head>
 
-    <nav class="bg-red-600">
+    <nav class="bg-green-950 sticky top-0 z-50 border-b border-yellow-400">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
 
@@ -51,7 +52,7 @@
         <!-- Navegación Escritorio -->
         <div class="hidden sm:flex space-x-4">
             <a href="#" class="bg-white text-black px-3 py-2 rounded-md text-sm font-bold">Inicio</a>
-            <a href="#" class="text-white hover:bg-red-400 px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
+            <a href="#" class="text-white hover:bg-green-400 px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
             <a href="#" class="text-white hover:bg-red-400 px-3 py-2 rounded-md text-sm font-medium">Listado</a>
         </div>
 
@@ -77,7 +78,7 @@
     </div>
     </nav>
 
-    <body>
+    <body class="bg-green-950">
         @yield('content')
     </body>
 
@@ -110,7 +111,10 @@
     </footer>
 
 </html>
-
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 <script>
     const menuBtn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
