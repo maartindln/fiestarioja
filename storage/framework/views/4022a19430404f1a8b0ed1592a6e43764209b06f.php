@@ -78,11 +78,7 @@
                 </div>
                 <?php else: ?>
                 <a href="<?php echo e(route('login')); ?>">
-                    <img
-                        class="h-8 w-8 rounded-full transition-all duration-300 hover:scale-110"
-                        src="<?php echo e(asset('images/default-profile.jpg')); ?>"
-                        alt="User"
-                    />
+                    <p class="text-green-950 bg-yellow-400 hover:bg-yellow-400 px-3 py-2 rounded-md text-sm font-medium">Iniciar sesión</p>
                 </a>
                 <?php endif; ?>
             </div>
@@ -98,6 +94,7 @@
     </nav>
 
     <body class="bg-green-950">
+        <?php echo $__env->make('alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php echo $__env->yieldContent('content'); ?>
     </body>
 
