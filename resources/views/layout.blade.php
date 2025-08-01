@@ -51,9 +51,9 @@
 
         <!-- Navegación Escritorio -->
         <div class="hidden sm:flex space-x-4">
-            <a href="#" class="bg-white text-black px-3 py-2 rounded-md text-sm font-bold">Inicio</a>
-            <a href="#" class="text-white hover:bg-green-400 px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
-            <a href="#" class="text-white hover:bg-red-400 px-3 py-2 rounded-md text-sm font-medium">Listado</a>
+            <a href="#" class="bg-amber-50 text-black px-3 py-2 rounded-md text-sm font-bold">Inicio</a>
+            <a href="#" class="text-amber-50 hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
+            <a href="#" class="text-amber-50 hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium">Listado</a>
         </div>
 
         <!-- Perfil -->
@@ -72,9 +72,9 @@
 
     <!-- Menú móvil -->
     <div id="mobile-menu" class="sm:hidden hidden px-4 pt-2 pb-3 space-y-1 transition-all duration-300 ease-in-out">
-        <a href="#" class="block text-black bg-white px-3 py-2 rounded-md text-base font-medium">Inicio</a>
-        <a href="#" class="block text-white px-3 py-2 rounded-md text-base font-medium">Calendario</a>
-        <a href="#" class="block text-white px-3 py-2 rounded-md text-base font-medium">Listado</a>
+        <a href="#" class="block text-black bg-amber-50 px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+        <a href="#" class="block text-amber-50 px-3 py-2 rounded-md text-base font-medium">Calendario</a>
+        <a href="#" class="block text-amber-50 px-3 py-2 rounded-md text-base font-medium">Listado</a>
     </div>
     </nav>
 
@@ -82,32 +82,32 @@
         @yield('content')
     </body>
 
-    <footer class="bg-red-600 text-white p-10 text-center">
+    <footer class="bg-green-950 text-amber-50 p-10 text-center">
         <!-- Enlaces principales -->
         <nav class="grid grid-flow-col gap-6 mb-6 justify-center">
-            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">About us</a>
-            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">Contact</a>
-            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">Jobs</a>
-            <a href="#" class="text-white hover:underline hover:text-gray-300 transition">Press kit</a>
+            <a href="#" class="text-amber-50 hover:underline hover:text-gray-300 transition">About us</a>
+            <a href="#" class="text-amber-50 hover:underline hover:text-gray-300 transition">Contact</a>
+            <a href="#" class="text-amber-50 hover:underline hover:text-gray-300 transition">Jobs</a>
+            <a href="#" class="text-amber-50 hover:underline hover:text-gray-300 transition">Press kit</a>
         </nav>
 
         <!-- Redes sociales -->
         <div class="flex justify-center gap-6 mb-6">
-            <a href="https://www.x.com" class="text-white hover:text-blue-500 transition">
+            <a href="https://www.x.com" class="text-amber-50 hover:text-blue-500 transition">
                 <i class="fa-brands fa-twitter text-3xl"></i>
             </a>
 
-            <a href="https://www.instagram.com" class="text-white hover:text-pink-600 transition">
+            <a href="https://www.instagram.com" class="text-amber-50 hover:text-pink-600 transition">
                 <i class="fa-brands fa-instagram text-3xl"></i>
             </a>
 
-            <a href="https://www.facebook.com" class="text-white hover:text-blue-700 transition">
+            <a href="https://www.facebook.com" class="text-amber-50 hover:text-blue-700 transition">
                 <i class="fa-brands fa-facebook-f text-3xl"></i>
             </a>
         </div>
 
         <!-- Pie de página -->
-        <p class="text-sm text-white">&copy; 2025 - All rights reserved by ACME Industries Ltd</p>
+        <p class="text-sm text-amber-50">&copy; 2025 - All rights reserved by ACME Industries Ltd</p>
     </footer>
 
 </html>
