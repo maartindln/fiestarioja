@@ -58,17 +58,34 @@
         </div>
 
         <!-- Perfil -->
-       <div class="relative ml-3 group">
-        <button id="profile-button" class="flex items-center text-sm rounded-full">
-            <a href="{{route('login')}}"></a>
-            <img class="h-8 w-8 rounded-full transition-all duration-300 group-hover:h-10 group-hover:w-10" src="images/default-profile.jpg" alt="User" />
-        </button>
-        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 transition-all origin-top-right duration-150 ease-out">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</a>
-        </div>
-        </div>
+        <div class="relative ml-3 group">
+                @auth
+                <button id="profile-button" class="flex items-center text-sm rounded-full focus:outline-none">
+                    <img
+                        class="h-8 w-8 rounded-full transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
+                        src="{{asset('images/default-profile.jpg') }}"
+                        alt="User"
+                    />
+                </button>
+                <div id="profile-dropdown"
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
+                    <form method="POST" action="{{route('logout') }}">
+                        @csrf
+                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</button>
+                    </form>
+                </div>
+                @else
+                <a href="{{route('login') }}">
+                    <img
+                        class="h-8 w-8 rounded-full transition-all duration-300 hover:scale-110"
+                        src="{{asset('images/default-profile.jpg') }}"
+                        alt="User"
+                    />
+                </a>
+                @endauth
+            </div>
         </div>
     </div>
 
