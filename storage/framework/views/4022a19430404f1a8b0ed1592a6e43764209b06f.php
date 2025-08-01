@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
         <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script>
@@ -109,14 +110,28 @@
         <!-- Pie de página -->
         <p class="text-sm text-amber-50">&copy; 2025 - All rights reserved by ACME Industries Ltd</p>
     </footer>
-    <a href="#" class="back-to-top rounded text-center" id="back-to-top">
-        <i class="fa-solid fa-arrow-up"></i>
+    <a href="#" id="back-to-top" class="back-to-top fixed bottom-8 right-8 hidden bg-yellow-400 text-green-950 p-3 rounded-full hover:bg-yellow-500" title="Back to top">
+        <i class="fa-solid fa-arrow-up text-xl"></i>
     </a>
 
 </html>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init();
+</script>
+<script>
+   $(window).scroll(function() {
+      if ($(this).scrollTop() > 300) {
+        $('.back-to-top').fadeIn();
+      } else {
+        $('.back-to-top').fadeOut();
+      }
+    });
+
+    $(".back-to-top").on("click", function(e) {
+      e.preventDefault();
+      $("html, body").animate({ scrollTop: 0 }, 800);
+    });
 </script>
 <script>
     const menuBtn = document.getElementById('mobile-menu-button');
