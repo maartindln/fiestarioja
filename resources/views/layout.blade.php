@@ -47,7 +47,7 @@
 
         <!-- Logo -->
         <div class="flex items-center">
-            <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Logo" />
+            <img class="h-8 w-auto" src="{{asset('images/logo_1.png') }}" alt="Logo" />
         </div>
 
         <!-- Navegación Escritorio -->

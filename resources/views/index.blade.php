@@ -10,7 +10,7 @@
         </svg>
     </div>
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-    <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
+    <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl text-center">
       <h1 class="mb-6 font-sans font-bold drop-shadow-[0_0_1px_black] tracking-tight text-amber-50 sm:text-4xl sm:leading-none">
         <span class="text-red-600 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">F</span>
         <span class="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl">I</span>
@@ -33,12 +33,17 @@
             </span>
         </h2>
       <p class="mb-6 text-base font-thin tracking-wide text-green-950 md:text-lg">
-        ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? Estás en el lugar correcto. En esta página encontrarás un calendario completo y actualizado con todas las fiestas oficiales de la comunidad: desde las grandes celebraciones regionales hasta las fiestas locales de pueblos, barrios y establecimientos.<br><br>
+        🎊 ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? 🥳 Estás en el lugar correcto.  
+        En esta página encontrarás un 📅 calendario completo y actualizado con todas las fiestas oficiales de la comunidad:  
+        desde las grandes celebraciones regionales 🏞️ hasta las fiestas locales de pueblos 🏘️, barrios 🎈 y establecimientos 🏠.<br><br>
 
-        Nos encargamos de reunir en un solo sitio toda la información para que puedas organizarte, descubrir nuevas fiestas y no perderte ninguna cita importante. Ya sea una romería popular, una feria, una verbena de barrio o un evento cultural en algún rincón especial de La Rioja, aquí lo tendrás todo a mano.<br><br>
+        Nos encargamos de reunir en un solo sitio toda la información 🧭 para que puedas organizarte 📌,  
+        descubrir nuevas fiestas 🎆 y no perderte ninguna cita importante ❗.  
+        Ya sea una romería popular 🚶‍♂️, una feria 🎡, una verbena de barrio 💃 o un evento cultural 🎭 en algún rincón especial de La Rioja, aquí lo tendrás todo a mano. 🎉<br><br>
 
-        Explora, comparte y vive La Rioja…
+        Explora 🗺️, comparte 🤝 y vive La Rioja… 🍇🍷  
       </p>
+
       <a
         href="/"
         aria-label="Scroll down"
