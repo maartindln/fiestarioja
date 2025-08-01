@@ -28,13 +28,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
-
-    public function showLoginForm()
-    {
-        $centros = Centro::all();
-        return view('auth.login', compact('centros'));
-    }
-
+    
     protected function authenticated(Request $request, $user)
     {
         if (session()->has('centro_id')) {

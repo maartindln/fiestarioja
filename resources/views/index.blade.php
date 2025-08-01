@@ -11,7 +11,7 @@
     </div>
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center">
-      <h1 class="mb-6 font-sans font-bold tracking-tight text-amber-50 sm:text-4xl sm:leading-none">
+      <h1 class="mb-6 font-sans font-bold drop-shadow-[0_0_1px_black] tracking-tight text-amber-50 sm:text-4xl sm:leading-none">
         <span class="text-red-600 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">F</span>
         <span class="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl">I</span>
         <span class="text-lime-500 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">E</span>
@@ -127,7 +127,7 @@
 
   </div>
   <div class="text-center">
-    <a href="#" class="inline-flex items-center justify-center w-full h-12 px-6 font-bold tracking-wide text-green-950 rounded shadow-md md:w-auto bg-yellow-400 hover:bg-yellow-500">
+    <a href="{{route('register')}}" class="inline-flex items-center justify-center w-full h-12 px-6 font-bold tracking-wide text-green-950 rounded shadow-md md:w-auto bg-yellow-400 hover:bg-yellow-500">
       REGISTRATE
     </a>
   </div>

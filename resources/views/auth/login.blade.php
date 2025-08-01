@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="images/png/logo.png" type="image/png">
-    <title>{{ __('eskutik.login_title') }}</title>
+    <title>Iniciar Sesión</title>
 </head>
-<body class="bg-gray-50 flex flex-col justify-center min-h-screen py-12">
+<body class="bg-green-950 flex flex-col justify-center min-h-screen py-12">
 
     @if (session('error'))
     <div class="alert alert-error d-flex align-items-center" role="alert"
@@ -28,8 +28,8 @@
 
     {{-- Botón "Atrás" --}}
     <div class="absolute top-6 left-6">
-        <button onclick="window.history.back()" class="px-4 py-2 text-sm font-semibold text-pink-500 bg-white border-2 border-pink-500 rounded-md shadow-md hover:bg-pink-200 focus:outline-none">
-            {{ __('eskutik.login_back') }}
+        <button onclick="window.history.back()" class="px-4 py-2 text-sm font-semibold text-green-950 bg-yellow-400 border-2 border-yellow-400 rounded-md shadow-md hover:bg-yellow-500 focus:outline-none">
+            VOLVER
         </button>
     </div>
 
@@ -38,18 +38,18 @@
         <div class="w-full max-w-md lg:max-w-xl">
             <img class="mx-auto max-h-40 sm:max-h-64 w-auto" src="images/png/logo.png" alt="{{ __('eskutik.login_logo_alt') }}">
 
-            <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">
-                {{ __('eskutik.login_heading') }}
+            <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">
+                Iniciar sesión en tu cuenta
             </h2>
 
-            <div class="flex mt-7 border bg-white relative">
-                <button type="button" id="usuarioBtn" class="px-4 py-2 w-1/2 text-black font-semibold hover:bg-pink-200 relative">
-                    <p class="relative z-10">{{ __('eskutik.login_tab_user') }}</p>
+            <div class="flex mt-7 border bg-yellow-200 relative">
+                <button type="button" id="usuarioBtn" class="px-4 py-2 w-1/2 text-green-950 font-semibold hover:bg-pink-200 relative">
+                    <p class="relative z-10">Usuario</p>
                 </button>
-                <button type="button" id="centroBtn" class="px-4 py-2 w-1/2 text-black font-semibold hover:bg-pink-200 relative">
-                    <p class="relative z-10">{{ __('eskutik.login_tab_center') }}</p>
+                <button type="button" id="centroBtn" class="px-4 py-2 w-1/2 text-green-950 font-semibold hover:bg-pink-200 relative">
+                    <p class="relative z-10">Centro</p>
                 </button>
-                <div id="indicator" class="absolute w-1/2 h-10 bg-pink-300 transition-all duration-300"></div>
+                <div id="indicator" class="absolute w-1/2 h-10 bg-yellow-400 transition-all duration-300"></div>
             </div>
 
             <!-- Formulario para Usuario -->
@@ -57,24 +57,25 @@
                 <form method="POST" action="{{ route('login') }}" class="space-y-6">
                     @csrf
                     <div>
-                        <label for="emailUsuario" class="block text-sm font-medium text-gray-900">
-                            {{ __('eskutik.login_label_mail') }}
+                        <label for="emailUsuario" class="block text-sm font-medium text-yellow-400">
+                            Email de la cuenta:
                         </label>
                         <div class="mt-2">
-                            <input id="emailUsuario" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-white border-2 border-teal-400 px-3 py-1.5">
+                            <input id="emailUsuario" type="email" name="email" required autocomplete="email" class="block w-full rounded-md bg-amber-50 border-2 border-yellow-400 px-3 py-1.5">
                         </div>
                     </div>
                     <div>
-                        <label for="passwordUsuario" class="block text-sm font-medium text-gray-900">
-                            {{ __('eskutik.login_label_password') }}
+                        <label for="passwordUsuario" class="block text-sm font-medium text-yellow-400">
+                            Contraseña de la cuenta:
                         </label>
                         <div class="mt-2">
-                            <input id="passwordUsuario" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-md bg-white border-2 border-teal-400 px-3 py-1.5">
+                            <input id="passwordUsuario" type="password" name="password" required autocomplete="current-password" class="block w-full rounded-md bg-amber-50 border-2 border-yellow-400 px-3 py-1.5">
                         </div>
                     </div>
+                    <p class="text-amber-50 text-right">Si todavía no tienes cuenta, <a href="{{route('register')}}" class="text-yellow-400 underline hover:text-yellow-200">registrate aquí.</a></p>
                     <div>
-                        <button type="submit" class="w-full rounded-md bg-pink-500 px-3 py-1.5 text-sm font-semibold text-white hover:bg-pink-200">
-                            {{ __('eskutik.login_button') }}
+                        <button type="submit" class="w-full rounded-md bg-yellow-400 px-3 py-1.5 text-sm font-semibold text-green-950 hover:bg-yellow-500">
+                            INICIAR SESIÓN
                         </button>
                     </div>
                 </form>
@@ -82,18 +83,15 @@
 
             <!-- Formulario para Centro -->
             <div id="centroForm" class="mt-10 hidden">
-                <form method="POST" action="{{ route('validar.centro') }}" class="space-y-6">
+                <form method="POST" action="" class="space-y-6">
                     @csrf
                     <div>
-                        <label for="codigoCentro" class="block text-sm font-medium text-gray-900">
+                        <label for="codigoCentro" class="block text-sm font-medium text-yellow-400">
                             {{ __('eskutik.login_center_label_center') }}
                         </label>
                         <div class="mt-2">
                             <select id="codigoCentro" name="codigoCentro" required class="block w-full rounded-md bg-white border-2 border-teal-400 px-3 py-1.5">
                                 <option value="" disabled selected>{{ __('eskutik.login_center_option_select') }}</option>
-                                @foreach ($centros as $centro)
-                                    <option value="{{ $centro->id }}">{{ $centro->nombre }}</option>
-                                @endforeach
                             </select>
                         </div>
                     </div>

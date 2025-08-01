@@ -27,22 +27,7 @@ class RegisterController extends Controller
         register as performRegistration;
     }
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/admin';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+/*TXT DE ADMIN*/
 
     /**
      * Get a validator for an incoming registration request.
