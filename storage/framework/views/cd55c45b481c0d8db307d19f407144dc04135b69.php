@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -58,6 +59,7 @@
         <!-- Perfil -->
        <div class="relative ml-3 group">
         <button id="profile-button" class="flex items-center text-sm rounded-full">
+            <a href="<?php echo e(route('login')); ?>"></a>
             <img class="h-8 w-8 rounded-full transition-all duration-300 group-hover:h-10 group-hover:w-10" src="images/default-profile.jpg" alt="User" />
         </button>
         <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 transition-all origin-top-right duration-150 ease-out">
@@ -77,7 +79,7 @@
     </div>
     </nav>
 
-    <body>
+    <body class="bg-green-950">
         <?php echo $__env->yieldContent('content'); ?>
     </body>
 
@@ -108,9 +110,15 @@
         <!-- Pie de página -->
         <p class="text-sm text-amber-50">&copy; 2025 - All rights reserved by ACME Industries Ltd</p>
     </footer>
+    <a href="#" class="back-to-top rounded text-center" id="back-to-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
 
 </html>
-
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 <script>
     const menuBtn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');

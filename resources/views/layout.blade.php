@@ -59,6 +59,7 @@
         <!-- Perfil -->
        <div class="relative ml-3 group">
         <button id="profile-button" class="flex items-center text-sm rounded-full">
+            <a href="{{route('login')}}"></a>
             <img class="h-8 w-8 rounded-full transition-all duration-300 group-hover:h-10 group-hover:w-10" src="images/default-profile.jpg" alt="User" />
         </button>
         <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 transition-all origin-top-right duration-150 ease-out">
