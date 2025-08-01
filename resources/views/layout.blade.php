@@ -13,6 +13,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
         <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script>
@@ -57,17 +58,34 @@
         </div>
 
         <!-- Perfil -->
-       <div class="relative ml-3 group">
-        <button id="profile-button" class="flex items-center text-sm rounded-full">
-            <a href="{{route('login')}}"></a>
-            <img class="h-8 w-8 rounded-full transition-all duration-300 group-hover:h-10 group-hover:w-10" src="images/default-profile.jpg" alt="User" />
-        </button>
-        <div id="profile-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 transition-all origin-top-right duration-150 ease-out">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</a>
-        </div>
-        </div>
+        <div class="relative ml-3 group">
+                @auth
+                <button id="profile-button" class="flex items-center text-sm rounded-full focus:outline-none">
+                    <img
+                        class="h-8 w-8 rounded-full transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
+                        src="{{asset('images/default-profile.jpg') }}"
+                        alt="User"
+                    />
+                </button>
+                <div id="profile-dropdown"
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
+                    <form method="POST" action="{{route('logout') }}">
+                        @csrf
+                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</button>
+                    </form>
+                </div>
+                @else
+                <a href="{{route('login') }}">
+                    <img
+                        class="h-8 w-8 rounded-full transition-all duration-300 hover:scale-110"
+                        src="{{asset('images/default-profile.jpg') }}"
+                        alt="User"
+                    />
+                </a>
+                @endauth
+            </div>
         </div>
     </div>
 
@@ -110,14 +128,28 @@
         <!-- Pie de página -->
         <p class="text-sm text-amber-50">&copy; 2025 - All rights reserved by ACME Industries Ltd</p>
     </footer>
-    <a href="#" class="back-to-top rounded text-center" id="back-to-top">
-        <i class="fa-solid fa-arrow-up"></i>
+    <a href="#" id="back-to-top" class="back-to-top fixed bottom-8 right-8 hidden bg-yellow-400 text-green-950 p-3 rounded-full hover:bg-yellow-500" title="Back to top">
+        <i class="fa-solid fa-arrow-up text-xl"></i>
     </a>
 
 </html>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init();
+</script>
+<script>
+   $(window).scroll(function() {
+      if ($(this).scrollTop() > 300) {
+        $('.back-to-top').fadeIn();
+      } else {
+        $('.back-to-top').fadeOut();
+      }
+    });
+
+    $(".back-to-top").on("click", function(e) {
+      e.preventDefault();
+      $("html, body").animate({ scrollTop: 0 }, 800);
+    });
 </script>
 <script>
     const menuBtn = document.getElementById('mobile-menu-button');
