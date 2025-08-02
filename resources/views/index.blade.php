@@ -33,15 +33,15 @@
             </span>
         </h2>
       <p class="mb-6 text-base font-thin tracking-wide text-green-950 md:text-lg">
-        🎊 ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? 🥳 Estás en el lugar correcto.  
-        En esta página encontrarás un 📅 calendario completo y actualizado con todas las fiestas oficiales de la comunidad:  
+        🎊 ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? 🥳 Estás en el lugar correcto.
+        En esta página encontrarás un 📅 calendario completo y actualizado con todas las fiestas oficiales de la comunidad:
         desde las grandes celebraciones regionales 🏞️ hasta las fiestas locales de pueblos 🏘️, barrios 🎈 y establecimientos 🏠.<br><br>
 
-        Nos encargamos de reunir en un solo sitio toda la información 🧭 para que puedas organizarte 📌,  
-        descubrir nuevas fiestas 🎆 y no perderte ninguna cita importante ❗.  
+        Nos encargamos de reunir en un solo sitio toda la información 🧭 para que puedas organizarte 📌,
+        descubrir nuevas fiestas 🎆 y no perderte ninguna cita importante ❗.
         Ya sea una romería popular 🚶‍♂️, una feria 🎡, una verbena de barrio 💃 o un evento cultural 🎭 en algún rincón especial de La Rioja, aquí lo tendrás todo a mano. 🎉<br><br>
 
-        Explora 🗺️, comparte 🤝 y vive La Rioja… 🍇🍷  
+        Explora 🗺️, comparte 🤝 y vive La Rioja… 🍇🍷
       </p>
 
       <a
