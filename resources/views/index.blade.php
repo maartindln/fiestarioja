@@ -156,15 +156,16 @@
                             <p class="text-base text-gray-600 mb-6">
                                 We list your menu online, help you process orders.
                             </p>
-                            <form>
+                            <form action="{{ route('contacto.enviar') }}" method="POST">
+                                @csrf
                                 <div class="mb-4">
-                                    <input type="text" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" placeholder="Enter Name">
+                                    <input type="text" name="nombre" placeholder="Nombre" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
                                 </div>
                                 <div class="mb-4">
-                                    <input type="email" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" placeholder="Enter Email">
+                                    <input type="email" name="email" placeholder="Correo" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
                                 </div>
                                 <div class="mb-4">
-                                    <textarea class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3" placeholder="Enter Message"></textarea>
+                                    <textarea name="mensaje" placeholder="Mensaje" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3"></textarea>
                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-green-950 font-bold px-6 py-3 rounded-lg transition">

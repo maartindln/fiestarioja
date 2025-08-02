@@ -35,7 +35,7 @@ class LoginController extends Controller
             return redirect()->route('temas');
         }
 
-        return redirect('/')->with('success', __('Sesión iniciada correctamente'));
+        return redirect('/')->with('success','Sesión iniciada correctamente');
     }
 
     public function validarCentro(Request $request)
@@ -71,7 +71,7 @@ class LoginController extends Controller
  */
 protected function sendFailedLoginResponse(Request $request)
 {
-    $message = __('eskutik.usuario_datos_incorrectos');
+    $message = 'Datos de usuario incorrectos';
 
     // En vez de withErrors(), usamos with('error', ...)
     return redirect()->back()
