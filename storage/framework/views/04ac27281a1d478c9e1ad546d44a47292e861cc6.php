@@ -74,9 +74,9 @@
           </defs>
           <rect fill="url(#d9d7687a-355f-4502-8ec4-7945db034688)" width="52" height="24"></rect>
         </svg>
-        <span class="relative">The</span>
+        <span class="relative">Ventajas</span>
       </span>
-      quick, brown fox jumps over a lazy dog
+      de iniciar sesión con tu cuenta
     </h2>
     <p class="text-base text-gray-700 md:text-lg">
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
@@ -137,6 +137,52 @@
     </a>
   </div>
 </div>
+<!-- Contacto -->
+<section class="bg-amber-50">
+    <div class="relative bg-green-950 pb-20 overflow-hidden">
+        <div class="relative z-10 container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row justify-between gap-8 py-16">
+                <div class="lg:w-1/2 text-white">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-3">Get in Touch</h2>
+                    <p class="text-lg leading-relaxed">
+                        It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you!
+                    </p>
+                </div>
+
+                <div data-aos="fade-left" data-aos-duration="600" class="lg:w-2/5">
+                    <div class="bg-white rounded-xl shadow-lg -mb-24 p-6 md:p-10">
+                        <div class="bg-white rounded-xl p-6 md:p-8">
+                            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3">Contact Us</h2>
+                            <p class="text-base text-gray-600 mb-6">
+                                We list your menu online, help you process orders.
+                            </p>
+                            <form>
+                                <div class="mb-4">
+                                    <input type="text" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" placeholder="Enter Name">
+                                </div>
+                                <div class="mb-4">
+                                    <input type="email" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" placeholder="Enter Email">
+                                </div>
+                                <div class="mb-4">
+                                    <textarea class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3" placeholder="Enter Message"></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-green-950 font-bold px-6 py-3 rounded-lg transition">
+                                        <i class="fa-solid fa-paper-plane mr-4 text-green-950"></i>ENVIAR
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <svg class="absolute bottom-0 left-0 w-full h-96 z-0" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon fill="#FFFBEC" points="0,0 100,70 100,100 0,100"/>
+        </svg>
+    </div>
+    <div class="h-24"></div>
+</section>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\UniServerZ\www\FIESTARIOJA\fiestarioja\resources\views/index.blade.php ENDPATH**/ ?>
