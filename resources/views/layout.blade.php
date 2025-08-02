@@ -48,7 +48,7 @@
 
         <!-- Logo -->
         <div class="flex items-center">
-            <img class="h-8 w-auto" src="{{asset('images/logo_1.png') }}" alt="Logo" />
+            <a href="/"><img class="h-8 w-auto" src="{{asset('images/logo_1.png') }}" alt="Logo" /></a>
         </div>
 
         <!-- Navegación Escritorio -->

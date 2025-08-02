@@ -78,8 +78,8 @@
       </span>
       de iniciar sesión con tu cuenta
     </h2>
-    <p class="text-base text-gray-700 md:text-lg">
-      Crea tu cuenta sin apenas 
+    <p class="text-base text-amber-50 md:text-lg">
+      Crea tu cuenta sin necesidad de desvelar tus datos personales
     </p>
   </div>
   <div class="grid gap-5 mb-8 md:grid-cols-2 lg:grid-cols-3">
@@ -92,7 +92,7 @@
                 points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
             </svg>
             </div>
-            <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
+            <h6 class="mb-2 font-semibold leading-5">Favoritos</h6>
             <p class="text-sm text-gray-900">
             Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
             </p>

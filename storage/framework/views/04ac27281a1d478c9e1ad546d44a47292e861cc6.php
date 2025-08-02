@@ -33,15 +33,15 @@
             </span>
         </h2>
       <p class="mb-6 text-base font-thin tracking-wide text-green-950 md:text-lg">
-        🎊 ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? 🥳 Estás en el lugar correcto.  
-        En esta página encontrarás un 📅 calendario completo y actualizado con todas las fiestas oficiales de la comunidad:  
+        🎊 ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? 🥳 Estás en el lugar correcto.
+        En esta página encontrarás un 📅 calendario completo y actualizado con todas las fiestas oficiales de la comunidad:
         desde las grandes celebraciones regionales 🏞️ hasta las fiestas locales de pueblos 🏘️, barrios 🎈 y establecimientos 🏠.<br><br>
 
-        Nos encargamos de reunir en un solo sitio toda la información 🧭 para que puedas organizarte 📌,  
-        descubrir nuevas fiestas 🎆 y no perderte ninguna cita importante ❗.  
+        Nos encargamos de reunir en un solo sitio toda la información 🧭 para que puedas organizarte 📌,
+        descubrir nuevas fiestas 🎆 y no perderte ninguna cita importante ❗.
         Ya sea una romería popular 🚶‍♂️, una feria 🎡, una verbena de barrio 💃 o un evento cultural 🎭 en algún rincón especial de La Rioja, aquí lo tendrás todo a mano. 🎉<br><br>
 
-        Explora 🗺️, comparte 🤝 y vive La Rioja… 🍇🍷  
+        Explora 🗺️, comparte 🤝 y vive La Rioja… 🍇🍷
       </p>
 
       <a
@@ -78,8 +78,8 @@
       </span>
       de iniciar sesión con tu cuenta
     </h2>
-    <p class="text-base text-gray-700 md:text-lg">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
+    <p class="text-base text-amber-50 md:text-lg">
+      Crea tu cuenta sin necesidad de desvelar tus datos personales
     </p>
   </div>
   <div class="grid gap-5 mb-8 md:grid-cols-2 lg:grid-cols-3">
@@ -92,7 +92,7 @@
                 points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
             </svg>
             </div>
-            <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
+            <h6 class="mb-2 font-semibold leading-5">Favoritos</h6>
             <p class="text-sm text-gray-900">
             Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
             </p>
