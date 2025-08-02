@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <title>FiestaRioja</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <link rel="icon" href="#" type="image/png">
+        <link rel="icon" href="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" type="image/png">
         <script src="https://cdn.tailwindcss.com"></script>
          <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,7 @@
 
         <!-- Logo -->
         <div class="flex items-center">
-            <img class="h-8 w-auto" src="{{asset('images/logo_1.png') }}" alt="Logo" />
+            <img class="h-8 w-auto" src="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" alt="Logo" />
         </div>
 
         <!-- Navegación Escritorio -->

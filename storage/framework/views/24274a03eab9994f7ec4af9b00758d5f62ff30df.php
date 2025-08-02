@@ -10,7 +10,7 @@
     </div>
   <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
     <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl text-center">
-      <h1 class="mb-6 font-bold drop-shadow-[0_0_1px_black] tracking-tight text-amber-50 sm:text-4xl sm:leading-none">
+      <h1 class="mb-6 font-sans font-bold drop-shadow-[0_0_1px_black] tracking-tight text-amber-50 sm:text-4xl sm:leading-none">
         <span class="text-red-600 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">F</span>
         <span class="text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl">I</span>
         <span class="text-lime-500 text-5xl sm:text-6xl md:text-7xl lg:text-8xl">E</span>
@@ -25,7 +25,7 @@
 
     </h1>
         <br class="hidden md:block" />
-        <h2 class="mb-6 text-2xl font-bold tracking-tight text-green-950 sm:text-4xl sm:leading-none">
+        <h2 class="mb-6 font-sans text-2xl font-bold tracking-tight text-green-950 sm:text-4xl sm:leading-none">
             <span class="relative inline-block">
             ¡No te pierdas ninguna fiesta!
             <div class="w-full h-3 -mt-3 bg-yellow-400"></div>
@@ -73,12 +73,12 @@
           </defs>
           <rect fill="url(#d9d7687a-355f-4502-8ec4-7945db034688)" width="52" height="24"></rect>
         </svg>
-        <span class="relative">The</span>
+        <span class="relative">Ventajas</span>
       </span>
-      quick, brown fox jumps over a lazy dog
+      de iniciar sesión con tu cuenta
     </h2>
     <p class="text-base text-gray-700 md:text-lg">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.
+      Crea tu cuenta sin apenas 
     </p>
   </div>
   <div class="grid gap-5 mb-8 md:grid-cols-2 lg:grid-cols-3">

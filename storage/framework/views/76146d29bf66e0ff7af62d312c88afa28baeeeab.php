@@ -1,37 +1,28 @@
 <!DOCTYPE html>
-<html lang="<?php echo e(app()->getLocale()); ?>">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="images/png/logo.png" type="image/png">
-    <title>Iniciar Sesión</title>
+    <link rel="icon" href="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" type="image/png">
+    <title>FiestaRioja - Iniciar Sesión</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bg-green-950 flex flex-col justify-center min-h-screen py-12">
 
 <?php if(session('error')): ?>
-    <div id="alert-error" class="flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
+    <div class="alert flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
         <div class="bg-red-600 py-4 px-6 rounded-l-lg flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-white fill-current" viewBox="0 0 16 16" width="20" height="20"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>
+            <i class="fa-solid fa-circle-xmark text-white text-2xl"></i>
         </div>
         <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
         <div><?php echo e(session('error')); ?></div>
             <button onclick="closeAlert(this)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-gray-700" viewBox="0 0 16 16" width="20" height="20"><path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path></svg>
+                <i class="fa-solid fa-xmark mr-4 ml-4"></i>
             </button>
         </div>
     </div>
-    <script>
-        setTimeout(() => {
-            const alert = document.getElementById('alert-error');
-            if (alert) {
-                alert.classList.remove('animate__fadeInDown');
-                alert.classList.add('animate__fadeOutUp');
-                setTimeout(() => alert.remove(), 800);
-            }
-        }, 5000);
-    </script>
 <?php endif; ?>
 
 
@@ -45,7 +36,7 @@
     
     <div class="flex justify-center items-center px-6 lg:px-8">
         <div class="w-full max-w-md lg:max-w-xl">
-            <img class="mx-auto max-h-40 sm:max-h-64 w-auto" src="images/png/logo.png" alt="<?php echo e(__('eskutik.login_logo_alt')); ?>">
+            <img class="mx-auto max-h-40 sm:max-h-64 w-auto" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="<?php echo e(__('eskutik.login_logo_alt')); ?>">
 
             <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">
                 Iniciar sesión en tu cuenta
@@ -167,4 +158,24 @@
     </script>
 </body>
 </html>
+
+<script>
+    function closeAlert(button) {
+        const alert = button.closest('.alert');
+        if (alert) {
+            alert.classList.remove('animate__fadeInDown');
+            alert.classList.add('animate__fadeOutUp');
+            setTimeout(() => alert.remove(), 800);
+        }
+    }
+
+     setTimeout(() => {
+            const alert = document.querySelector('.alert');
+            if (alert) {
+                alert.classList.remove('animate__fadeInDown');
+                alert.classList.add('animate__fadeOutUp');
+                setTimeout(() => alert.remove(), 800);
+            }
+        }, 5000);
+</script>
 <?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/auth/login.blade.php ENDPATH**/ ?>
