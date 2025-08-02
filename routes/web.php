@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\CalendarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,5 +17,6 @@ use App\Http\Controllers\ContactoController;
 
 Route::get('/', [HomeController::class, 'inicio'])->name('index');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 
 Auth::routes();

@@ -44,7 +44,7 @@
       </p>
 
       <a
-        href="/"
+        href="#contacto"
         aria-label="Scroll down"
         class="flex items-center justify-center w-10 h-10 mx-auto mt-40 sm:mt-48 lg:mt-56 xl:mt-64 text-green-950 duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
       >
@@ -137,6 +137,7 @@
   </div>
 </div>
 <!-- Contacto -->
+<div id="contacto" class="mb-10"></div>
 <section class="bg-amber-50">
     <div class="relative bg-green-950 pb-20 overflow-hidden">
         <div class="relative z-10 container mx-auto px-4">
@@ -184,5 +185,18 @@
     <div class="h-24"></div>
 </section>
 <?php $__env->stopSection(); ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const link = document.querySelector('a[href="#contacto"]');
+        const target = document.querySelector('#contacto');
+
+        if (link && target) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    });
+</script>
 
 <?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/index.blade.php ENDPATH**/ ?>

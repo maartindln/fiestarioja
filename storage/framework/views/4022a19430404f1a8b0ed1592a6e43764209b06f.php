@@ -53,9 +53,18 @@
 
         <!-- Navegación Escritorio -->
         <div class="hidden sm:flex space-x-4">
-            <a href="#" class="bg-amber-50 text-black px-3 py-2 rounded-md text-sm font-bold">Inicio</a>
-            <a href="#" class="text-amber-50 hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium">Calendario</a>
-            <a href="#" class="text-amber-50 hover:bg-green-600 px-3 py-2 rounded-md text-sm font-medium">Listado</a>
+            <a href="<?php echo e(route('index')); ?>"
+            class="<?php echo e(request()->routeIs('index') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm">
+            Inicio
+            </a>
+            <a href="<?php echo e(route('calendar')); ?>"
+            class="<?php echo e(request()->routeIs('calendar') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm hover:bg-green-600">
+            Calendario
+            </a>
+            <a href="#"
+            class="text-amber-50 font-medium px-3 py-2 rounded-md text-sm hover:bg-green-600">
+            Listado
+            </a>
         </div>
 
         <!-- Perfil -->
