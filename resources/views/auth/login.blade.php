@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="images/png/logo.png" type="image/png">
-    <title>Iniciar Sesión</title>
+    <link rel="icon" href="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" type="image/png">
+    <title>FiestaRioja - Iniciar Sesión</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -36,7 +36,7 @@
     {{-- Contenido principal del login --}}
     <div class="flex justify-center items-center px-6 lg:px-8">
         <div class="w-full max-w-md lg:max-w-xl">
-            <img class="mx-auto max-h-40 sm:max-h-64 w-auto" src="images/png/logo.png" alt="{{ __('eskutik.login_logo_alt') }}">
+            <img class="mx-auto max-h-40 sm:max-h-64 w-auto" src="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" alt="{{ __('eskutik.login_logo_alt') }}">
 
             <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">
                 Iniciar sesión en tu cuenta

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="images/png/logo.png" type="image/png">
-    <title>Regístrate</title>
+    <link rel="icon" href="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" type="image/png">
+    <title>FiestaRioja - Regístrate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bg-green-950 flex flex-col justify-center min-h-screen py-10">
     <?php if(session('success')): ?>
@@ -25,7 +27,7 @@
 <?php if(session('error')): ?>
     <div class="alert flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
         <div class="bg-red-600 py-4 px-6 rounded-l-lg flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-white fill-current" viewBox="0 0 16 16" width="20" height="20"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>
+            <i class="fa-solid fa-circle-xmark text-white text-2xl"></i>
         </div>
         <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
         <div><?php echo e(session('error')); ?></div>
@@ -42,7 +44,7 @@
     </div>
     <div class="flex justify-center items-center px-6 lg:px-8">
         <div class="sm:w-full sm:max-w-sm mx-auto w-full px-5">
-            <img class="mx-auto h-64 w-auto" src="<?php echo e(asset('images/logo_1.png')); ?>" alt="Logo">
+            <img class="mx-auto h-64 w-auto" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="Logo">
             <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">Registra un usuario</h2>
             <div class="mt-10">
                 <form method="POST" action="<?php echo e(route('register')); ?>" class="space-y-6">

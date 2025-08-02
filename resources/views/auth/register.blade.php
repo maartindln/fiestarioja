@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="images/png/logo.png" type="image/png">
-    <title>Regístrate</title>
+    <link rel="icon" href="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" type="image/png">
+    <title>FiestaRioja - Regístrate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -44,7 +44,7 @@
     </div>
     <div class="flex justify-center items-center px-6 lg:px-8">
         <div class="sm:w-full sm:max-w-sm mx-auto w-full px-5">
-            <img class="mx-auto h-64 w-auto" src="{{asset('images/logo_1.png') }}" alt="Logo">
+            <img class="mx-auto h-64 w-auto" src="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" alt="Logo">
             <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">Registra un usuario</h2>
             <div class="mt-10">
                 <form method="POST" action="{{ route('register') }}" class="space-y-6">
