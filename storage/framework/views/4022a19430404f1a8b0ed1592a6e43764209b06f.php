@@ -48,7 +48,7 @@
 
         <!-- Logo -->
         <div class="flex items-center">
-            <img class="h-8 w-auto" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="Logo" />
+            <a href="<?php echo e(route('index')); ?>"><img class="h-8 w-auto" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="Logo" /></a>
         </div>
 
         <!-- Navegación Escritorio -->
@@ -71,7 +71,13 @@
                 <div id="profile-dropdown"
                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
+                    <?php
+                        $email = Auth::user()->email;
+                        $admin = DB::table('users')->where('email', $email)->where('role', 'Administrador')->first();
+                    ?>
+                    <?php if($admin): ?>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
+                    <?php endif; ?>
                     <form method="POST" action="<?php echo e(route('logout')); ?>">
                         <?php echo csrf_field(); ?>
                         <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</button>
