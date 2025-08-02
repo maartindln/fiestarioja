@@ -28,14 +28,14 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
     }
-    
+
     protected function authenticated(Request $request, $user)
     {
         if (session()->has('centro_id')) {
             return redirect()->route('temas');
         }
 
-        return redirect('/')->with('success', __('eskutik.sesion_iniciada_correctamente'));
+        return redirect('/')->with('success', __('Sesión iniciada correctamente'));
     }
 
     public function validarCentro(Request $request)

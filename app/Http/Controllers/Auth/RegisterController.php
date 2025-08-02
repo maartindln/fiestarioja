@@ -76,7 +76,7 @@ class RegisterController extends Controller
 
         $user = $this->create($request->all());
 
-        return redirect('/admin')->with('success', 'Usuario registrado correctamente');
+        return redirect('/')->with('success', 'Usuario registrado correctamente');
     }
 
     /**
@@ -88,6 +88,6 @@ class RegisterController extends Controller
      */
     protected function registered($request, $user)
     {
-        return redirect('/admin')->with('success', 'Usuario registrado correctamente');
+        return redirect('/')->with('success', 'Usuario registrado correctamente');
     }
 }
