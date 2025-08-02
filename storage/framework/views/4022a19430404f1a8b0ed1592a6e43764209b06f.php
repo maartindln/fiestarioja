@@ -17,16 +17,26 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <style>
+        @font-face {
+            font-family: 'MiFuenteCustom';
+            src: url('/fonts/RUSH_FLOW.otf') format('opentype'),
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        </style>
         <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            inter: ['Inter', 'sans-serif'],
-                        },
-                    },
+        tailwind.config = {
+            theme: {
+            extend: {
+                fontFamily: {
+                inter: ['Inter', 'sans-serif'],
+                custom: ['MiFuenteCustom', 'sans-serif'],
                 },
-            };
+            },
+            },
+        };
         </script>
     </head>
 
@@ -48,7 +58,7 @@
 
         <!-- Logo -->
         <div class="flex items-center">
-            <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Logo" />
+            <img class="h-8 w-auto" src="<?php echo e(asset('images/logo_1.png')); ?>" alt="Logo" />
         </div>
 
         <!-- Navegación Escritorio -->
