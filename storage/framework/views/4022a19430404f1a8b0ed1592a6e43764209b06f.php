@@ -54,7 +54,7 @@
         <!-- Navegación Escritorio -->
         <div class="hidden sm:flex space-x-4">
             <a href="<?php echo e(route('index')); ?>"
-            class="<?php echo e(request()->routeIs('index') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm">
+            class="<?php echo e(request()->routeIs('index') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm hover:bg-green-600">
             Inicio
             </a>
             <a href="<?php echo e(route('calendar')); ?>"

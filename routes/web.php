@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\EventsController;
+use App\Http\Controllers\PueblosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +20,16 @@ use App\Http\Controllers\CalendarController;
 Route::get('/', [HomeController::class, 'inicio'])->name('index');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
+// Eventos
+Route::get('/events', [EventsController::class, 'index']);
+Route::post('/events', [EventsController::class, 'store']);
+Route::get('/events/{id}', [EventsController::class, 'show']);
+Route::put('/events/{id}', [EventsController::class, 'update']);
+Route::delete('/events/{id}', [EventsController::class, 'destroy']);
+
+// Pueblos
+Route::get('/pueblos', [PueblosController::class, 'index']);
+Route::get('/pueblos/{id}', [PueblosController::class, 'show']);
+Route::post('/pueblos', [PueblosController::class, 'store']); // opcional
 
 Auth::routes();
