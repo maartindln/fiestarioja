@@ -44,7 +44,7 @@
       </p>
 
       <a
-        href="/"
+        href="#contacto"
         aria-label="Scroll down"
         class="flex items-center justify-center w-10 h-10 mx-auto mt-40 sm:mt-48 lg:mt-56 xl:mt-64 text-green-950 duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
       >
@@ -59,7 +59,7 @@
 <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
-      <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+      <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-green-600 uppercase rounded-full bg-teal-accent-400">
         Brand new
       </p>
     </div>
@@ -137,6 +137,7 @@
   </div>
 </div>
 <!-- Contacto -->
+<div id="contacto" class="mb-10"></div>
 <section class="bg-amber-50">
     <div class="relative bg-green-950 pb-20 overflow-hidden">
         <div class="relative z-10 container mx-auto px-4">
@@ -155,15 +156,16 @@
                             <p class="text-base text-gray-600 mb-6">
                                 We list your menu online, help you process orders.
                             </p>
-                            <form>
+                            <form action="<?php echo e(route('contacto.enviar')); ?>" method="POST">
+                                <?php echo csrf_field(); ?>
                                 <div class="mb-4">
-                                    <input type="text" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" placeholder="Enter Name">
+                                    <input type="text" name="nombre" placeholder="Nombre" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
                                 </div>
                                 <div class="mb-4">
-                                    <input type="email" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" placeholder="Enter Email">
+                                    <input type="email" name="email" placeholder="Correo" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
                                 </div>
                                 <div class="mb-4">
-                                    <textarea class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3" placeholder="Enter Message"></textarea>
+                                    <textarea name="mensaje" placeholder="Mensaje" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3"></textarea>
                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-green-950 font-bold px-6 py-3 rounded-lg transition">
@@ -183,5 +185,18 @@
     <div class="h-24"></div>
 </section>
 <?php $__env->stopSection(); ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const link = document.querySelector('a[href="#contacto"]');
+        const target = document.querySelector('#contacto');
+
+        if (link && target) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    });
+</script>
 
 <?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/index.blade.php ENDPATH**/ ?>
