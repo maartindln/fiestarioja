@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('pueblos', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // nombre del pueblo
-            $table->text('description')->nullable(); // opcional
+            $table->string('name')->unique();
+            $table->date('date')->nullable();
+            $table->string('image')->nullable();
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
             $table->timestamps();

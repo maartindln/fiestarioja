@@ -11,7 +11,8 @@ class Pueblo extends Model
 
     protected $fillable = [
         'name',
-        'description',
+        'date',
+        'image',
         'latitude',
         'longitude'
     ];
