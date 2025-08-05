@@ -12,7 +12,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
         <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -79,17 +78,17 @@
                 </button>
                 <div id="profile-dropdown"
                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Perfil</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-user mr-4 text-green-950"></i>Perfil</a>
                     @php
                         $email = Auth::user()->email;
                         $admin = DB::table('users')->where('email', $email)->where('role', 'Administrador')->first();
                     @endphp
                     @if ($admin)
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Administración</a>
+                        <a href="{{route('admin') }}" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-inbox mr-4 text-green-950"></i>Administración</a>
                     @endif
                     <form method="POST" action="{{route('logout') }}">
                         @csrf
-                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar sesión</button>
+                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-arrow-right-from-bracket mr-4 text-green-950"></i>Cerrar sesión</button>
                     </form>
                 </div>
                 @else
