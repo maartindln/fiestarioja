@@ -55,6 +55,48 @@
     </div>
   </div>
 </div>
+<!-- Introducc -->
+<div class="overflow-hidden bg-green-950 py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+      <div class="lg:pt-4 lg:pr-8">
+        <div class="lg:max-w-lg">
+          <h2 class="text-base/7 font-semibold text-green-600">Pequeño resumen</h2>
+          <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-yellow-400 sm:text-5xl">¿Qué ofrecemos?</p>
+          <p class="mt-6 text-lg/8 text-amber-50">
+            ¿Quieres saber cuándo y dónde se celebran las fiestas en La Rioja? Estás en el lugar correcto.
+          </p>
+          <dl class="mt-10 max-w-xl space-y-8 text-base/7 text-amber-50 lg:max-w-none">
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-yellow-400">
+                <i class="fa-solid fa-calendar-days absolute top-2 left-1 size-5 text-yellow-400"></i>
+                Calendario.
+              </dt>
+              <dd class="inline">
+                Herramienta de busqueda de festivos mediante un calendario actualizado.
+              </dd>
+            </div>
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-yellow-400">
+                <i class="fa-solid fa-list absolute top-2 left-1 size-5 text-yellow-400"></i>
+                Listado.
+              </dt>
+              <dd class="inline">Posibilidad de buscar en forma fe lista la festividad que desees de forma ordenada.</dd>
+            </div>
+            <div class="relative pl-9">
+              <dt class="inline font-semibold text-yellow-400">
+                <i class="fa-solid fa-magnifying-glass absolute top-2 left-1 size-5 text-yellow-400"></i>
+                Buscador.
+              </dt>
+              <dd class="inline">Recurso de busqueda de festividades mediante el uso del buscador incluyendo el nombre de la fiesta o el lugar.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+      <img src="images/larioja_municipios_amarillo.png" alt="Product screenshot" class="md:w-[730px] w-full max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-228 md:-ml-4 lg:-ml-0" />
+    </div>
+  </div>
+</div>
 <!-- Inicio de sesion y registro -->
 <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
@@ -86,14 +128,11 @@
     <div class="transition-transform duration-300 hover:-translate-y-2">
         <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" class="p-5 bg-white border rounded shadow-sm">
             <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
-            <svg class="w-10 h-10 text-yellow-400" stroke="currentColor" viewBox="0 0 52 52">
-                <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
-                points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-            </svg>
+            <i class="fa-solid fa-star text-yellow-400"></i>
             </div>
             <h6 class="mb-2 font-semibold leading-5">Favoritos</h6>
             <p class="text-sm text-gray-900">
-            Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
+            Posibilidad de guardar tus festividades en favoritos para siempre tenerlas a mano. En listado por ejmplo puedes activar la vision de solo favoritos.
             </p>
         </div>
     </div>
