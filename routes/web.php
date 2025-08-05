@@ -7,6 +7,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PueblosController;
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +37,9 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy']);
 Route::get('/pueblos', [PueblosController::class, 'index']);
 Route::get('/pueblos/{id}', [PueblosController::class, 'show']);
 Route::post('/pueblos', [PueblosController::class, 'store']); // opcional
+
+// Admin
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin')->middleware('admin');
+    Route::get('/admin/users', [UsersController::class, 'users'])->name('users')->middleware('admin');
 
 Auth::routes();
