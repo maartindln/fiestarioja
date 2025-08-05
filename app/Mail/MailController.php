@@ -10,20 +10,24 @@ class MailController extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $nombre;
     public $email;
-    public $mensaje;
+    public $nombre;
+    public $municipio;
+    public $fecha;
+    public $descripcion;
 
-    public function __construct($nombre, $email, $mensaje)
+    public function __construct($email, $nombre, $municipio, $fecha, $descripcion)
     {
-        $this->nombre = $nombre;
         $this->email = $email;
-        $this->mensaje = $mensaje;
+        $this->nombre = $nombre;
+        $this->municipio = $municipio;
+        $this->fecha = $fecha;        
+        $this->descripcion = $descripcion;
     }
 
     public function build()
     {
-        return $this->subject("Nuevo mensaje de contacto de $this->nombre")
+        return $this->subject("Nuevo festivo a añadir:  $this->nombre")
                     ->view('mails.contacto');
     }
 }
