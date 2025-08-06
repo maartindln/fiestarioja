@@ -8,6 +8,9 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PueblosController;
 use App\Http\Controllers\ListController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +24,15 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [HomeController::class, 'inicio'])->name('index');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 
 Route::get('/listado', [ListController::class, 'listado'])->name('list');
 Route::get('/listado/search', [ListController::class, 'search'])->name('pueblos.search');
+
+Route::get('/perfil',[PerfilController::class,'perfil'])->name('perfil');
+Route::post('sections/perfil-edit', [PerfilController::class, 'edit'])->name('edit')->middleware('admin');
+Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->name('perfil.update-avatar');
 
 // Eventos
 Route::get('/events', [EventsController::class, 'index']);
@@ -39,7 +47,7 @@ Route::get('/pueblos/{id}', [PueblosController::class, 'show']);
 Route::post('/pueblos', [PueblosController::class, 'store']); // opcional
 
 // Admin
-    Route::get('/admin', [AdminController::class, 'admin'])->name('admin')->middleware('admin');
-    Route::get('/admin/users', [UsersController::class, 'users'])->name('users')->middleware('admin');
+Route::get('/admin', [AdminController::class, 'admin'])->name('admin')->middleware('admin');
+Route::get('/admin/users', [UserController::class, 'users'])->name('users')->middleware('admin');
 
 Auth::routes();
