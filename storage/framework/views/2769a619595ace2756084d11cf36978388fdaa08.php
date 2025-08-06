@@ -3,9 +3,9 @@
 
     <head>
         <meta charset="utf-8">
-        <title>FiestaRioja - @yield('titulo')</title>
+        <title>FiestaRioja</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <link rel="icon" href="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" type="image/png">
+        <link rel="icon" href="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" type="image/png">
         <script src="https://cdn.tailwindcss.com"></script>
          <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,55 +47,55 @@
 
         <!-- Logo -->
         <div class="flex items-center">
-            <a href="{{ route('index') }}"><img class="h-8 w-auto" src="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" alt="Logo" /></a>
+            <a href="<?php echo e(route('index')); ?>"><img class="h-8 w-auto" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="Logo" /></a>
         </div>
 
         <!-- Navegación Escritorio -->
         <div class="hidden sm:flex space-x-4">
-            <a href="{{ route('index') }}"
-            class="{{ request()->routeIs('index') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium' }} px-3 py-2 rounded-md text-sm hover:bg-green-600">
+            <a href="<?php echo e(route('index')); ?>"
+            class="<?php echo e(request()->routeIs('index') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm hover:bg-green-600">
             Inicio
             </a>
-            <a href="{{ route('calendar') }}"
-            class="{{ request()->routeIs('calendar') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium' }} px-3 py-2 rounded-md text-sm hover:bg-green-600">
+            <a href="<?php echo e(route('calendar')); ?>"
+            class="<?php echo e(request()->routeIs('calendar') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm hover:bg-green-600">
             Calendario
             </a>
-            <a href="{{ route('list') }}"
-            class="{{ request()->routeIs('list') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium' }} px-3 py-2 rounded-md text-sm hover:bg-green-600">
+            <a href="<?php echo e(route('list')); ?>"
+            class="<?php echo e(request()->routeIs('list') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm hover:bg-green-600">
             Listado
             </a>
         </div>
 
         <!-- Perfil -->
         <div class="relative ml-3 group">
-                @auth
+                <?php if(auth()->guard()->check()): ?>
                 <button id="profile-button" class="flex items-center text-sm rounded-full focus:outline-none">
                     <img
                         class="h-8 w-8 rounded-full transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
-                        src="{{asset('images/default-profile.jpg') }}"
+                        src="<?php echo e(asset('images/default-profile.jpg')); ?>"
                         alt="User"
                     />
                 </button>
                 <div id="profile-dropdown"
                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
-                    <a href="{{route('perfil') }}" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-user mr-4 text-green-950"></i>Perfil</a>
-                    @php
+                    <a href="#" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-user mr-4 text-green-950"></i>Perfil</a>
+                    <?php
                         $email = Auth::user()->email;
                         $admin = DB::table('users')->where('email', $email)->where('role', 'Administrador')->first();
-                    @endphp
-                    @if ($admin)
-                        <a href="{{route('admin') }}" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-inbox mr-4 text-green-950"></i>Administración</a>
-                    @endif
-                    <form method="POST" action="{{route('logout') }}">
-                        @csrf
+                    ?>
+                    <?php if($admin): ?>
+                        <a href="<?php echo e(route('admin')); ?>" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-inbox mr-4 text-green-950"></i>Administración</a>
+                    <?php endif; ?>
+                    <form method="POST" action="<?php echo e(route('logout')); ?>">
+                        <?php echo csrf_field(); ?>
                         <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-arrow-right-from-bracket mr-4 text-green-950"></i>Cerrar sesión</button>
                     </form>
                 </div>
-                @else
-                <a href="{{route('login') }}">
+                <?php else: ?>
+                <a href="<?php echo e(route('login')); ?>">
                     <p class="text-green-950 bg-yellow-400 hover:bg-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Iniciar sesión</p>
                 </a>
-                @endauth
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -109,8 +109,8 @@
     </nav>
 
     <body class="bg-green-950">
-        @include('alerts')
-        @yield('content')
+        <?php echo $__env->make('alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->yieldContent('content'); ?>
     </body>
 
     <footer class="bg-green-950 text-amber-50 p-10 text-center">
@@ -207,3 +207,4 @@
         }
     });
 </script>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/FIESTARIOJA/fiestarioja/resources/views/layout.blade.php ENDPATH**/ ?>
