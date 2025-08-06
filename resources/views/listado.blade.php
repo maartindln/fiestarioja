@@ -5,7 +5,7 @@
 
     <!-- Heading -->
     <div class="w-fit sm:my-20 my-10">
-      <h2 class="sm:text-5xl font-bold text-green-950 pb-2">PUEBLOS</h2>
+      <h2 class="sm:text-5xl font-bold text-green-950 pb-2">FESTIVOS</h2>
       <div class="rounded-t-full border-[1px] border-gray-500 dark:border-gray-400 overflow-hidden">
         <hr class="border-[3px] border-green-400 border-green-600 w-[40%]" />
       </div>
@@ -15,7 +15,7 @@
     <input
       type="text"
       id="buscador-pueblos"
-      placeholder="Buscar pueblo..."
+      placeholder="Buscar festivo..."
       class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded mb-6 focus:outline-none focus:ring-2 focus:ring-green-500"
     />
 

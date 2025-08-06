@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('pueblo_id'); // clave foránea
             $table->string('name');
-            $table->date('date');
-            $table->text('notes')->nullable();
-            $table->string('tag')->nullable(); // 'event', 'birthday', etc.
+            $table->date('dateIni');
+            $table->date('dateFin');
+            $table->string('cartel');
+            $table->string('puntos_interes');
             $table->timestamps();
 
             $table->foreign('pueblo_id')->references('id')->on('pueblos')->onDelete('cascade');
