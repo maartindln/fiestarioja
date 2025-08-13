@@ -1,3 +1,4 @@
+<?php $__env->startSection('titulo', 'Inicio'); ?>
 <?php $__env->startSection('content'); ?>
 <!-- Hero section -->
 <div class="relative bg-amber-50 pt-10">

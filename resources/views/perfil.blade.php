@@ -17,24 +17,24 @@
         <!-- Modal para subir imagen -->
         <div id="uploadModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
             <div class="bg-white rounded-lg p-6 w-96">
-                <h3 class="text-xl font-semibold mb-4">{{ __('emotions.subirIP') }}</h3>
+                <h3 class="text-xl font-semibold mb-4">Subir imagen</h3>
                 <form id="uploadForm" enctype="multipart/form-data" action="{{ route('perfil.update-avatar') }}"
                     method="POST">
                     @csrf
                     <div class="mb-4">
                         <label for="fileInput"
-                            class="block text-sm font-medium text-gray-700"></label>{{ __('emotions.seleccionaUna') }}</label>
+                            class="block text-sm font-medium text-gray-700"></label>Selecciona una </label>
                         <input type="file" id="fileInput" name="image" accept="image/*"
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
                     </div>
                     <div class="flex justify-between items-center">
                         <button type="button" id="cancelBtn"
                             class="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400">
-                            {{ __('emotions.cancelar') }}
+                            Cancelar
                         </button>
                         <button type="submit" id="submitBtn"
                             class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                            {{ __('emotions.subirI') }}
+                            Subir imagen
                         </button>
                     </div>
                 </form>
@@ -118,7 +118,7 @@
                         </svg>
                     </button>
                     <div id="gu" class="flex justify-center hidden">
-                        <button
+                        <button type="submit"
                             class="mt-4 px-4 py-2 bg-black text-white font-semibold rounded-md hover:bg-gray-300">
                             Guardar cambios
                         </button>
@@ -164,22 +164,4 @@
         });
 </script>
 <script src="{{ asset('js/perfil.js') }}"></script>
-<script>
-    const editarBtn = document.getElementById('editar');
-    const personalizarBtn = document.getElementById('personalizar');
-    const indicator = document.getElementById('indicator');
-
-    function moveIndicatorToButton(button) {
-
-        const rect = button.getBoundingClientRect();
-
-        indicator.style.left = `${rect.left}px`;
-        indicator.style.width = `${rect.width}px`;
-    }
-
-    editarBtn.addEventListener('click', () => moveIndicatorToButton(editarBtn));
-    personalizarBtn.addEventListener('click', () => moveIndicatorToButton(personalizarBtn));
-
-    moveIndicatorToButton(editarBtn);
-</script>
 @endsection
