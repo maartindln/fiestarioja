@@ -1,4 +1,5 @@
 @extends('layout')
+@section('titulo', 'Calendario')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/calendario.css') }}">
 <script>

@@ -182,29 +182,35 @@
         <div class="relative z-10 container mx-auto px-4">
             <div class="flex flex-col lg:flex-row justify-between gap-8 py-16">
                 <div class="lg:w-1/2 text-white">
-                    <h2 class="text-2xl md:text-4xl font-bold mb-3">Get in Touch</h2>
+                    <h2 class="text-2xl md:text-4xl font-bold mb-3">¿Échas en falta algo?</h2>
                     <p class="text-lg leading-relaxed">
-                        It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you!
+                        Si conoces algun festivo que tendrá lugar en la comunidad y no está publicado háznoslo saber.
                     </p>
                 </div>
 
                 <div data-aos="fade-left" data-aos-duration="600" class="lg:w-2/5">
                     <div class="bg-white rounded-xl shadow-lg -mb-24 p-6 md:p-10">
                         <div class="bg-white rounded-xl p-6 md:p-8">
-                            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3">Contact Us</h2>
+                            <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3">Contáctanos</h2>
                             <p class="text-base text-gray-600 mb-6">
-                                We list your menu online, help you process orders.
+                                Utiliza el siguiente cuestionario para informarnos de nuevas festividades.
                             </p>
                             <form action="<?php echo e(route('contacto.enviar')); ?>" method="POST">
                                 <?php echo csrf_field(); ?>
                                 <div class="mb-4">
-                                    <input type="text" name="nombre" placeholder="Nombre" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
-                                </div>
-                                <div class="mb-4">
                                     <input type="email" name="email" placeholder="Correo" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
                                 </div>
                                 <div class="mb-4">
-                                    <textarea name="mensaje" placeholder="Mensaje" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3"></textarea>
+                                    <input type="text" name="nombre" placeholder="Nombre del festivo" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
+                                </div>
+                                <div class="mb-4">
+                                    <input type="text" name="municipio" placeholder="Municipio del festivo" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
+                                </div>
+                                <div class="mb-4">
+                                    <input type="text" name="fecha" placeholder="Fechas en las que se celebra. (DD/MM/AAAA)" required class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3">
+                                </div>
+                                <div class="mb-4">
+                                    <textarea name="descripcion" placeholder="Breve descripción" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3"></textarea>
                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-green-950 font-bold px-6 py-3 rounded-lg transition">

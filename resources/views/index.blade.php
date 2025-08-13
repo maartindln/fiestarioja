@@ -1,4 +1,5 @@
 @extends('layout')
+@section('titulo', 'Inicio')
 @section('content')
 <!-- Hero section -->
 <div class="relative bg-amber-50 pt-10">
