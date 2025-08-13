@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>FiestaRioja</title>
+        <title>FiestaRioja - <?php echo $__env->yieldContent('titulo'); ?></title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <link rel="icon" href="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" type="image/png">
         <script src="https://cdn.tailwindcss.com"></script>
@@ -78,7 +78,7 @@
                 </button>
                 <div id="profile-dropdown"
                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
-                    <a href="#" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-user mr-4 text-green-950"></i>Perfil</a>
+                    <a href="<?php echo e(route('perfil')); ?>" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-user mr-4 text-green-950"></i>Perfil</a>
                     <?php
                         $email = Auth::user()->email;
                         $admin = DB::table('users')->where('email', $email)->where('role', 'Administrador')->first();

@@ -1,40 +1,42 @@
-@extends('layout')
-@section('titulo', 'Perfil')
-@section('content')
+
+<?php $__env->startSection('titulo', 'Perfil'); ?>
+<?php $__env->startSection('content'); ?>
     <div class="bg-white flex flex-col items-center justify-center min-h-screen p-4 bg-inherit">
         <!-- Icono de perfil -->
         <div class="flex justify-center mt-5">
-            @if (Auth::user()->avatar)
-                <img id="profilePic" src="{{ asset('storage/' . Auth::user()->avatar) }}"
-                    alt="Avatar de {{ Auth::user()->name }}"
+            <?php if(Auth::user()->avatar): ?>
+                <img id="profilePic" src="<?php echo e(asset('storage/' . Auth::user()->avatar)); ?>"
+                    alt="Avatar de <?php echo e(Auth::user()->name); ?>"
                     class="img-fluid w-60 h-60 rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-110 hover:shadow-2xl">
-            @else
-                <img id="profilePic" src="{{ asset('images/default-profile.jpg') }}" alt="Avatar por defecto"
+            <?php else: ?>
+                <img id="profilePic" src="<?php echo e(asset('images/default-profile.jpg')); ?>" alt="Avatar por defecto"
                     class="img-fluid w-36 h-36 rounded-full cursor-pointer">
-            @endif
+            <?php endif; ?>
         </div>
 
         <!-- Modal para subir imagen -->
         <div id="uploadModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
             <div class="bg-white rounded-lg p-6 w-96">
-                <h3 class="text-xl font-semibold mb-4">{{ __('emotions.subirIP') }}</h3>
-                <form id="uploadForm" enctype="multipart/form-data" action="{{ route('perfil.update-avatar') }}"
+                <h3 class="text-xl font-semibold mb-4"><?php echo e(__('emotions.subirIP')); ?></h3>
+                <form id="uploadForm" enctype="multipart/form-data" action="<?php echo e(route('perfil.update-avatar')); ?>"
                     method="POST">
-                    @csrf
+                    <?php echo csrf_field(); ?>
                     <div class="mb-4">
                         <label for="fileInput"
-                            class="block text-sm font-medium text-gray-700"></label>{{ __('emotions.seleccionaUna') }}</label>
+                            class="block text-sm font-medium text-gray-700"></label><?php echo e(__('emotions.seleccionaUna')); ?></label>
                         <input type="file" id="fileInput" name="image" accept="image/*"
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500">
                     </div>
                     <div class="flex justify-between items-center">
                         <button type="button" id="cancelBtn"
                             class="px-4 py-2 bg-gray-300 text-black rounded-md hover:bg-gray-400">
-                            {{ __('emotions.cancelar') }}
+                            <?php echo e(__('emotions.cancelar')); ?>
+
                         </button>
                         <button type="submit" id="submitBtn"
                             class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                            {{ __('emotions.subirI') }}
+                            <?php echo e(__('emotions.subirI')); ?>
+
                         </button>
                     </div>
                 </form>
@@ -42,14 +44,14 @@
             </div>
         </div>
             <div id="usuario" class="w-full animate__animated animate__fadeIn">
-                <form action="{{ route('edit') }}" method="POST" class="w-full flex flex-col items-center">
-                    @csrf
+                <form action="<?php echo e(route('edit')); ?>" method="POST" class="w-full flex flex-col items-center">
+                    <?php echo csrf_field(); ?>
                     <!-- Campo de Usuario -->
                     <p class="font-bold text-2xl text-yellow-400 m-5">Datos de usuario</p>
                     <div class="w-full max-w-md mb-4">
                         <label class="block text-sm font-medium text-yellow-400">Usuario</label>
                         <div class="relative mt-1">
-                            <input id="inputUsu" name="usuario" type="text" placeholder="{{ auth()->user()->name }}"
+                            <input id="inputUsu" name="usuario" type="text" placeholder="<?php echo e(auth()->user()->name); ?>"
                                 class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-200 cursor-not-allowed"
                                 disabled>
                             <button type="button" id="xUsuario"
@@ -63,7 +65,7 @@
                     <div class="w-full max-w-md mb-4">
                         <label class="block text-sm font-medium text-yellow-400">Correo</label>
                         <div class="relative mt-1">
-                            <input id="inputCorreo" type="email" name="correo" placeholder="{{ auth()->user()->email }}"
+                            <input id="inputCorreo" type="email" name="correo" placeholder="<?php echo e(auth()->user()->email); ?>"
                                 class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500 bg-gray-200 cursor-not-allowed"
                                 disabled>
                             <button type="button" id="xCorreo"
@@ -163,7 +165,7 @@
         });
         });
 </script>
-<script src="{{ asset('js/perfil.js') }}"></script>
+<script src="<?php echo e(asset('js/perfil.js')); ?>"></script>
 <script>
     const editarBtn = document.getElementById('editar');
     const personalizarBtn = document.getElementById('personalizar');
@@ -182,4 +184,6 @@
 
     moveIndicatorToButton(editarBtn);
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\UniServerZ\www\FIESTARIOJA\fiestarioja\resources\views/perfil.blade.php ENDPATH**/ ?>
