@@ -7,10 +7,10 @@
             @if (Auth::user()->avatar)
                 <img id="profilePic" src="{{ asset('storage/' . Auth::user()->avatar) }}"
                     alt="Avatar de {{ Auth::user()->name }}"
-                    class="img-fluid w-60 h-60 rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-110 hover:shadow-2xl">
+                    class="img-fluid w-40 h-40 rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-110 hover:shadow-2xl">
             @else
                 <img id="profilePic" src="{{ asset('images/default-profile.jpg') }}" alt="Avatar por defecto"
-                    class="img-fluid w-36 h-36 rounded-full cursor-pointer">
+                    class="img-fluid w-40 h-40 rounded-full cursor-pointer">
             @endif
         </div>
 
