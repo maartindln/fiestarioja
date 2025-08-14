@@ -34,14 +34,10 @@ class PerfilController extends Controller
         ], [
             'contrasena.confirmed' => 'Las contraseñas no coinciden.',
             'contrasena.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'correo.email' => 'El correo debe tener un formato válido.',
         ]);
 
         $user = auth()->user();
-
-        if (!$user) {
-            return redirect()->route('login')->with('error', __('emotions.debeEstar'));
-        }
-
         $updatedFields = [];
 
         if ($request->filled('usuario')) {
@@ -60,6 +56,6 @@ class PerfilController extends Controller
             User::where('id', $user->id)->update($updatedFields);
         }
 
-        return redirect()->route('perfil')->with('success', __('emotions.perfilAct'));
+        return redirect()->route('perfil')->with('success', 'Perfil actualizado correctamente.');
     }
 }

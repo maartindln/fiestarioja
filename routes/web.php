@@ -30,9 +30,9 @@ Route::get('/calendario', [CalendarController::class, 'calendario'])->name('cale
 Route::get('/listado', [ListController::class, 'listado'])->name('list');
 Route::get('/listado/search', [ListController::class, 'search'])->name('pueblos.search');
 
-Route::get('/perfil',[PerfilController::class,'perfil'])->name('perfil');
-Route::post('sections/perfil-edit', [PerfilController::class, 'edit'])->name('edit')->middleware('admin');
-Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->name('perfil.update-avatar');
+Route::get('/perfil',[PerfilController::class,'perfil'])->name('perfil')->middleware('auth');
+Route::post('perfil/perfil-edit', [PerfilController::class, 'edit'])->name('edit')->middleware('auth');
+Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->name('perfil.update-avatar')->middleware('auth');
 
 // Eventos
 Route::get('/events', [EventsController::class, 'index']);

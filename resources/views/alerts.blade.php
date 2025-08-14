@@ -26,6 +26,26 @@
     </div>
 @endif
 
+@if ($errors->any())
+    <div class="alert flex fixed inset-x-0 top-0 mx-auto mt-4 w-fit max-w-md z-50 w-96 shadow-lg rounded-lg animate__animated animate__fadeInDown">
+        <div class="bg-red-600 py-4 px-6 rounded-l-lg flex items-center">
+            <i class="fa-solid fa-circle-xmark text-white text-2xl"></i>
+        </div>
+        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+            <div>
+                <ul class="list-inside text-sm text-red-700">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <button onclick="closeAlert(this)">
+                <i class="fa-solid fa-xmark mr-4 ml-4"></i>
+            </button>
+        </div>
+    </div>
+@endif
+
 <script>
     function closeAlert(button) {
         const alert = button.closest('.alert');

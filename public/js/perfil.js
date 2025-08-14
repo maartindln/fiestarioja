@@ -48,13 +48,3 @@ ocultarContraseña2.addEventListener("click", () => {
     ocultarContraseña2.style.display="none";
 
 });
-
-document.getElementById("editar").addEventListener("click", function() {
-    document.getElementById("usuario").classList.remove("hidden");
-    document.getElementById("colores").classList.add("hidden");
-});
-
-document.getElementById("personalizar").addEventListener("click", function() {
-    document.getElementById("colores").classList.remove("hidden");
-    document.getElementById("usuario").classList.add("hidden");
-});
