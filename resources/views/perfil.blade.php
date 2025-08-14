@@ -164,4 +164,22 @@
         });
 </script>
 <script src="{{ asset('js/perfil.js') }}"></script>
+<script>
+$('#profilePic').on('click', function() {
+    $('#uploadModal').removeClass('hidden');
+});
+
+$('#cancelBtn').on('click', function() {
+    $('#uploadModal').addClass('hidden');
+});
+
+$('#uploadForm').on('submit', function(e) {
+    e.preventDefault();
+    let formData = new FormData(this);
+    console.log('Imagen subida:', formData.get('image'));
+
+$('#uploadModal').addClass('hidden');
+    document.getElementById("uploadForm").submit();
+});
+</script>
 @endsection

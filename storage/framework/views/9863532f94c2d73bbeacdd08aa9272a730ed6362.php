@@ -163,6 +163,24 @@
         });
 </script>
 <script src="<?php echo e(asset('js/perfil.js')); ?>"></script>
+<script>
+$('#profilePic').on('click', function() {
+    $('#uploadModal').removeClass('hidden');
+});
+
+$('#cancelBtn').on('click', function() {
+    $('#uploadModal').addClass('hidden');
+});
+
+$('#uploadForm').on('submit', function(e) {
+    e.preventDefault();
+    let formData = new FormData(this);
+    console.log('Imagen subida:', formData.get('image'));
+
+$('#uploadModal').addClass('hidden');
+    document.getElementById("uploadForm").submit();
+});
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/perfil.blade.php ENDPATH**/ ?>
