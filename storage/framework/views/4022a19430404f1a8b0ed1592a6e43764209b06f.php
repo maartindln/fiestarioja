@@ -79,13 +79,13 @@
                     <?php else: ?>
                         <img
                             class="h-8 w-8 rounded-full transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
-                            src="<?php echo e(asset('images/default-profile.jpg')); ?>""
+                            src="<?php echo e(asset('images/default-profile.jpg')); ?>"
                             alt="User"
                         />
                     <?php endif; ?>
                 </button>
                 <div id="profile-dropdown"
-                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out ">
                     <a href="<?php echo e(route('perfil')); ?>" class="block px-4 py-2 text-sm text-green-950 hover:bg-gray-100"><i class="fa-solid fa-user mr-4 text-green-950"></i>Perfil</a>
                     <?php
                         $email = Auth::user()->email;
