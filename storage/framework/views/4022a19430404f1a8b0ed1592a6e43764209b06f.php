@@ -70,11 +70,19 @@
         <div class="relative ml-3 group">
                 <?php if(auth()->guard()->check()): ?>
                 <button id="profile-button" class="flex items-center text-sm rounded-full focus:outline-none">
+                    <?php if(Auth::user()->avatar): ?>
                     <img
                         class="h-8 w-8 rounded-full transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
-                        src="<?php echo e(asset('images/default-profile.jpg')); ?>"
+                        src="<?php echo e(asset('storage/' . Auth::user()->avatar)); ?>"
                         alt="User"
                     />
+                    <?php else: ?>
+                        <img
+                            class="h-8 w-8 rounded-full transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
+                            src="<?php echo e(asset('images/default-profile.jpg')); ?>""
+                            alt="User"
+                        />
+                    <?php endif; ?>
                 </button>
                 <div id="profile-dropdown"
                     class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">

@@ -28,6 +28,6 @@ class UserController extends Controller
             $user->save();
         }
 
-        return back()->with('success', __('emotions.imagenAct'));
+        return back()->with('success', 'Imagen actualizada correctamente.');
     }
 }
