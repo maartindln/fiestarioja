@@ -1,4 +1,5 @@
 
+<?php $__env->startSection('titulo', 'Listado'); ?>
 <?php $__env->startSection('content'); ?>
 <div class="w-full h-full overflow-hidden bg-amber-50">
   <div class="sm:px-20 px-6 flex flex-col gap-4 justify-center items-center">
