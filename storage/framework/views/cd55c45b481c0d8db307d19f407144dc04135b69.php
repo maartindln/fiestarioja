@@ -79,7 +79,7 @@
                     <?php else: ?>
                         <img
                             class="h-8 w-8 rounded-full transition-all duration-300 group-hover:scale-110 group-focus:scale-110"
-                            src="<?php echo e(asset('images/default-profile.jpg')); ?>""
+                            src="<?php echo e(asset('images/default-profile.jpg')); ?>"
                             alt="User"
                         />
                     <?php endif; ?>

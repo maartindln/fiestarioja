@@ -49,7 +49,7 @@
                     <span class="text-sm">Activities</span>
                 </a>
             </li>
-            
+
         </ul>
     </div>
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
@@ -85,7 +85,11 @@
                     <button type="button" class="dropdown-toggle flex items-center">
                         <div class="flex-shrink-0 w-10 h-10 relative">
                             <div class="p-1 bg-white rounded-full focus:outline-none focus:ring">
-                                <img class="w-8 h-8 rounded-full" src="https://laravelui.spruko.com/tailwind/ynex/build/assets/images/faces/9.jpg" alt=""/>
+                                <?php if(Auth::user()->avatar): ?>
+                                    <img class="w-8 h-8 rounded-full" src="<?php echo e(asset('storage/' . Auth::user()->avatar)); ?>" alt="User"/>
+                                <?php else: ?>
+                                    <img class="w-8 h-8 rounded-full" src="<?php echo e(asset('images/default-profile.jpg')); ?>" alt="User"/>
+                                <?php endif; ?>
                                 <div class="top-0 left-7 absolute w-3 h-3 bg-lime-400 border-2 border-white rounded-full animate-ping"></div>
                                 <div class="top-0 left-7 absolute w-3 h-3 bg-lime-500 border-2 border-white rounded-full"></div>
                             </div>
@@ -97,10 +101,10 @@
                     </button>
                     <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
                         <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50"><i class="fa-solid fa-user mr-4"></i>Perfil</a>
+                            <a href="<?php echo e(route('perfil')); ?>" class="flex items-center text-[13px] py-1.5 px-4 text-green-950 hover:text-yellow-400 hover:bg-gray-50"><i class="fa-solid fa-user mr-4"></i>Perfil</a>
                         </li>
                         <li>
-                            <a href="<?php echo e(route('index')); ?>" role="menuitem" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer">
+                            <a href="<?php echo e(route('index')); ?>" role="menuitem" class="flex items-center text-[13px] py-1.5 px-4 text-green-950 hover:text-yellow-400 hover:bg-gray-50 cursor-pointer">
                                 <i class="fa-solid fa-arrow-right-from-bracket mr-4"></i>Salir
                             </a>
                         </li>

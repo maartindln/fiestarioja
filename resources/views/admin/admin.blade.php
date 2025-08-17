@@ -101,10 +101,10 @@
                     </button>
                     <ul class="dropdown-menu shadow-md shadow-black/5 z-30 hidden py-1.5 rounded-md bg-white border border-gray-100 w-full max-w-[140px]">
                         <li>
-                            <a href="#" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50"><i class="fa-solid fa-user mr-4"></i>Perfil</a>
+                            <a href="{{route('perfil') }}" class="flex items-center text-[13px] py-1.5 px-4 text-green-950 hover:text-yellow-400 hover:bg-gray-50"><i class="fa-solid fa-user mr-4"></i>Perfil</a>
                         </li>
                         <li>
-                            <a href="{{ route('index') }}" role="menuitem" class="flex items-center text-[13px] py-1.5 px-4 text-gray-600 hover:text-[#f84525] hover:bg-gray-50 cursor-pointer">
+                            <a href="{{ route('index') }}" role="menuitem" class="flex items-center text-[13px] py-1.5 px-4 text-green-950 hover:text-yellow-400 hover:bg-gray-50 cursor-pointer">
                                 <i class="fa-solid fa-arrow-right-from-bracket mr-4"></i>Salir
                             </a>
                         </li>
