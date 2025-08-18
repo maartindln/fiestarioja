@@ -9,7 +9,7 @@
                     class="img-fluid w-40 h-40 rounded-full cursor-pointer transition duration-300 ease-in-out hover:scale-110 hover:shadow-2xl">
             <?php else: ?>
                 <img id="profilePic" src="<?php echo e(asset('images/default-profile.jpg')); ?>" alt="Avatar por defecto"
-                    class="img-fluid w-36 h-36 rounded-full cursor-pointer">
+                    class="img-fluid w-40 h-40 rounded-full cursor-pointer">
             <?php endif; ?>
         </div>
 
