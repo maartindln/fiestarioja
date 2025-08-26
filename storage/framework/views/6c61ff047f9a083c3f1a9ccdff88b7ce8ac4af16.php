@@ -104,7 +104,7 @@ unset($__errorArgs, $__bag); ?>
                         <label for="password-confirm" class="block text-sm font-medium text-yellow-400">Confirmar contraseña</label>
                         <div class="mt-2">
                             <input id="password-confirm" type="password" name="password_confirmation" required autocomplete="new-password"
-                                class="block w-full rounded-md bg-amber-50 border-2 border-yellow-400 px-3 py-1.5 text-base text-yellow-400 placeholder:text-gray-400">
+                                class="block w-full rounded-md bg-amber-50 border-2 border-yellow-400 px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400">
                         </div>
                     </div>
                     <div>

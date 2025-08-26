@@ -17,6 +17,38 @@ class AdminController extends Controller
         $pueblosCount = Pueblo::count();
         $pageVisit = PageVisit::first();
         $visitCount = $pageVisit ? $pageVisit->visits : 0;
-        return view('admin.admin', compact('userCount','visitCount','pueblosCount'))->with('users', $usuarios)->with('pueblos', $pueblos);
+        return view('admin.general', compact('userCount','visitCount','pueblosCount'))->with('users', $usuarios)->with('pueblos', $pueblos);
+    }
+
+    public function allusers()
+    {
+        $usuarios = User::all();
+        return view('admin.allusers')->with('users', $usuarios);
+    }
+
+    public function update(Request $request, $id)
+{
+    try {
+        $usuario = User::findOrFail($id);
+        $usuario->name  = $request->input('name');
+        $usuario->email = $request->input('email');
+        $usuario->role  = $request->input('role');
+        $usuario->save();
+
+        return redirect()->route('allusers')->with('success', 'Usuario actualizado correctamente');
+    } catch (\Exception $e) {
+        return redirect()->route('allusers')->with('error', 'No se pudo actualizar el usuario. ' . $e->getMessage());
+    }
+}
+
+    public function destroy($id)
+    {
+        try {
+            $usuario = User::findOrFail($id);
+            $usuario->delete();
+            return redirect()->route('allusers')->with('success', 'Usuario eliminado correctamente');
+        } catch (\Exception $e) {
+            return redirect()->route('allusers')->with('error', 'No se pudo eliminar el usuario. ' . $e->getMessage());
+        }
     }
 }
