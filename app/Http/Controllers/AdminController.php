@@ -25,6 +25,16 @@ class AdminController extends Controller
         $usuarios = User::all();
         return view('admin.allusers')->with('users', $usuarios);
     }
+    public function registeruser()
+    {
+        return view('admin.registeruser');
+    }
+
+    public function allpueblos()
+    {
+        $pueblos = Pueblo::all();
+        return view('admin.allpueblos')->with('pueblos', $pueblos);
+    }
 
     public function update(Request $request, $id)
 {

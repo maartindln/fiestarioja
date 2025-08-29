@@ -25,13 +25,13 @@
             <span class="text-yellow-400 font-bold">ADMIN</span>
             <li class="mb-1 group">
                 <a href="{{ route('admin') }}" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="ri-home-2-line mr-3 text-lg"></i>
+                    <i class="fa-regular fa-house mr-3 text-lg"></i>
                     <span class="text-sm">General</span>
                 </a>
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
-                    <i class='bx bx-user mr-3 text-lg'></i>
+                    <i class="fa-regular fa-user mr-3 text-lg"></i>
                     <span class="text-sm">Usuarios</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
@@ -40,14 +40,29 @@
                         <a href="{{ route('allusers') }}" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Todos los usuarios</a>
                     </li>
                     <li class="mb-4">
-                        <a href="" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Registrar usuarios</a>
+                        <a href="{{ route('registeruser') }}" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Registrar usuarios</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
+                    <i class="fa-regular fa-map mr-3 text-lg"></i>
+                    <span class="text-sm">Pueblos</span>
+                    <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
+                </a>
+                <ul class="pl-7 mt-2 hidden group-[.selected]:block">
+                    <li class="mb-4">
+                        <a href="{{ route('allpueblos') }}" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Todos los pueblos</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Registrar pueblo</a>
                     </li>
                 </ul>
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-list-ul mr-3 text-lg'></i>
-                    <span class="text-sm">Activities</span>
+                    <i class="fa-regular fa-calendar mr-3 text-lg"></i>
+                    <span class="text-sm">Añadir evento</span>
                 </a>
             </li>
 

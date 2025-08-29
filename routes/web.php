@@ -49,6 +49,8 @@ Route::post('/pueblos', [PueblosController::class, 'store']); // opcional
 // Admin
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin')->middleware('admin');
 Route::get('/admin/users', [AdminController::class, 'allusers'])->name('allusers')->middleware('admin');
+Route::get('/admin/registeruser', [AdminController::class, 'registeruser'])->name('registeruser')->middleware('admin');
+Route::get('/admin/pueblos', [AdminController::class, 'allpueblos'])->name('allpueblos')->middleware('admin');
 Route::post('/admin/update-user/{id}', [AdminController::class, 'update'])->name('users.update')->middleware('admin');
 Route::delete('/admin/users/{id}', [AdminController::class, 'destroy'])->name('delete-user')->middleware('admin');
 //Route::get('/admin/users', [UserController::class, 'users'])->name('users')->middleware('admin');
