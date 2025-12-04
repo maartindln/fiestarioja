@@ -20,4 +20,9 @@ class ListController extends Controller
         return view('pueblos.lista', compact('pueblos'));
     }
 
+     public function modal(Pueblo $pueblo)
+    {
+        return view('pueblos.modalPueblos', compact('pueblo'));
+    }
+
 }

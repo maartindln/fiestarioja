@@ -62,7 +62,7 @@
             </a>
             <a href="<?php echo e(route('list')); ?>"
             class="<?php echo e(request()->routeIs('list') ? 'bg-amber-50 text-black font-bold' : 'text-amber-50 font-medium'); ?> px-3 py-2 rounded-md text-sm hover:bg-green-600">
-            Listado
+            Pueblos
             </a>
         </div>
 
@@ -110,9 +110,9 @@
 
     <!-- Menú móvil -->
     <div id="mobile-menu" class="sm:hidden hidden px-4 pt-2 pb-3 space-y-1 transition-all duration-300 ease-in-out">
-        <a href="#" class="block text-black bg-amber-50 px-3 py-2 rounded-md text-base font-medium">Inicio</a>
-        <a href="#" class="block text-amber-50 px-3 py-2 rounded-md text-base font-medium">Calendario</a>
-        <a href="#" class="block text-amber-50 px-3 py-2 rounded-md text-base font-medium">Listado</a>
+        <a href="<?php echo e(route('index')); ?>" class="block text-black bg-amber-50 px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+        <a href="<?php echo e(route('calendar')); ?>" class="block text-amber-50 px-3 py-2 rounded-md text-base font-medium">Calendario</a>
+        <a href="<?php echo e(route('list')); ?>" class="block text-amber-50 px-3 py-2 rounded-md text-base font-medium">Pueblos</a>
     </div>
     </nav>
 
@@ -136,7 +136,7 @@
                 <i class="fa-brands fa-twitter text-3xl"></i>
             </a>
 
-            <a href="https://www.instagram.com" class="text-amber-50 hover:text-pink-600 transition">
+            <a href="https://www.instagram.com/fiestarioja" class="text-amber-50 hover:text-pink-600 transition">
                 <i class="fa-brands fa-instagram text-3xl"></i>
             </a>
 

@@ -17,6 +17,10 @@ class Pueblo extends Model
         'longitude'
     ];
 
+    protected $casts = [
+        'image' => 'array',
+    ];
+
     /**
      * Relación: un pueblo tiene muchos eventos.
      */
