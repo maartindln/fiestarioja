@@ -36,12 +36,9 @@ Route::get('/perfil',[PerfilController::class,'perfil'])->name('perfil')->middle
 Route::post('perfil/perfil-edit', [PerfilController::class, 'edit'])->name('edit')->middleware('auth');
 Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->name('perfil.update-avatar')->middleware('auth');
 
-// Eventos
-Route::get('/events', [EventsController::class, 'index']);
-Route::post('/events', [EventsController::class, 'store']);
-Route::get('/events/{id}', [EventsController::class, 'show']);
-Route::put('/events/{id}', [EventsController::class, 'update']);
-Route::delete('/events/{id}', [EventsController::class, 'destroy']);
+Route::post('/events', [EventsController::class, 'store'])->name('events.store')->middleware('admin');
+Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('admin');
+Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('admin');
 
 // Pueblos
 Route::get('/pueblos', [PueblosController::class, 'index']);

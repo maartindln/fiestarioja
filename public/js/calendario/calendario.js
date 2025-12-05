@@ -22,13 +22,10 @@ var monthText = [
 var indexMonth = month;
 var todayBtn = $(".c-today__btn");
 var addBtn = $(".js-event__add");
-var saveBtn = $(".js-event__save");
 var closeBtn = $(".js-event__close");
 var winCreator = $(".js-event__creator");
 var inputDate = $(this).data();
-today = year + "-" + month + "-" + day;
-
-// ------ functions control -------
+today = year + "-" + String(month).padStart(2, "0") + "-" + String(day).padStart(2, "0");
 
 //button of the current day
 todayBtn.on("click", function() {
@@ -39,13 +36,23 @@ todayBtn.on("click", function() {
     var step = month - indexMonth;
     moveNext(step, true);
   }
+  // Resaltar la celda del día actual
+  dataCel.removeClass("isSelected");
+  dataCel.each(function() {
+    if ($(this).data("day") === today) {
+      $(this).addClass("isSelected");
+      fillEventSidebar($(this));
+    }
+  });
+  $(".c-aside__num").text(String(day).padStart(2, "0"));
+  $(".c-aside__month").text(monthText[month - 1]);
 });
 
 //higlight the cel of current day
 dataCel.each(function() {
   if ($(this).data("day") === today) {
-    $(this).addClass("isToday");
-    fillEventSidebar($(this));
+    $(this).addClass("isSelected");
+    fillEventSidebar(today);
   }
 });
 
@@ -66,69 +73,46 @@ closeBtn.on("click", function() {
   winCreator.removeClass("isVisible");
   $("body").removeClass("overlay");
 });
-saveBtn.on("click", function() {
-  var inputName = $("input[name=name]").val();
-  var inputDate = $("input[name=date]").val();
-  var inputNotes = $("textarea[name=notes]").val();
-  var inputPueblo = $("select[name=pueblo_id]")
-    .find(":selected")
-    .text();
-
-  dataCel.each(function() {
-    if ($(this).data("day") === inputDate) {
-      if (inputName != null) {
-        $(this).attr("data-name", inputName);
-      }
-      if (inputNotes != null) {
-        $(this).attr("data-notes", inputNotes);
-      }
-      $(this).addClass("event");
-      if (inputPueblo != null) {
-        $(this).attr("data-pueblo_id", inputPueblo);
-      }
-      fillEventSidebar($(this));
-    }
-  });
-
-  winCreator.removeClass("isVisible");
-  $("body").removeClass("overlay");
-  $("#addEvent")[0].reset();
-});
 
 //fill sidebar event info
-function fillEventSidebar(self) {
-  $(".c-aside__event").remove();
-  var thisPueblo = self.attr("data-pueblo_id");
-  var thisName = self.attr("data-name");
+function fillEventSidebar(fechaSeleccionada) {
+  $(".c-aside__eventList").empty(); // Limpiamos la lista
 
-   if (thisName && thisName.trim() !== "" && thisPueblo && thisPueblo.trim() !== "") {
-    $(".c-aside__eventList").append(
-        "<p class='c-aside__event'>" +
-        thisPueblo +
-        " <span> • " +
-        thisName +
-        "</span></p>"
-    );
+  events.forEach(function(event) {
+    var inicio = new Date(event.dateIni);
+    var fin = new Date(event.dateFin);
+    var seleccion = new Date(fechaSeleccionada);
+
+    if (seleccion >= inicio && seleccion <= fin) {
+      $(".c-aside__eventList").append(`
+        <div class="c-aside__eventItem flex justify-between items-center p-2 bg-green-950 rounded shadow-sm hover:bg-green-950/70 transition-colors">
+          <i class="fa-solid fa-caret-right text-amber-50"></i>
+          <span class="text-amber-50 font-medium">${event.pueblo.name}</span>
+          <a href="#">
+            <button class="bg-amber-50 text-green-950 px-4 py-2 rounded hover:bg-amber-50/70 transition-colors" data-event-id="{{ $event->id }}">
+                Abrir
+            </button>
+           </a>
+        </div>
+      `);
     }
-};
+  });
+}
+
+// Click en la celda
 dataCel.on("click", function() {
-  var thisEl = $(this);
-  var thisDay = $(this)
-  .attr("data-day")
-  .slice(8);
-  var thisMonth = $(this)
-  .attr("data-day")
-  .slice(5, 7);
+  var fecha = $(this).data("day");
+  fillEventSidebar(fecha);
 
-  fillEventSidebar($(this));
-
+  var thisDay = fecha.slice(8);
+  var thisMonth = fecha.slice(5, 7);
   $(".c-aside__num").text(thisDay);
-  $(".c-aside__month").text(monthText[thisMonth - 1]);
+  $(".c-aside__month").text(monthText[parseInt(thisMonth, 10) - 1]);
 
   dataCel.removeClass("isSelected");
-  thisEl.addClass("isSelected");
-
+  $(this).addClass("isSelected");
 });
+
 
 //function for move the months
 function moveNext(fakeClick, indexNext) {
@@ -203,5 +187,5 @@ buttonsPaginator("#prev", monthEl, ".c-paginator__month", true, false);
 moveNext(indexMonth - 1, false);
 
 //fill the sidebar with current day
-$(".c-aside__num").text(day);
+$(".c-aside__num").text(String(day).padStart(2, "0"));
 $(".c-aside__month").text(monthText[month - 1]);

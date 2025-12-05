@@ -11,10 +11,10 @@ class Event extends Model
 
     protected $fillable = [
         'name',
-        'date',
-        'notes',
-        'tag',
-        'pueblo_id',
+        'dateIni',
+        'dateFin',
+        'cartel',
+        'pueblo_id'
     ];
 
     /**

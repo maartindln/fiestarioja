@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->date('dateIni');
             $table->date('dateFin');
-            $table->string('cartel');
-            $table->string('puntos_interes');
+            $table->string('cartel')->nullable();
             $table->timestamps();
 
             $table->foreign('pueblo_id')->references('id')->on('pueblos')->onDelete('cascade');

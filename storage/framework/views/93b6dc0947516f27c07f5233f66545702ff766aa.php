@@ -23,8 +23,6 @@ function fill_table(month, month_length, indexMonth) {
     day_title("Sab");
     day_title("Dom");
     document.write("</div>");
-
-    // pad cells before first day of month
     document.write("<div class='c-cal__row'>");
     for (var i = 1; i < start_day; i++) {
       if (start_day > 7) {
@@ -32,8 +30,6 @@ function fill_table(month, month_length, indexMonth) {
         document.write("<div class='c-cal__cel'></div>");
       }
     }
-
-    // fill the first week of days
     for (var i = start_day; i < 8; i++) {
       document.write(
         "<div data-day='" + year + "-" +
@@ -47,8 +43,6 @@ function fill_table(month, month_length, indexMonth) {
       day++;
     }
     document.write("</div>");
-
-    // fill the remaining weeks
     while (day <= month_length) {
       document.write("<div class='c-cal__row'>");
       for (var i = 1; i <= 7 && day <= month_length; i++) {
@@ -77,10 +71,8 @@ function fill_table(month, month_length, indexMonth) {
         }
       }
       document.write("</div>");
-      // the first day of the next month
       start_day = i;
     }
-
     document.write("</div>");
   }
 </script>
@@ -115,12 +107,31 @@ function fill_table(month, month_length, indexMonth) {
 <div class="wrapper">
   <div class="c-calendar">
     <div class="c-calendar__style c-aside">
-      <a class="c-add o-btn js-event__add text-amber-50" href="javascript:;">Añadir evento <span class="fa fa-plus"></span></a>
+        <?php if(auth()->guard()->check()): ?>
+        <?php
+            $email = Auth::user()->email;
+            $admin = DB::table('users')->where('email', $email)->where('role', 'Administrador')->first();
+        ?>
+        <?php if($admin): ?>
+        <a class="c-add o-btn js-event__add text-amber-50" href="javascript:;">Añadir evento <span class="fa fa-plus"></span></a>
+        <?php endif; ?>
+        <?php endif; ?>
       <div class="c-aside__day">
         <span class="c-aside__num text-green-950"></span> <span class="c-aside__month text-green-950"></span>
       </div>
-      <div class="c-aside__eventList">
-      </div>
+    <div class="c-aside__eventList space-y-2">
+        <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="c-aside__eventItem flex justify-between items-center p-2 bg-green-950 rounded shadow-sm hover:bg-green-950/70 transition-colors">
+                <i class="fa-solid fa-caret-right text-amber-50"></i>
+                <span class="text-amber-50 font-medium"><?php echo e($event->pueblo->name); ?></span>
+                <a href="#">
+                <button class="bg-amber-50 text-green-950 px-4 py-2 rounded hover:bg-amber-50/70 transition-colors" data-event-id="<?php echo e($event->id); ?>">
+                    Abrir
+                </button>
+                </a>
+            </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
     </div>
     <div class="c-cal__container c-calendar__style">
       <script>
@@ -128,7 +139,7 @@ function fill_table(month, month_length, indexMonth) {
         document.getElementById("year").textContent = year;
         // first day of the week of the new year
         today = new Date("January 1, " + year);
-        start_day = today.getDay() + 1;
+        start_day = today.getDay();
         fill_table("January", 31, "01");
         fill_table("February", 28, "02");
         fill_table("March", 31, "03");
@@ -144,26 +155,34 @@ function fill_table(month, month_length, indexMonth) {
       </script>
     </div>
   </div>
-
-  <div class="c-event__creator c-calendar__style js-event__creator">
-    <a href="javascript:;" class="o-btn js-event__close text-amber-50">CERRAR <span class="fa fa-close text-amber-50"></span></a>
-    <form id="addEvent">
-        <input placeholder="Event name" type="text" name="name">
-        <input type="date" name="date">
-        <textarea placeholder="Notes" name="notes" cols="30" rows="10"></textarea>
-        <select name="pueblo_id">
-        <option value="">Selecciona un pueblo</option>
-        <?php $__currentLoopData = $pueblos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pueblo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <option value="<?php echo e($pueblo->id); ?>"><?php echo e($pueblo->name); ?></option>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </select>
-    </form>
-    <br>
-    <a href="javascript:;" class="o-btn js-event__save text-amber-50">GUARDAR <span class="fa fa-save text-amber-50"></span></a>
-  </div>
+    <div class="c-event__creator c-calendar__style js-event__creator">
+        <a href="javascript:;" class="o-btn js-event__close text-amber-50">
+            CERRAR <span class="fa fa-close text-amber-50"></span>
+        </a>
+        <form id="addEvent" method="POST" action="<?php echo e(route('events.store')); ?>" enctype="multipart/form-data">
+            <?php echo csrf_field(); ?>
+            <input placeholder="Nombre del evento" type="text" name="name" required>
+            <label>Fecha inicio:</label>
+            <input type="date" name="dateIni" required>
+            <label>Fecha fin:</label>
+            <input type="date" name="dateFin" required>
+            <label>Cartel:</label>
+            <input type="file" name="cartel" accept="image/*,application/pdf">
+            <label>Pueblo:</label>
+            <select name="pueblo_id" required>
+                <option value="">Selecciona un pueblo</option>
+                <?php $__currentLoopData = $pueblos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pueblo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($pueblo->id); ?>"><?php echo e($pueblo->name); ?></option>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </select>
+            <br><br>
+            <button type="submit" class="o-btn text-amber-50">GUARDAR <span class="fa fa-save text-amber-50"></span></button>
+        </form>
+    </div>
 </div>
 <script>
   var pueblos = <?php echo json_encode($pueblos->pluck('name', 'id'), 512) ?>;
+  var events = <?php echo json_encode($events, 15, 512) ?>;
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/calendario/calendario.js"></script>
