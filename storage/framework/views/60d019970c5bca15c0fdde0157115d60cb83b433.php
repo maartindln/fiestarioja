@@ -1,17 +1,16 @@
-@extends('admin/admin')
-@section('titulo', 'Usuarios')
-@section('content')
+<?php $__env->startSection('titulo', 'Usuarios'); ?>
+<?php $__env->startSection('content'); ?>
 <div class="p-6">
     <div class="max-w-7xl mx-auto">
         <div class="mb-6">
-            <div class="text-sm text-gray-500 uppercase tracking-wide">Pueblos</div>
-            <h2 class="text-2xl font-bold text-gray-900">Organiza los pueblos con los que trabajas</h2>
+            <div class="text-sm text-gray-500 uppercase tracking-wide">Eventos</div>
+            <h2 class="text-2xl font-bold text-gray-900">Organiza los eventos que hay programados</h2>
         </div>
 
         <div class="bg-white rounded-lg shadow">
             <div class="p-6 border-b border-gray-200">
                 <h5 class="text-lg font-semibold text-gray-800">Registrados</h5>
-                <p class="text-sm text-gray-500">Estos son los pueblos</p>
+                <p class="text-sm text-gray-500">Estos son los eventos</p>
             </div>
 
             <div class="p-6 overflow-x-auto">
@@ -19,68 +18,69 @@
                     <thead class="bg-gray-100">
                         <tr>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">ID</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Pueblo</th>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Nombre</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Imagen</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Latitud</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Longitud</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Como llegar</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Fecha inicio</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Fecha fin</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Cartel</th>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pueblos as $pueblo)
-                            <tr id="user-{{ $pueblo->id }}" class="hover:bg-gray-50">
-                                <td class="px-4 py-2 text-center border">{{ $pueblo->id }}</td>
-                                <td class="px-4 py-2 text-center border" id="user-name-{{ $pueblo->id }}">
-                                    <span>{{ $pueblo->name }}</span>
-                                    <input type="text" value="{{ $pueblo->name }}" class="hidden border rounded px-2 py-1 w-full" id="edit-name-{{ $pueblo->id }}">
+                        <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr id="user-<?php echo e($event->id); ?>" class="hover:bg-gray-50">
+                                <td class="px-4 py-2 text-center border"><?php echo e($event->id); ?></td>
+                                <td class="px-4 py-2 text-center border" id="user-name-<?php echo e($event->id); ?>">
+                                    <span><?php echo e($event->pueblo->name); ?></span>
                                 </td>
-                                <td class="px-4 py-2 text-center border" id="user-email-{{ $pueblo->id }}">
-                                    <span>{{ $pueblo->image }}</span>
-                                </td>
-                                <td class="px-4 py-2 text-center border">
-                                    <span>{{ $pueblo->latitude }}</span>
+                                <td class="px-4 py-2 text-center border" id="user-email-<?php echo e($event->id); ?>">
+                                    <span><?php echo e($event->name); ?></span>
                                 </td>
                                 <td class="px-4 py-2 text-center border">
-                                    <span>{{ $pueblo->longitude }}</span>
+                                    <span><?php echo e($event->dateIni); ?></span>
                                 </td>
                                 <td class="px-4 py-2 text-center border">
-                                    <span>{{ $pueblo->como_llegar }}</span>
+                                    <span><?php echo e($event->dateFin); ?></span>
                                 </td>
                                 <td class="px-4 py-2 text-center border">
-                                    <div class="flex justify-center gap-4" id="icons-{{ $pueblo->id }}">
-                                        <button onclick="toggleEditFields({{ $pueblo->id }})" class="text-blue-600 hover:text-blue-800 transition">
+                                    <a href="<?php echo e(asset('storage/carteles/' . $event->cartel)); ?>" target="_blank" class="text-blue-600 underline">
+                                        <span><?php echo e($event->cartel); ?></span>
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-center border">
+                                    <div class="flex justify-center gap-4" id="icons-<?php echo e($event->id); ?>">
+                                        <button onclick="toggleEditFields(<?php echo e($event->id); ?>)" class="text-blue-600 hover:text-blue-800 transition">
                                             <i class="fa-solid fa-pen-to-square animate__animated fs-5"
                                                 onmouseover="this.classList.add('animate__swing');"
                                                 onanimationend="this.classList.remove('animate__swing');"></i>
                                         </button>
-                                        <button onclick="confirmDelete({{ $pueblo->id }})" class="text-red-600 hover:text-red-800 transition">
+                                        <button onclick="confirmDelete(<?php echo e($event->id); ?>)" class="text-red-600 hover:text-red-800 transition">
                                             <i class="fa-solid fa-trash animate__animated fs-5"
                                                 onmouseover="this.classList.add('animate__swing');"
                                                 onanimationend="this.classList.remove('animate__swing');"></i>
                                         </button>
                                     </div>
-                                    <form id="delete-form-{{ $pueblo->id }}" action="{{ route('delete-pueblo', $pueblo->id) }}" method="POST" class="hidden">
-                                        @csrf
-                                        @method('DELETE')
+                                    <form id="delete-form-<?php echo e($event->id); ?>" action="<?php echo e(route('delete-event', $event->id)); ?>" method="POST" class="hidden">
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
                                     </form>
 
                                     <!-- Guardar cambios -->
                                     <button class="hidden mt-2 px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
-                                        id="save-{{ $pueblo->id }}" onclick="saveChanges({{ $pueblo->id }})">
+                                        id="save-<?php echo e($event->id); ?>" onclick="saveChanges(<?php echo e($event->id); ?>)">
                                         Guardar
                                     </button>
 
                                     <!-- Formulario oculto -->
-                                    <form id="update-form-{{ $pueblo->id }}" action="{{ route('users.update', $pueblo->id) }}" method="POST" class="hidden">
-                                        @csrf
-                                        <input type="hidden" name="name" id="hidden-name-{{ $pueblo->id }}" value="{{ $pueblo->name }}">
-                                        <input type="hidden" name="email" id="hidden-email-{{ $pueblo->id }}" value="{{ $pueblo->email }}">
-                                        <input type="hidden" name="role" id="hidden-role-{{ $pueblo->id }}" value="{{ $pueblo->role }}">
+                                    <form id="update-form-<?php echo e($event->id); ?>" action="<?php echo e(route('users.update', $event->id)); ?>" method="POST" class="hidden">
+                                        <?php echo csrf_field(); ?>
+                                        <input type="hidden" name="name" id="hidden-name-<?php echo e($event->id); ?>" value="<?php echo e($event->name); ?>">
+                                        <input type="hidden" name="email" id="hidden-email-<?php echo e($event->id); ?>" value="<?php echo e($event->email); ?>">
+                                        <input type="hidden" name="role" id="hidden-role-<?php echo e($event->id); ?>" value="<?php echo e($event->role); ?>">
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </div>
@@ -177,4 +177,6 @@
         document.getElementById('update-form-' + userId).submit();
     }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/admin/allevents.blade.php ENDPATH**/ ?>

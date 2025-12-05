@@ -124,7 +124,7 @@ function fill_table(month, month_length, indexMonth) {
             <div class="c-aside__eventItem flex justify-between items-center p-2 bg-green-950 rounded shadow-sm hover:bg-green-950/70 transition-colors">
                 <i class="fa-solid fa-caret-right text-amber-50"></i>
                 <span class="text-amber-50 font-medium"><?php echo e($event->pueblo->name); ?></span>
-                <a href="#">
+                <a href="<?php echo e(asset('storage/carteles/' . $event->cartel)); ?>" target="_blank">
                 <button class="bg-amber-50 text-green-950 px-4 py-2 rounded hover:bg-amber-50/70 transition-colors" data-event-id="<?php echo e($event->id); ?>">
                     Abrir
                 </button>

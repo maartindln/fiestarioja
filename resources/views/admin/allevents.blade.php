@@ -4,14 +4,14 @@
 <div class="p-6">
     <div class="max-w-7xl mx-auto">
         <div class="mb-6">
-            <div class="text-sm text-gray-500 uppercase tracking-wide">Pueblos</div>
-            <h2 class="text-2xl font-bold text-gray-900">Organiza los pueblos con los que trabajas</h2>
+            <div class="text-sm text-gray-500 uppercase tracking-wide">Eventos</div>
+            <h2 class="text-2xl font-bold text-gray-900">Organiza los eventos que hay programados</h2>
         </div>
 
         <div class="bg-white rounded-lg shadow">
             <div class="p-6 border-b border-gray-200">
                 <h5 class="text-lg font-semibold text-gray-800">Registrados</h5>
-                <p class="text-sm text-gray-500">Estos son los pueblos</p>
+                <p class="text-sm text-gray-500">Estos son los eventos</p>
             </div>
 
             <div class="p-6 overflow-x-auto">
@@ -19,64 +19,65 @@
                     <thead class="bg-gray-100">
                         <tr>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">ID</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Pueblo</th>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Nombre</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Imagen</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Latitud</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Longitud</th>
-                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Como llegar</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Fecha inicio</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Fecha fin</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Cartel</th>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pueblos as $pueblo)
-                            <tr id="user-{{ $pueblo->id }}" class="hover:bg-gray-50">
-                                <td class="px-4 py-2 text-center border">{{ $pueblo->id }}</td>
-                                <td class="px-4 py-2 text-center border" id="user-name-{{ $pueblo->id }}">
-                                    <span>{{ $pueblo->name }}</span>
-                                    <input type="text" value="{{ $pueblo->name }}" class="hidden border rounded px-2 py-1 w-full" id="edit-name-{{ $pueblo->id }}">
+                        @foreach ($events as $event)
+                            <tr id="user-{{ $event->id }}" class="hover:bg-gray-50">
+                                <td class="px-4 py-2 text-center border">{{ $event->id }}</td>
+                                <td class="px-4 py-2 text-center border" id="user-name-{{ $event->id }}">
+                                    <span>{{ $event->pueblo->name }}</span>
                                 </td>
-                                <td class="px-4 py-2 text-center border" id="user-email-{{ $pueblo->id }}">
-                                    <span>{{ $pueblo->image }}</span>
-                                </td>
-                                <td class="px-4 py-2 text-center border">
-                                    <span>{{ $pueblo->latitude }}</span>
+                                <td class="px-4 py-2 text-center border" id="user-email-{{ $event->id }}">
+                                    <span>{{ $event->name }}</span>
                                 </td>
                                 <td class="px-4 py-2 text-center border">
-                                    <span>{{ $pueblo->longitude }}</span>
+                                    <span>{{ $event->dateIni }}</span>
                                 </td>
                                 <td class="px-4 py-2 text-center border">
-                                    <span>{{ $pueblo->como_llegar }}</span>
+                                    <span>{{ $event->dateFin }}</span>
                                 </td>
                                 <td class="px-4 py-2 text-center border">
-                                    <div class="flex justify-center gap-4" id="icons-{{ $pueblo->id }}">
-                                        <button onclick="toggleEditFields({{ $pueblo->id }})" class="text-blue-600 hover:text-blue-800 transition">
+                                    <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank" class="text-blue-600 underline">
+                                        <span>{{ $event->cartel }}</span>
+                                    </a>
+                                </td>
+                                <td class="px-4 py-2 text-center border">
+                                    <div class="flex justify-center gap-4" id="icons-{{ $event->id }}">
+                                        <button onclick="toggleEditFields({{ $event->id }})" class="text-blue-600 hover:text-blue-800 transition">
                                             <i class="fa-solid fa-pen-to-square animate__animated fs-5"
                                                 onmouseover="this.classList.add('animate__swing');"
                                                 onanimationend="this.classList.remove('animate__swing');"></i>
                                         </button>
-                                        <button onclick="confirmDelete({{ $pueblo->id }})" class="text-red-600 hover:text-red-800 transition">
+                                        <button onclick="confirmDelete({{ $event->id }})" class="text-red-600 hover:text-red-800 transition">
                                             <i class="fa-solid fa-trash animate__animated fs-5"
                                                 onmouseover="this.classList.add('animate__swing');"
                                                 onanimationend="this.classList.remove('animate__swing');"></i>
                                         </button>
                                     </div>
-                                    <form id="delete-form-{{ $pueblo->id }}" action="{{ route('delete-pueblo', $pueblo->id) }}" method="POST" class="hidden">
+                                    <form id="delete-form-{{ $event->id }}" action="{{ route('delete-event', $event->id) }}" method="POST" class="hidden">
                                         @csrf
                                         @method('DELETE')
                                     </form>
 
                                     <!-- Guardar cambios -->
                                     <button class="hidden mt-2 px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
-                                        id="save-{{ $pueblo->id }}" onclick="saveChanges({{ $pueblo->id }})">
+                                        id="save-{{ $event->id }}" onclick="saveChanges({{ $event->id }})">
                                         Guardar
                                     </button>
 
                                     <!-- Formulario oculto -->
-                                    <form id="update-form-{{ $pueblo->id }}" action="{{ route('users.update', $pueblo->id) }}" method="POST" class="hidden">
+                                    <form id="update-form-{{ $event->id }}" action="{{ route('users.update', $event->id) }}" method="POST" class="hidden">
                                         @csrf
-                                        <input type="hidden" name="name" id="hidden-name-{{ $pueblo->id }}" value="{{ $pueblo->name }}">
-                                        <input type="hidden" name="email" id="hidden-email-{{ $pueblo->id }}" value="{{ $pueblo->email }}">
-                                        <input type="hidden" name="role" id="hidden-role-{{ $pueblo->id }}" value="{{ $pueblo->role }}">
+                                        <input type="hidden" name="name" id="hidden-name-{{ $event->id }}" value="{{ $event->name }}">
+                                        <input type="hidden" name="email" id="hidden-email-{{ $event->id }}" value="{{ $event->email }}">
+                                        <input type="hidden" name="role" id="hidden-role-{{ $event->id }}" value="{{ $event->role }}">
                                     </form>
                                 </td>
                             </tr>

@@ -36,14 +36,13 @@ todayBtn.on("click", function() {
     var step = month - indexMonth;
     moveNext(step, true);
   }
-  // Resaltar la celda del día actual
   dataCel.removeClass("isSelected");
-  dataCel.each(function() {
+    dataCel.each(function() {
     if ($(this).data("day") === today) {
-      $(this).addClass("isSelected");
-      fillEventSidebar($(this));
+        $(this).addClass("isSelected");
+        fillEventSidebar(today);
     }
-  });
+    });
   $(".c-aside__num").text(String(day).padStart(2, "0"));
   $(".c-aside__month").text(monthText[month - 1]);
 });
@@ -88,7 +87,7 @@ function fillEventSidebar(fechaSeleccionada) {
         <div class="c-aside__eventItem flex justify-between items-center p-2 bg-green-950 rounded shadow-sm hover:bg-green-950/70 transition-colors">
           <i class="fa-solid fa-caret-right text-amber-50"></i>
           <span class="text-amber-50 font-medium">${event.pueblo.name}</span>
-          <a href="#">
+            <a href="storage/carteles/${event.cartel}" target="_blank">
             <button class="bg-amber-50 text-green-950 px-4 py-2 rounded hover:bg-amber-50/70 transition-colors" data-event-id="{{ $event->id }}">
                 Abrir
             </button>

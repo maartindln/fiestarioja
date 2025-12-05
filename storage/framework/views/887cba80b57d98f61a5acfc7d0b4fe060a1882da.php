@@ -23,6 +23,7 @@
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Latitud</th>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Longitud</th>
                             <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Como llegar</th>
+                            <th class="px-4 py-2 text-center text-gray-700 font-semibold border">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,15 +35,16 @@
                                     <input type="text" value="<?php echo e($pueblo->name); ?>" class="hidden border rounded px-2 py-1 w-full" id="edit-name-<?php echo e($pueblo->id); ?>">
                                 </td>
                                 <td class="px-4 py-2 text-center border" id="user-email-<?php echo e($pueblo->id); ?>">
-                                    <span><?php echo e($pueblo->email); ?></span>
-                                    <input type="email" value="<?php echo e($pueblo->email); ?>" class="hidden border rounded px-2 py-1 w-full" id="edit-email-<?php echo e($pueblo->id); ?>">
+                                    <span><?php echo e($pueblo->image); ?></span>
                                 </td>
-                                <td class="px-4 py-2 text-center border" id="user-role-<?php echo e($pueblo->id); ?>">
-                                    <span><?php echo e($pueblo->role); ?></span>
-                                    <select name="role" class="hidden border rounded px-2 py-1 w-full" id="edit-role-<?php echo e($pueblo->id); ?>">
-                                        <option value="Administrador" <?php echo e($pueblo->role === 'Administrador' ? 'selected' : ''); ?>>Administrador</option>
-                                        <option value="Usuario Normal" <?php echo e($pueblo->role === 'Usuario Normal' ? 'selected' : ''); ?>>Usuario Normal</option>
-                                    </select>
+                                <td class="px-4 py-2 text-center border">
+                                    <span><?php echo e($pueblo->latitude); ?></span>
+                                </td>
+                                <td class="px-4 py-2 text-center border">
+                                    <span><?php echo e($pueblo->longitude); ?></span>
+                                </td>
+                                <td class="px-4 py-2 text-center border">
+                                    <span><?php echo e($pueblo->como_llegar); ?></span>
                                 </td>
                                 <td class="px-4 py-2 text-center border">
                                     <div class="flex justify-center gap-4" id="icons-<?php echo e($pueblo->id); ?>">
@@ -57,7 +59,7 @@
                                                 onanimationend="this.classList.remove('animate__swing');"></i>
                                         </button>
                                     </div>
-                                    <form id="delete-form-<?php echo e($pueblo->id); ?>" action="<?php echo e(route('delete-user', $pueblo->id)); ?>" method="POST" class="hidden">
+                                    <form id="delete-form-<?php echo e($pueblo->id); ?>" action="<?php echo e(route('delete-pueblo', $pueblo->id)); ?>" method="POST" class="hidden">
                                         <?php echo csrf_field(); ?>
                                         <?php echo method_field('DELETE'); ?>
                                     </form>

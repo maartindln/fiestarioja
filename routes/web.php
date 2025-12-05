@@ -49,8 +49,12 @@ Route::get('/admin', [AdminController::class, 'admin'])->name('admin')->middlewa
 Route::get('/admin/users', [AdminController::class, 'allusers'])->name('allusers')->middleware('admin');
 Route::get('/admin/registeruser', [AdminController::class, 'registeruser'])->name('registeruser')->middleware('admin');
 Route::get('/admin/pueblos', [AdminController::class, 'allpueblos'])->name('allpueblos')->middleware('admin');
-Route::post('/admin/update-user/{id}', [AdminController::class, 'update'])->name('users.update')->middleware('admin');
-Route::delete('/admin/users/{id}', [AdminController::class, 'destroy'])->name('delete-user')->middleware('admin');
-//Route::get('/admin/users', [UserController::class, 'users'])->name('users')->middleware('admin');
+Route::post('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('users.update')->middleware('admin');
+Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('delete-user')->middleware('admin');
+Route::post('/admin/update-pueblo/{id}', [AdminController::class, 'updatePueblo'])->name('pueblo.update')->middleware('admin');
+Route::delete('/admin/pueblo/{id}', [AdminController::class, 'destroyPueblo'])->name('delete-pueblo')->middleware('admin');
+Route::get('/admin/eventos', [AdminController::class, 'allevents'])->name('allevents')->middleware('admin');
+Route::post('/admin/update-event/{id}', [AdminController::class, 'updateEvent'])->name('Event.update')->middleware('admin');
+Route::delete('/admin/eventos/{id}', [AdminController::class, 'destroyEvent'])->name('delete-event')->middleware('admin');
 
 Auth::routes();

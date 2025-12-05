@@ -2,7 +2,7 @@
 @section('titulo', 'General')
 @section('content')
         <div class="p-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                <div class="bg-green-950 rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
                     <div class="flex justify-between items-center mb-6">
                         <div>
@@ -42,7 +42,56 @@
                         </div>
                     </div>
                 </div>
+                <div class="bg-green-950 rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <div class="flex items-center mb-1">
+                                <div class="text-3xl font-bold text-yellow-400">{{ $eventsCount }}</div>
+                            </div>
+                            <div class="text-sm font-medium text-yellow-200">Eventos programados</div>
+                        </div>
+                        <div class="text-yellow-400">
+                            <i class="fa-regular fa-calendar-days text-5xl"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="bg-green-950 rounded-lg shadow p-6 mb-6">
+                    <div class="mb-4">
+                        <h5 class="text-2xl font-bold text-yellow-400">Eventos</h5>
+                        <p class="text-yellow-200">Eventos disponibles en la pagina</p>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-sm text-center border border-yellow-200">
+                            <thead class="bg-yellow-200 text-green-950">
+                                <tr class="px-4 py-2 text-green-950">
+                                    <th class="py-2 border border-yellow-400">ID</th>
+                                    <th class="border border-yellow-400">Pueblo</th>
+                                    <th class="border border-yellow-400">Nombre</th>
+                                    <th class="border border-yellow-400">Fecha inicio</th>
+                                    <th class="border border-yellow-400">Fecha Fin</th>
+                                    <th class="border border-yellow-400">Cartel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($events as $event)
+                                    <tr class="px-4 hover:bg-yellow-100 text-green-950 bg-amber-50">
+                                        <td class="py-2 border border-yellow-400">{{ $event->id }}</td>
+                                        <td class="border border-yellow-400">{{ $event->pueblo->name }}</td>
+                                        <td class="border border-yellow-400">{{ $event->name }}</td>
+                                        <td class="border border-yellow-400">{{ $event->dateIni }}</td>
+                                        <td class="border border-yellow-400">{{ $event->dateFin }}</td>
+                                        <td class="border border-yellow-400">
+                                            <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank" class="text-blue-600 underline">
+                                                {{ $event->cartel }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             <!-- Lista pueblos -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Centros -->

@@ -60,12 +60,20 @@
                 </ul>
             </li>
             <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
                     <i class="fa-regular fa-calendar mr-3 text-lg"></i>
-                    <span class="text-sm">Añadir evento</span>
+                    <span class="text-sm">Eventos</span>
+                    <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
+                <ul class="pl-7 mt-2 hidden group-[.selected]:block">
+                    <li class="mb-4">
+                        <a href="<?php echo e(route('allevents')); ?>" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Todos los eventos</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Registrar evento</a>
+                    </li>
+                </ul>
             </li>
-
         </ul>
     </div>
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
