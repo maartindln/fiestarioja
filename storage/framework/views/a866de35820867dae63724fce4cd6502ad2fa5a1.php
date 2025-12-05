@@ -69,9 +69,6 @@
                     <li class="mb-4">
                         <a href="<?php echo e(route('allevents')); ?>" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Todos los eventos</a>
                     </li>
-                    <li class="mb-4">
-                        <a href="" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Registrar evento</a>
-                    </li>
                 </ul>
             </li>
         </ul>

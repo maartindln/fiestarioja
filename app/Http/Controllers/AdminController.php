@@ -74,9 +74,9 @@ class AdminController extends Controller
             $pueblo->role  = $request->input('role');
             $pueblo->save();
 
-            return redirect()->route('allusers')->with('success', 'Pueblo actualizado correctamente');
+            return redirect()->route('allpueblos')->with('success', 'Pueblo actualizado correctamente');
         } catch (\Exception $e) {
-            return redirect()->route('allusers')->with('error', 'No se pudo actualizar el pueblo. ' . $e->getMessage());
+            return redirect()->route('allpueblos')->with('error', 'No se pudo actualizar el pueblo. ' . $e->getMessage());
         }
     }
 
@@ -85,9 +85,9 @@ class AdminController extends Controller
         try {
             $pueblo = Pueblo::findOrFail($id);
             $pueblo->delete();
-            return redirect()->route('allusers')->with('success', 'Pueblo eliminado correctamente');
+            return redirect()->route('allpueblos')->with('success', 'Pueblo eliminado correctamente');
         } catch (\Exception $e) {
-            return redirect()->route('allusers')->with('error', 'No se pudo eliminar el Pueblo. ' . $e->getMessage());
+            return redirect()->route('allpueblos')->with('error', 'No se pudo eliminar el Pueblo. ' . $e->getMessage());
         }
     }
 
@@ -106,9 +106,9 @@ class AdminController extends Controller
             $event->role  = $request->input('role');
             $event->save();
 
-            return redirect()->route('allusers')->with('success', 'Pueblo actualizado correctamente');
+            return redirect()->route('allevents')->with('success', 'Evento actualizado correctamente');
         } catch (\Exception $e) {
-            return redirect()->route('allusers')->with('error', 'No se pudo actualizar el pueblo. ' . $e->getMessage());
+            return redirect()->route('allevents')->with('error', 'No se pudo actualizar el evento. ' . $e->getMessage());
         }
     }
 
@@ -117,9 +117,9 @@ class AdminController extends Controller
         try {
             $event = Event::findOrFail($id);
             $event->delete();
-            return redirect()->route('allusers')->with('success', 'Pueblo eliminado correctamente');
+            return redirect()->route('allevents')->with('success', 'Evento eliminado correctamente');
         } catch (\Exception $e) {
-            return redirect()->route('allusers')->with('error', 'No se pudo eliminar el Pueblo. ' . $e->getMessage());
+            return redirect()->route('allevents')->with('error', 'No se pudo eliminar el evento. ' . $e->getMessage());
         }
     }
 }
