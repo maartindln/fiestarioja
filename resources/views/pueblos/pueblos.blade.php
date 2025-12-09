@@ -2,15 +2,15 @@
     <div class="w-full px-2 text-green-950 group hover:bg-yellow-500/20 rounded flex justify-between items-center cursor-pointer pb-4 border-b border-gray-300">
         <img class="sm:w-[8rem] md:block hidden group-hover:animate-pulse" src="{{ $pueblo->image ?? asset('images/placeholder.png') }}" alt="{{ $pueblo->name }}">
         <h2 class="sm:text-4xl text-xl">{{ $pueblo->name }}</h2>
-        <h3 class="sm:text-2xl text-xl">?????</h3>
+        <h3 class="sm:text-2xl text-xl">{{ $pueblo->events->count() }} eventos en este pueblo</h3>
         <div class="flex items-center gap-1 bg-green-950 p-2 rounded">
             <i class="fa-solid fa-plus text-xl text-amber-50 sm:block hidden"></i>
             <a @click="open = true" class="text-amber-50 font-semibold sm:text-xl sm:block hidden cursor-pointer">Ver más</a>
         </div>
     </div>
 
-<!-- Ventana modal -->
-<div x-show="open" x-transition class="fixed inset-0 bg-black/50 flex justify-center items-center z-50 overflow-auto">
+    <!-- Ventana modal -->
+    <div x-show="open" x-transition class="fixed inset-0 bg-black/50 flex justify-center items-center z-50 overflow-auto">
         <div class="bg-green-950 p-6 rounded-xl shadow-xl w-full max-w-4xl relative mt-auto">
             <button @click="open = false" class="absolute top-4 right-4 text-green-950 bg-yellow-400 rounded-full w-8 h-8 flex items-center justify-center hover:bg-yellow-500">X</button>
             <h2 class="text-amber-50 text-3xl font-bold mb-2">{{ $pueblo->name }}</h2>
@@ -37,11 +37,36 @@
                 </div>
             </div>
             <div class="mt-4">
+                <h3 class="text-amber-50 font-bold mb-2 text-lg">Eventos en el pueblo:</h3>
+                    @if($pueblo->events->count())
+                        <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6">
+                            @foreach($pueblo->events as $event)
+                            <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank">
+                                <div class="p-4 bg-green-900/80 rounded-xl hover:bg-green-900 transition flex flex-col text-center">
+                                    <div class="flex justify-center items-center gap-4 text-green-950 font-medium">
+                                        <div class="px-4 py-1.5 bg-yellow-400 rounded-lg shadow">
+                                            Inicio: {{ $event->dateIni }}
+                                        </div>
+                                        <span class="text-yellow-400 font-bold text-xl">→</span>
+                                        <div class="px-4 py-1.5 bg-yellow-400 rounded-lg shadow">
+                                            Fin: {{ $event->dateFin }}
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 text-amber-50 font-bold text-3xl tracking-wide">
+                                        {{ $event->name }}
+                                    </div>
+                                </div>
+                                </a>
+                            @endforeach
+                        </div>
+                            @else
+                                <div class="text-center text-amber-50 text-xl font-semibold mt-6">
+                                    No hay eventos disponibles para este pueblo.
+                                </div>
+                    @endif
+            </div>
+            <div class="mt-4">
                 <h3 class="text-amber-50 font-bold mb-2 text-lg">Cómo llegar:</h3>
-                <div class="flex flex-wrap gap-2">
-                    <a href="{{ $pueblo->pdf_autobus ?? '#' }}" target="_blank" class="px-4 py-2 bg-yellow-400 text-green-950 rounded hover:bg-yellow-500 transition">Autobús</a>
-                    <a href="{{ $pueblo->pdf_coche ?? '#' }}" target="_blank" class="px-4 py-2 bg-yellow-400 text-green-950 rounded hover:bg-yellow-500 transition">Coche</a>
-                </div>
             </div>
             <div class="mt-6">
                 <iframe

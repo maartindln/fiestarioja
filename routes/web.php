@@ -29,8 +29,9 @@ Route::get('/calendario', [CalendarController::class, 'calendario'])->name('cale
 
 Route::get('/listado', [ListController::class, 'listado'])->name('list');
 Route::get('/listado/search', [ListController::class, 'search'])->name('pueblos.search');
-Route::get('/listado/modal/{id}', [ListController::class, 'modal'])->name('pueblos.modal');
-
+// Pueblos
+Route::get('/pueblos', [PueblosController::class, 'index']);
+Route::get('/pueblos/{id}', [PueblosController::class, 'show']);
 
 Route::get('/perfil',[PerfilController::class,'perfil'])->name('perfil')->middleware('auth');
 Route::post('perfil/perfil-edit', [PerfilController::class, 'edit'])->name('edit')->middleware('auth');
@@ -39,10 +40,6 @@ Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->n
 Route::post('/events', [EventsController::class, 'store'])->name('events.store')->middleware('admin');
 Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('admin');
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('admin');
-
-// Pueblos
-Route::get('/pueblos', [PueblosController::class, 'index']);
-Route::get('/pueblos/{id}', [PueblosController::class, 'show']);
 
 // Admin
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin')->middleware('admin');
