@@ -4,35 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Illuminate\Support\Facades\Storage;
 
 class EventsController extends Controller
 {
-    // Obtener todos los eventos
-    public function index()
-    {
-        return response()->json(Event::with('pueblo')->get());
-    }
-
     // Guardar un nuevo evento
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'date' => 'required|date',
-            'notes' => 'nullable|string',
-            'tag' => 'nullable|string',
+            'dateIni' => 'required|date',
+            'dateFin' => 'required|date|after_or_equal:dateIni',
             'pueblo_id' => 'required|exists:pueblos,id',
+            'cartel' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
-        $event = Event::create($request->all());
-        return response()->json($event);
-    }
+        $eventData = $request->only(['name', 'dateIni', 'dateFin', 'pueblo_id']);
 
-    // Obtener un evento específico
-    public function show($id)
-    {
-        $event = Event::with('pueblo')->findOrFail($id);
-        return response()->json($event);
+        if ($request->hasFile('cartel')) {
+            $file = $request->file('cartel');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->storeAs('public/carteles', $filename);
+            $eventData['cartel'] = $filename;
+        } else {
+            $eventData['cartel'] = null;
+        }
+
+        $event = Event::create($eventData);
+
+        return redirect()->back()->with('success', 'Evento guardado correctamente');
+
     }
 
     // Actualizar un evento
@@ -42,13 +43,21 @@ class EventsController extends Controller
 
         $request->validate([
             'name' => 'sometimes|required|string|max:255',
-            'date' => 'sometimes|required|date',
-            'notes' => 'nullable|string',
-            'tag' => 'nullable|string',
+            'dateIni' => 'sometimes|required|date',
+            'dateFin' => 'sometimes|required|date|after_or_equal:dateIni',
+            'cartel' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'pueblo_id' => 'sometimes|required|exists:pueblos,id',
         ]);
 
-        $event->update($request->all());
+        if ($request->hasFile('cartel')) {
+            if ($event->cartel) {
+                Storage::disk('public')->delete($event->cartel);
+            }
+            $event->cartel = $request->file('cartel')->store('carteles', 'public');
+        }
+
+        $event->update($request->only(['name','dateIni','dateFin','pueblo_id']));
+
         return response()->json($event);
     }
 
@@ -56,6 +65,11 @@ class EventsController extends Controller
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
+
+        if ($event->cartel) {
+            Storage::disk('public')->delete($event->cartel);
+        }
+
         $event->delete();
 
         return response()->json(['message' => 'Evento eliminado']);

@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Pueblo;
+use App\Models\Event;
 class ListController extends Controller
 {
     public function listado()
     {
         $pueblos = Pueblo::all();
-        return view('listado', compact('pueblos'));
+        $events = Event::all();;
+
+        return view('listado', compact('pueblos','events'));
     }
 
     public function search(Request $request)
@@ -19,5 +21,4 @@ class ListController extends Controller
 
         return view('pueblos.lista', compact('pueblos'));
     }
-
 }

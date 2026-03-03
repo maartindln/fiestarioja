@@ -1,3 +1,5 @@
+<?php $__env->startSection('titulo', 'General'); ?>
+<?php $__env->startSection('content'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -138,4 +140,6 @@ unset($__errorArgs, $__bag); ?>
             }
         }, 5000);
 </script>
-<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/auth/register.blade.php ENDPATH**/ ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin/admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/admin/registeruser.blade.php ENDPATH**/ ?>
