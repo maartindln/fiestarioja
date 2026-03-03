@@ -84,7 +84,7 @@
                 <li class="dropdown ml-3">
                     <button type="button" class="dropdown-toggle flex items-center">
                         <div class="flex-shrink-0 w-10 h-10 relative">
-                            <div class="p-1 bg-white rounded-full focus:outline-none focus:ring">
+                            <div class="p-1 bg-green-950 rounded-full focus:outline-none focus:ring">
                                 @if (Auth::user()->avatar)
                                     <img class="w-8 h-8 rounded-full" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="User"/>
                                 @else
