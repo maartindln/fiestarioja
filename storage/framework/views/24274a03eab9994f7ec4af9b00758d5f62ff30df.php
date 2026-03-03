@@ -13,8 +13,14 @@
     <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl text-center">
       <h1 class="mb-6 font-sans font-bold drop-shadow-[0_0_1px_black] tracking-tight text-amber-50 sm:text-4xl sm:leading-none">
 
-        <img src="images/logos/TXT_COLORES.png" alt="Product screenshot" class="w-full max-w-[730px] h-auto" />
-    
+        <iframe
+        src="./images/STG_v.Boost.html"
+        width="800"
+        height="450"
+        style="border:none;"
+        loading="lazy">
+        </iframe>
+
       </h1>
         <br class="hidden md:block" />
         <h2 class="mb-6 font-sans text-2xl font-bold tracking-tight text-green-950 sm:text-4xl sm:leading-none ">
