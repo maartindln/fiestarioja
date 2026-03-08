@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailControllerUs extends Mailable
+class MailController extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,7 +28,7 @@ class MailControllerUs extends Mailable
     public function build()
     {
         return $this->subject("Nuevo festivo a añadir:  $this->nombre")
-                    ->view('mails.contacto');
+                    ->view('mails.contact');
     }
 }
 

@@ -180,9 +180,7 @@
 
             <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-10 text-sm font-medium">
                 <a href="#" class="text-green-300 hover:text-yellow-400 transition-colors">Sobre nosotros</a>
-                <a href="<?php echo e(route('contactus.index')); ?>" class="text-green-300 hover:text-yellow-400 transition-colors">
-    Contacto
-</a>
+                <a href="" class="text-green-300 hover:text-yellow-400 transition-colors">Contacto</a>
                 <a href="<?php echo e(route('priv')); ?>" class="text-green-300 hover:text-yellow-400 transition-colors">Políticas de Privacidad</a>
                 <a href="#" class="text-green-300 hover:text-yellow-400 transition-colors">Términos de Uso</a>
             </nav>

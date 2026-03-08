@@ -25,15 +25,11 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [HomeController::class, 'inicio'])->name('index');
-Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+Route::post('/mail/contactus', [ContactusController::class, 'enviar'])->name('contacto.enviar');
 
 Route::get('/politicas/privacidad', [PrivController::class, 'politicas'])->name('priv');
 
-// Ruta para VER el formulario (GET)
-Route::get('/contactus', [ContactusController::class, 'index'])->name('contactus.index');
-
-// Ruta para ENVIAR el formulario (POST)
-Route::post('/contactus', [ContactusController::class, 'enviar'])->name('contactus.store');
+// ->
 
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 
