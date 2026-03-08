@@ -12,22 +12,18 @@ class MailControllerUs extends Mailable
 
     public $email;
     public $nombre;
-    public $municipio;
-    public $fecha;
     public $descripcion;
 
-    public function __construct($email, $nombre, $municipio, $fecha, $descripcion)
+    public function __construct($email, $nombre, $descripcion)
     {
         $this->email = $email;
-        $this->nombre = $nombre;
-        $this->municipio = $municipio;
-        $this->fecha = $fecha;        
+        $this->nombre = $nombre;      
         $this->descripcion = $descripcion;
     }
 
     public function build()
     {
-        return $this->subject("Nuevo festivo a añadir:  $this->nombre")
+        return $this->subject("Nuevo mensaje de soporte:  $this->nombre")
                     ->view('mails.contacto');
     }
 }
