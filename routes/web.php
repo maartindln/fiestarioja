@@ -29,8 +29,6 @@ Route::post('/mails/contacto', [ContactoController::class, 'enviar'])->name('con
 
 Route::get('/politicas/privacidad', [PrivController::class, 'politicas'])->name('priv');
 
-// ->
-
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 
 Route::get('/listado', [ListController::class, 'listado'])->name('list');
