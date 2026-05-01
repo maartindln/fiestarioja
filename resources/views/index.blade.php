@@ -10,8 +10,8 @@
             fill="currentColor" />
         </svg>
     </div>
-  <div class="w-full bg-white">
-    
+  <div class="w-full bg-amber-50">
+
     <div class="w-full overflow-hidden">
         <video class="w-full h-auto object-cover" autoplay loop muted playsinline>
             <source src="./images/STG_boost.mp4" type="video/mp4">
@@ -20,7 +20,7 @@
 
     <div class="px-4 py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl text-center">
-            
+
             <h2 class="mb-6 font-sans text-2xl font-bold tracking-tight text-green-950 sm:text-4xl sm:leading-none">
                 <span class="relative inline-block">
                     Explora, comparte y vive La Rioja… 🍇🍷
