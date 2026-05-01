@@ -21,14 +21,14 @@ class MailController extends Mailable
         $this->email = $email;
         $this->nombre = $nombre;
         $this->municipio = $municipio;
-        $this->fecha = $fecha;        
+        $this->fecha = $fecha;
         $this->descripcion = $descripcion;
     }
 
     public function build()
     {
         return $this->subject("Nuevo festivo a añadir:  $this->nombre")
-                    ->view('mails.contact');
+                    ->view('mails.contacto');
     }
 }
 

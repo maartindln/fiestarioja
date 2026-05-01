@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FiestaRioja - <?php echo $__env->yieldContent('titulo'); ?></title>
-    
+
     <link rel="icon" href="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" type="image/png">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <script>
@@ -90,7 +90,7 @@
                                 </div>
                             </button>
 
-                            <div x-show="profileDropdownOpen" 
+                            <div x-show="profileDropdownOpen"
                                  x-transition:enter="transition ease-out duration-200"
                                  x-transition:enter-start="transform opacity-0 scale-95"
                                  x-transition:enter-end="transform opacity-100 scale-100"
@@ -99,7 +99,7 @@
                                  x-transition:leave-end="transform opacity-0 scale-95"
                                  style="display: none;"
                                  class="absolute right-0 mt-3 w-56 origin-top-right rounded-xl bg-green-900 border border-green-700 shadow-2xl py-2 z-50 ring-1 ring-black ring-opacity-5">
-                                
+
                                 <div class="px-4 py-3 border-b border-green-800/50">
                                     <p class="text-sm font-medium text-green-300">Conectado como</p>
                                     <p class="text-sm font-bold text-amber-50 truncate"><?php echo e(Auth::user()->name); ?></p>
@@ -109,20 +109,20 @@
                                     <i class="fa-solid fa-user-circle w-5 text-center mr-3 text-yellow-400 group-hover:scale-110 transition-transform"></i>
                                     Mi Perfil
                                 </a>
-                                
+
                                 <?php
                                     $admin = DB::table('users')->where('email', Auth::user()->email)->where('role', 'Administrador')->first();
                                 ?>
-                                
+
                                 <?php if($admin): ?>
                                     <a href="<?php echo e(route('admin')); ?>" class="group flex items-center px-4 py-2.5 text-sm text-amber-50/90 hover:bg-green-800 hover:text-white transition-colors">
                                         <i class="fa-solid fa-shield-halved w-5 text-center mr-3 text-yellow-400 group-hover:scale-110 transition-transform"></i>
                                         Administración
                                     </a>
                                 <?php endif; ?>
-                                
+
                                 <div class="border-t border-green-800/50 mt-1"></div>
-                                
+
                                 <form method="POST" action="<?php echo e(route('logout')); ?>" class="mt-1">
                                     <?php echo csrf_field(); ?>
                                     <button type="submit" class="group flex w-full items-center px-4 py-2.5 text-sm text-red-300 hover:bg-red-900/40 hover:text-red-100 transition-colors">
@@ -142,7 +142,7 @@
             </div>
         </div>
 
-        <div x-show="mobileMenuOpen" 
+        <div x-show="mobileMenuOpen"
              x-transition:enter="transition ease-out duration-200"
              x-transition:enter-start="opacity-0 -translate-y-4"
              x-transition:enter-end="opacity-100 translate-y-0"
@@ -171,10 +171,10 @@
         </div>
         <?php echo $__env->yieldContent('content'); ?>
     </main>
-    
+
     <footer class="bg-green-950 border-t border-green-900 pt-12 pb-8 px-4 sm:px-6 lg:px-8 mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col items-center">
-            
+
             <!-- Logo en footer -->
             <div class="mb-8 opacity-80 hover:opacity-100 transition-opacity">
                 <img class="h-12 w-auto" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="FiestaRioja Logo" />
@@ -184,7 +184,7 @@
             <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-10 text-sm font-medium">
                 <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Sobre nosotros</a>
                 <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Contacto</a>
-                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Política de Privacidad</a>
+                <a href="<?php echo e(route('priv')); ?>" class="text-amber-50 hover:text-yellow-400 transition-colors">Política de Privacidad</a>
                 <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Términos de Uso</a>
             </nav>
 
@@ -210,11 +210,11 @@
         </div>
     </footer>
 
-    <div x-data="{ showTopBtn: false }" 
+    <div x-data="{ showTopBtn: false }"
          @scroll.window="showTopBtn = (window.pageYOffset > 300) ? true : false"
          class="fixed bottom-8 right-8 z-40">
-        
-        <button x-show="showTopBtn" 
+
+        <button x-show="showTopBtn"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0 translate-y-8"
                 x-transition:enter-end="opacity-100 translate-y-0"
@@ -222,7 +222,7 @@
                 x-transition:leave-start="opacity-100 translate-y-0"
                 x-transition:leave-end="opacity-0 translate-y-8"
                 style="display: none;"
-                @click="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                @click="window.scrollTo({top: 0, behavior: 'smooth'})"
                 class="w-12 h-12 bg-yellow-400 text-green-950 rounded-full shadow-lg shadow-yellow-400/20 flex items-center justify-center hover:bg-yellow-300 hover:shadow-yellow-400/40 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all"
                 title="Volver arriba">
             <i class="fa-solid fa-arrow-up text-xl"></i>
@@ -237,4 +237,5 @@
         });
     </script>
 </body>
-</html><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/FIESTARIOJA/fiestarioja/resources/views/layout.blade.php ENDPATH**/ ?>
+</html>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/FIESTARIOJA/fiestarioja/resources/views/layout.blade.php ENDPATH**/ ?>
