@@ -253,4 +253,4 @@
         });
     </script>
 </body>
-</html><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/fiestarioja/fiestarioja/resources/views/auth/login.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/FIESTARIOJA/fiestarioja/resources/views/auth/login.blade.php ENDPATH**/ ?>
