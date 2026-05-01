@@ -25,7 +25,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [HomeController::class, 'inicio'])->name('index');
-Route::post('/mail/contactus', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+Route::post('/mails/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 
 Route::get('/politicas/privacidad', [PrivController::class, 'politicas'])->name('priv');
 
