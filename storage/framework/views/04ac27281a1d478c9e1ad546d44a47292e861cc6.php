@@ -10,38 +10,36 @@
             fill="currentColor" />
         </svg>
     </div>
-  <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-    <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl text-center">
-      <h1 class="mb-6 font-sans font-bold drop-shadow-[0_0_1px_black] tracking-tight text-amber-50 sm:text-4xl sm:leading-none">
-
-        <iframe
-        src="./images/STG_v.Boost.html"
-        width="800"
-        height="450"
-        style="border:none;"
-        loading="lazy">
-        </iframe>
-
-      </h1>
-        <br class="hidden md:block" />
-        <h2 class="mb-6 font-sans text-2xl font-bold tracking-tight text-green-950 sm:text-4xl sm:leading-none ">
-            <span class="relative inline-block">
-            Explora, comparte y vive La Rioja… 🍇🍷
-            <div class="w-full h-3 -mt-3 bg-yellow-400"></div>
-            </span>
-        </h2>
-
-      <a
-        href="#contacto"
-        aria-label="Scroll down"
-        class="flex items-center justify-center w-10 h-10 mx-auto mt-96 sm:mt-[28rem] lg:mt-[32rem] xl:mt-[36rem] text-green-950 duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-          <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z"></path>
-        </svg>
-      </a>
+  <div class="w-full bg-white">
+    
+    <div class="w-full overflow-hidden">
+        <video class="w-full h-auto object-cover" autoplay loop muted playsinline>
+            <source src="./images/STG_boost.mp4" type="video/mp4">
+        </video>
     </div>
-  </div>
+
+    <div class="px-4 py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl text-center">
+            
+            <h2 class="mb-6 font-sans text-2xl font-bold tracking-tight text-green-950 sm:text-4xl sm:leading-none">
+                <span class="relative inline-block">
+                    Explora, comparte y vive La Rioja… 🍇🍷
+                    <div class="w-full h-3 -mt-3 bg-yellow-400"></div>
+                </span>
+            </h2>
+
+            <a
+                href="#contacto"
+                aria-label="Scroll down"
+                class="flex items-center justify-center w-10 h-10 mx-auto mt-10 text-green-950 duration-300 transform border border-gray-400 rounded-full hover:text-teal-accent-400 hover:border-teal-accent-400 hover:shadow hover:scale-110"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                    <path d="M10.293,3.293,6,7.586,1.707,3.293A1,1,0,0,0,.293,4.707l5,5a1,1,0,0,0,1.414,0l5-5a1,1,0,1,0-1.414-1.414Z"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
 </div>
 <!-- Introduccion -->
 <div class="overflow-hidden bg-green-950 py-24 sm:py-32">

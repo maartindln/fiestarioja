@@ -171,35 +171,39 @@
         </div>
         <?php echo $__env->yieldContent('content'); ?>
     </main>
-
+    
     <footer class="bg-green-950 border-t border-green-900 pt-12 pb-8 px-4 sm:px-6 lg:px-8 mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col items-center">
+            
+            <!-- Logo en footer -->
             <div class="mb-8 opacity-80 hover:opacity-100 transition-opacity">
-                <img class="h-12 w-auto grayscale" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="FiestaRioja Logo" />
+                <img class="h-12 w-auto" src="<?php echo e(asset('images/logos/LOG_TEXT_AMARILLO.png')); ?>" alt="FiestaRioja Logo" />
             </div>
 
+            <!-- Navegación Footer -->
             <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-10 text-sm font-medium">
-                <a href="#" class="text-green-300 hover:text-yellow-400 transition-colors">Sobre nosotros</a>
-                <a href="" class="text-green-300 hover:text-yellow-400 transition-colors">Contacto</a>
-                <a href="<?php echo e(route('priv')); ?>" class="text-green-300 hover:text-yellow-400 transition-colors">Políticas de Privacidad</a>
-                <a href="#" class="text-green-300 hover:text-yellow-400 transition-colors">Términos de Uso</a>
+                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Sobre nosotros</a>
+                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Contacto</a>
+                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Política de Privacidad</a>
+                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Términos de Uso</a>
             </nav>
 
-            <div class="flex justify-center gap-6 mb-10">
-                <a href="#" class="w-10 h-10 rounded-full bg-green-900 flex items-center justify-center text-green-400 hover:bg-yellow-400 hover:text-green-950 hover:scale-110 transition-all shadow-sm">
-                    <span class="sr-only">Twitter</span>
-                    <i class="fa-brands fa-x-twitter text-lg"></i>
+            <!-- Redes Sociales -->
+            <div class="flex justify-center gap-6 mb-6">
+                <a href="https://www.x.com" class="text-amber-50 hover:text-blue-500 transition">
+                    <i class="fa-brands fa-twitter text-3xl"></i>
                 </a>
-                <a href="https://www.instagram.com/fiestarioja" target="_blank" class="w-10 h-10 rounded-full bg-green-900 flex items-center justify-center text-green-400 hover:bg-pink-500 hover:text-white hover:scale-110 transition-all shadow-sm">
-                    <span class="sr-only">Instagram</span>
-                    <i class="fa-brands fa-instagram text-xl"></i>
+
+                <a href="https://www.instagram.com/fiestarioja" class="text-amber-50 hover:text-pink-600 transition">
+                    <i class="fa-brands fa-instagram text-3xl"></i>
                 </a>
-                <a href="#" class="w-10 h-10 rounded-full bg-green-900 flex items-center justify-center text-green-400 hover:bg-blue-600 hover:text-white hover:scale-110 transition-all shadow-sm">
-                    <span class="sr-only">Facebook</span>
-                    <i class="fa-brands fa-facebook-f text-lg"></i>
+
+                <a href="https://www.facebook.com" class="text-amber-50 hover:text-blue-700 transition">
+                    <i class="fa-brands fa-facebook-f text-3xl"></i>
                 </a>
             </div>
 
+            <!-- Copyright -->
             <p class="text-xs text-green-500/70 text-center">
                 &copy; <?php echo e(date('Y')); ?> FiestaRioja. Todos los derechos reservados.
             </p>
