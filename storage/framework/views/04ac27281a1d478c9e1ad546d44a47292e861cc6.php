@@ -90,7 +90,7 @@
   <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
     <div>
       <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-green-600 uppercase rounded-full bg-teal-accent-400">
-        Brand new
+        Exclusivo
       </p>
     </div>
     <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-yellow-400 sm:text-4xl md:mx-auto">
@@ -105,7 +105,7 @@
         </svg>
         <span class="relative">Ventajas</span>
       </span>
-      de iniciar sesión con tu cuenta
+      de unirte a la comunidad
     </h2>
     <p class="text-base text-amber-50 md:text-lg">
       Crea tu cuenta sin necesidad de desvelar tus datos personales
@@ -115,12 +115,12 @@
 
     <div class="transition-transform duration-300 hover:-translate-y-2">
         <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" class="p-5 bg-white border rounded shadow-sm">
-            <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
-            <i class="fa-solid fa-star text-yellow-400"></i>
+            <div class="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-amber-100 text-yellow-600">
+              <i class="fa-solid fa-star text-xl"></i>
             </div>
             <h6 class="mb-2 font-semibold leading-5">Favoritos</h6>
             <p class="text-sm text-gray-900">
-            Posibilidad de guardar tus festividades en favoritos para siempre tenerlas a mano. En listado por ejmplo puedes activar la vision de solo favoritos.
+            Guarda las fiestas que no te quieres perder y crea tu propio itinerario personalizado.
             </p>
         </div>
     </div>
@@ -128,30 +128,24 @@
 
     <div class="transition-transform duration-300 hover:-translate-y-2">
         <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" class="p-5 bg-white border rounded shadow-sm">
-            <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
-            <svg class="w-10 h-10 text-yellow-400" stroke="currentColor" viewBox="0 0 52 52">
-                <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
-                points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-            </svg>
+            <div class="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-amber-100 text-yellow-600">
+            <i class="fa-solid fa-bell text-xl"></i>
             </div>
             <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
             <p class="text-sm text-gray-900">
-            Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
+            Recibe notificaciones sobre cambios de fechas o nuevos eventos en tus municipios preferidos.
             </p>
         </div>
     </div>
 
     <div class="transition-transform duration-300 hover:-translate-y-2">
         <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" class="p-5 bg-white border rounded shadow-sm">
-            <div class="flex items-center justify-center w-12 h-12 mb-4 rounded-full bg-indigo-50">
-            <svg class="w-10 h-10 text-yellow-400" stroke="currentColor" viewBox="0 0 52 52">
-                <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"
-                points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-            </svg>
+            <div class="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-amber-100 text-yellow-600">
+            <i class="fa-solid fa-users text-xl"></i>
             </div>
             <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
             <p class="text-sm text-gray-900">
-            Baseball ipsum dolor sit amet cellar rubber win hack tossed. Slugging catcher slide bench league, left fielder nubber.
+            Comenta y comparte fotos de las festividades con otros miembros de la comunidad.
             </p>
         </div>
     </div>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\ContactusController;
+use App\Http\Controllers\PrivController; 
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PueblosController;
@@ -23,7 +25,11 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [HomeController::class, 'inicio'])->name('index');
-Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
+Route::post('/mail/contactus', [ContactusController::class, 'enviar'])->name('contacto.enviar');
+
+Route::get('/politicas/privacidad', [PrivController::class, 'politicas'])->name('priv');
+
+// ->
 
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 

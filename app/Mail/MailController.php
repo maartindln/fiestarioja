@@ -28,7 +28,7 @@ class MailController extends Mailable
     public function build()
     {
         return $this->subject("Nuevo festivo a añadir:  $this->nombre")
-                    ->view('mails.contacto');
+                    ->view('mails.contact');
     }
 }
 
