@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* Pequeño ajuste para suavizar el autofill del navegador y que no rompa el fondo oscuro */
         input:-webkit-autofill,
         input:-webkit-autofill:hover, 
         input:-webkit-autofill:focus, 
@@ -69,20 +68,8 @@
                 <p class="text-green-200 mt-2 text-sm">Inicia sesión para continuar</p>
             </div>
 
-            <!-- Selector de Tipo de Login (Tabs Modernos) -->
-            <div class="relative flex bg-green-950/60 rounded-xl p-1.5 mb-8 border border-green-800/50">
-                <button type="button" id="usuarioBtn" class="relative w-1/2 py-2.5 text-sm font-bold rounded-lg transition-colors duration-300 z-10 text-green-950">
-                    Usuario
-                </button>
-                <button type="button" id="centroBtn" class="relative w-1/2 py-2.5 text-sm font-bold rounded-lg transition-colors duration-300 z-10 text-green-300 hover:text-amber-50">
-                    Centro
-                </button>
-                <!-- Indicador animado -->
-                <div id="indicator" class="absolute top-1.5 left-1.5 w-[calc(50%-0.375rem)] h-[calc(100%-0.75rem)] bg-yellow-400 rounded-lg transition-transform duration-300 ease-in-out shadow-sm"></div>
-            </div>
-
-            <!-- 1. Formulario para Usuario -->
-            <div id="usuarioForm" class="transition-opacity duration-300">
+            <!-- Formulario de Inicio de Sesión Único -->
+            <div id="usuarioForm">
                 <form method="POST" action="<?php echo e(route('login')); ?>" class="space-y-5">
                     <?php echo csrf_field(); ?>
                     <!-- Email -->
@@ -115,7 +102,7 @@
                         </div>
                     </div>
 
-                    <!-- Botón Submit Usuario -->
+                    <!-- Botón Submit -->
                     <div class="pt-4">
                         <button type="submit" class="group flex w-full justify-center items-center gap-2 rounded-xl bg-yellow-400 px-4 py-3.5 text-base font-bold text-green-950 shadow-lg shadow-yellow-400/20 hover:bg-yellow-300 hover:shadow-yellow-400/40 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400 transition-all duration-300">
                             <span>INICIAR SESIÓN</span>
@@ -132,105 +119,12 @@
                     </div>
                 </form>
             </div>
-
-            <!-- 2. Formulario para Centro -->
-            <div id="centroForm" class="hidden transition-opacity duration-300">
-                <form method="POST" action="" class="space-y-5">
-                    <?php echo csrf_field(); ?>
-                    <!-- Select Centro -->
-                    <div>
-                        <label for="codigoCentro" class="block text-sm font-semibold text-yellow-400/90 ml-1 mb-1">
-                            <?php echo e(__('eskutik.login_center_label_center')); ?>
-
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <i class="fa-solid fa-building text-green-600"></i>
-                            </div>
-                            <!-- Para selects en modo oscuro, a veces es necesario personalizar un poco el fondo de las options si falla en algún navegador, pero bg-green-950 suele funcionar bien -->
-                            <select id="codigoCentro" name="codigoCentro" required
-                                class="block w-full pl-11 pr-10 py-3 rounded-xl bg-green-950/50 border border-green-800 text-amber-50 appearance-none focus:bg-green-950 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 transition-all duration-300 outline-none cursor-pointer">
-                                <option value="" disabled selected class="text-gray-500 bg-green-950"><?php echo e(__('eskutik.login_center_option_select')); ?></option>
-                                <!-- Aquí irían tus options -->
-                            </select>
-                            <!-- Flecha custom para el select -->
-                            <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                                <i class="fa-solid fa-chevron-down text-green-600 text-sm"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Código / Password Centro -->
-                    <div>
-                        <label for="codigo" class="block text-sm font-semibold text-yellow-400/90 ml-1 mb-1">
-                            <?php echo e(__('eskutik.login_center_label_code')); ?>
-
-                        </label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <i class="fa-solid fa-key text-green-600"></i>
-                            </div>
-                            <input id="codigo" type="password" name="codigo" required
-                                class="block w-full pl-11 pr-4 py-3 rounded-xl bg-green-950/50 border border-green-800 text-amber-50 placeholder-green-700 focus:bg-green-950 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 transition-all duration-300 outline-none"
-                                placeholder="••••••••">
-                        </div>
-                    </div>
-
-                    <!-- Botón Submit Centro -->
-                    <div class="pt-4">
-                        <button type="submit" class="group flex w-full justify-center items-center gap-2 rounded-xl bg-yellow-400 px-4 py-3.5 text-base font-bold text-green-950 shadow-lg shadow-yellow-400/20 hover:bg-yellow-300 hover:shadow-yellow-400/40 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400 transition-all duration-300">
-                            <span><?php echo e(__('eskutik.login_button')); ?></span>
-                            <i class="fa-solid fa-right-to-bracket group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-
         </div>
     </div>
 
-    <!-- Scripts de la vista -->
+    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Lógica de las pestañas (Tabs)
-            const usuarioBtn = document.getElementById('usuarioBtn');
-            const centroBtn = document.getElementById('centroBtn');
-            const usuarioForm = document.getElementById('usuarioForm');
-            const centroForm = document.getElementById('centroForm');
-            const indicator = document.getElementById('indicator');
-
-            usuarioBtn.addEventListener('click', function() {
-                // Cambiar visibilidad de formularios
-                usuarioForm.classList.remove('hidden');
-                centroForm.classList.add('hidden');
-                
-                // Mover indicador
-                indicator.style.transform = 'translateX(0)';
-                
-                // Cambiar colores de los textos
-                usuarioBtn.classList.add('text-green-950');
-                usuarioBtn.classList.remove('text-green-300', 'hover:text-amber-50');
-                
-                centroBtn.classList.remove('text-green-950');
-                centroBtn.classList.add('text-green-300', 'hover:text-amber-50');
-            });
-
-            centroBtn.addEventListener('click', function() {
-                // Cambiar visibilidad de formularios
-                usuarioForm.classList.add('hidden');
-                centroForm.classList.remove('hidden');
-                
-                // Mover indicador al 100% de su ancho
-                indicator.style.transform = 'translateX(100%)';
-                
-                // Cambiar colores de los textos
-                centroBtn.classList.add('text-green-950');
-                centroBtn.classList.remove('text-green-300', 'hover:text-amber-50');
-                
-                usuarioBtn.classList.remove('text-green-950');
-                usuarioBtn.classList.add('text-green-300', 'hover:text-amber-50');
-            });
-
             // Lógica de las alertas (Cierre manual)
             window.closeAlert = function(button) {
                 const alert = button.closest('.alert');
@@ -245,9 +139,11 @@
             setTimeout(() => {
                 const alerts = document.querySelectorAll('.alert');
                 alerts.forEach(alert => {
-                    alert.classList.remove('animate__fadeInDown');
-                    alert.classList.add('animate__fadeOutUp');
-                    setTimeout(() => alert.remove(), 800);
+                    if(alert) {
+                        alert.classList.remove('animate__fadeInDown');
+                        alert.classList.add('animate__fadeOutUp');
+                        setTimeout(() => alert.remove(), 800);
+                    }
                 });
             }, 5000);
         });
