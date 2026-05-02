@@ -103,7 +103,7 @@
             <div class="flex flex-col sm:flex-row items-center gap-4 mt-6 pt-6 border-t border-green-800/50">
                 
                 <!-- Botón Editar / Cancelar -->
-                <button type="button" id="btnToggleEdit" class="group flex justify-center items-center gap-2 w-full sm:w-1/2 rounded-xl bg-green-900 border border-green-700 px-4 py-3.5 text-base font-bold text-yellow-400 hover:bg-green-800 hover:border-yellow-400 transition-all duration-300">
+                <button type="button" id="btnToggleEdit" class="mx-auto block group flex justify-center items-center gap-2 w-full sm:w-1/2 rounded-xl bg-green-900 border border-green-700 px-4 py-3.5 text-base font-bold text-yellow-400 hover:bg-green-800 hover:border-yellow-400 transition-all duration-300">
                     <span id="btnToggleText">Editar Perfil</span>
                     <i id="btnToggleIcon" class="fa-solid fa-pen-to-square group-hover:scale-110 transition-transform"></i>
                 </button>
