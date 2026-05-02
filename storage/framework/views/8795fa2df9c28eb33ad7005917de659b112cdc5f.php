@@ -105,9 +105,9 @@
                 
                 <!-- Botón Editar / Cancelar -->
                 <button type="button" id="btnToggleEdit" class="mx-auto block group flex justify-center items-center gap-2 w-full sm:w-1/2 rounded-xl bg-green-900 border border-green-700 px-4 py-3.5 text-base font-bold text-yellow-400 hover:bg-green-800 hover:border-yellow-400 transition-all duration-300">
-    <span id="btnToggleText">Editar Perfil</span>
-    <i id="btnToggleIcon" class="fa-solid fa-pen-to-square group-hover:scale-110 transition-transform"></i>
-</button>
+                    <span id="btnToggleText">Editar Perfil</span>
+                    <i id="btnToggleIcon" class="fa-solid fa-pen-to-square group-hover:scale-110 transition-transform"></i>
+                </button>
 
                 <!-- Botón Guardar -->
                 <button type="submit" id="btnGuardar" class="hidden group flex justify-center items-center gap-2 w-full sm:w-1/2 rounded-xl bg-yellow-400 px-4 py-3.5 text-base font-bold text-green-950 shadow-lg shadow-yellow-400/20 hover:bg-yellow-300 hover:shadow-yellow-400/40 hover:-translate-y-0.5 transition-all duration-300">

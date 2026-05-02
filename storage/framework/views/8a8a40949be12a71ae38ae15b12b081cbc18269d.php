@@ -25,7 +25,7 @@
             <span class="text-yellow-400 font-bold">ADMIN</span>
             <li class="mb-1 group">
                 <a href="<?php echo e(route('admin')); ?>" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="fa-regular fa-house mr-3 text-lg"></i>
+                    <i class="fa-solid fa-house mr-3 text-lg"></i>
                     <span class="text-sm">General</span>
                 </a>
             </li>

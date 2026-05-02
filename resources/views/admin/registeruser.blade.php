@@ -45,7 +45,7 @@
             VOLVER
         </button>
     </div>
-    <div class="flex justify-center items-center px-6 lg:px-8">
+   <div class="flex justify-center items-center m-2 lg:m-6 px-6 py-10 lg:px-8 bg-green-950 rounded-md">
         <div class="sm:w-full sm:max-w-sm mx-auto w-full px-5">
             <img class="mx-auto h-64 w-auto" src="{{asset('images/logos/LOG_TEXT_AMARILLO.png') }}" alt="Logo">
             <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-yellow-400">Registra un usuario</h2>
