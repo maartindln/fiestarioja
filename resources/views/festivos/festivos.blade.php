@@ -10,10 +10,10 @@
             </div>
             <div class="flex flex-col justify-center">
                 <h2 class="sm:text-3xl text-xl font-bold text-green-950 mb-1 group-hover:text-green-800 transition-colors">{{ $evento->name }}</h2>
-                <h2 class="sm:text-3xl text-xl font-bold text-green-950 mb-1 group-hover:text-green-800 transition-colors">{{ $evento->pueblo->name }}</h2>
-                <h3 class="sm:text-lg text-sm text-gray-600 font-medium flex items-center gap-2 leading-none">
+                <h2 class="sm:text-2xl text-xl font-bold text-green-950 mb-1 group-hover:text-green-800 transition-colors">{{ $evento->pueblo->name }}</h2>
+                <h3 class="sm:text-lg text-sm text-green-950 font-medium flex items-center gap-2 leading-none">
                     <span>{{ $evento->dateIni }}</span>
-                    <i class="fa-solid fa-arrow-right text-yellow-400 flex items-center justify-center"></i>
+                    <i class="fa-solid fa-arrow-right text-400 flex items-center justify-center"></i>
                     <span>{{ $evento->dateFin }}</span>
                 </h3>
             </div>
@@ -42,13 +42,13 @@
             <!-- Cabecera -->
             <div class="mb-6">
                 <h2 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3">{{ $evento->name }}</h2>
-                <h3 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3">{{ $evento->pueblo->name }}</h3>
-                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">{{ $evento->description ?? 'Descripción del pueblo no disponible en este momento.' }}</p>
-                <p class="text-gray-300 text-base sm:text-lg leading-relaxed flex items-center gap-2">
+                <h3 class="text-amber-50 text-3xl sm:text-3xl font-extrabold mb-3">{{ $evento->pueblo->name }}</h3>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed flex items-center gap-2 mb-3">
                     <span>{{ $evento->dateIni }}</span>
                     <i class="fa-solid fa-arrow-right text-yellow-400"></i>
                     <span>{{ $evento->dateFin }}</span>
                 </p>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-3">{{ $evento->description ?? 'Descripción del pueblo no disponible en este momento.' }}</p>
                 <a href="{{ asset('storage/carteles/' . $evento->cartel) }}" target="_blank" class="inline-block">
                     <span class="bg-yellow-400 text-green-950 font-semibold px-4 py-2 rounded-lg shadow hover:bg-yellow-300 transition flex items-center gap-2">
                         <i class="fa-solid fa-image"></i>
