@@ -7,8 +7,8 @@
             <!-- Imagen con efecto zoom al pasar el ratón -->
             <div class="overflow-hidden rounded-lg shadow-sm hidden md:block w-20 h-20 sm:w-28 sm:h-28 shrink-0 bg-gray-100">
                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                     src="{{ $event->image ?? asset('images/placeholder.png') }}"
-                     alt="{{ $event->name }}">
+                     src="<?php echo e($event->image ?? asset('images/placeholder.png')); ?>"
+                     alt="<?php echo e($event->name); ?>">
             </div>
         </div>
 
@@ -34,18 +34,19 @@
 
             <!-- Cabecera -->
             <div class="mb-6">
-                <h2 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3">{{ $pueblo->name }}</h2>
-                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">{{ $pueblo->description ?? 'Descripción del pueblo no disponible en este momento.' }}</p>
+                <h2 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3"><?php echo e($pueblo->name); ?></h2>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed"><?php echo e($pueblo->description ?? 'Descripción del pueblo no disponible en este momento.'); ?></p>
             </div>
 
             <!-- Carrusel Alpine.js -->
             <div x-data="{
                     currentImage: 0,
-                    images: {{ $pueblo->image ? (is_string($pueblo->image) ? json_encode([$pueblo->image]) : json_encode($pueblo->image)) : '[]' }}
+                    images: <?php echo e($pueblo->image ? (is_string($pueblo->image) ? json_encode([$pueblo->image]) : json_encode($pueblo->image)) : '[]'); ?>
+
                 }"
                 class="relative mb-8 rounded-xl overflow-hidden shadow-lg bg-green-900/50 group">
 
-                <img :src="images.length > 0 ? images[currentImage] : '{{ asset('images/placeholder.png') }}'"
+                <img :src="images.length > 0 ? images[currentImage] : '<?php echo e(asset('images/placeholder.png')); ?>'"
                      class="w-full h-64 sm:h-80 object-cover transition-all duration-300">
 
                 <!-- Controles del carrusel (solo se muestran si hay más de 1 imagen) -->
@@ -77,34 +78,37 @@
             <div class="mb-8">
                 <h3 class="text-yellow-400 font-bold mb-4 text-2xl border-b border-green-800 pb-2">Eventos Destacados</h3>
 
-                @if($pueblo->events->count())
+                <?php if($pueblo->events->count()): ?>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                        @foreach($pueblo->events as $event)
-                        <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank" class="block h-full">
+                        <?php $__currentLoopData = $pueblo->events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <a href="<?php echo e(asset('storage/carteles/' . $event->cartel)); ?>" target="_blank" class="block h-full">
                             <div class="h-full p-5 bg-green-900/60 rounded-xl hover:bg-green-800 transition-colors flex flex-col border border-green-800/50 hover:border-yellow-500/50 shadow-sm hover:shadow-md">
                                 <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-green-950 font-medium text-sm sm:text-base mb-3">
                                     <div class="px-3 py-1 bg-yellow-400 rounded-md shadow-sm">
-                                        <span class="font-bold">Ini:</span> {{ $event->dateIni }}
+                                        <span class="font-bold">Ini:</span> <?php echo e($event->dateIni); ?>
+
                                     </div>
                                     <span class="text-yellow-400 font-bold hidden sm:inline">→</span>
                                     <div class="px-3 py-1 bg-yellow-400 rounded-md shadow-sm">
-                                        <span class="font-bold">Fin:</span> {{ $event->dateFin }}
+                                        <span class="font-bold">Fin:</span> <?php echo e($event->dateFin); ?>
+
                                     </div>
                                 </div>
                                 <div class="mt-auto text-amber-50 font-bold text-2xl sm:text-3xl tracking-wide">
-                                    {{ $event->name }}
+                                    <?php echo e($event->name); ?>
+
                                 </div>
                             </div>
                         </a>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                @else
+                <?php else: ?>
                     <div class="w-full bg-green-900/40 border border-green-800 rounded-xl p-6 text-center">
                         <p class="text-amber-50/70 text-lg font-medium">
                             No hay eventos programados en este momento para este pueblo.
                         </p>
                     </div>
-                @endif
+                <?php endif; ?>
             </div>
 
             <!-- Sección Mapa -->
@@ -117,7 +121,7 @@
                         style="border:0"
                         loading="lazy"
                         allowfullscreen
-                        src="https://www.google.com/maps?q={{ $pueblo->latitude }},{{ $pueblo->longitude }}&z=15&output=embed">
+                        src="https://www.google.com/maps?q=<?php echo e($pueblo->latitude); ?>,<?php echo e($pueblo->longitude); ?>&z=15&output=embed">
                     </iframe>
                 </div>
             </div>
@@ -125,3 +129,4 @@
         </div>
     </div>
 </div>
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/FIESTARIOJA/fiestarioja/resources/views/festivos/festivos.blade.php ENDPATH**/ ?>

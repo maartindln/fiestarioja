@@ -16,12 +16,12 @@
       type="text"
       id="buscador-eventos"
       placeholder="Buscar festivo..."
-      class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded mb-6 focus:outline-none focus:ring-2 focus:ring-green-500"
+      class="w-full sm:w-1/2 px-4 py-2 border border-green-950 text-green-950 bg-amber-50 rounded mb-6 focus:outline-none focus:ring-2 focus:ring-green-500"
     />
 
-    <!-- Lista de pueblos que se actualiza -->
-    <div id="lista-pueblos" class="w-full flex flex-col gap-4">
-      <?php echo $__env->make('pueblos.lista', ['pueblos' => $pueblos], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <!-- Lista de eventos que se actualiza -->
+    <div id="lista-eventos" class="w-full flex flex-col gap-4">
+      <?php echo $__env->make('festivos.lista', ['eventos' => $events], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
   </div>
 </div>
@@ -29,17 +29,17 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#buscador-pueblos').val('');
+        $('#buscador-eventos').val('');
     });
-  $('#buscador-pueblos').on('keyup', function () {
+  $('#buscador-eventos').on('keyup', function () {
     let search = $(this).val();
 
     $.ajax({
-      url: "<?php echo e(route('pueblos.search')); ?>",
+      url: "<?php echo e(route('eventos.search')); ?>",
       method: 'GET',
       data: { search: search },
       success: function (data) {
-        $('#lista-pueblos').html(data);
+        $('#lista-eventos').html(data);
       },
       error: function() {
         console.error('Error en la petición AJAX.');

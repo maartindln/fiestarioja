@@ -21,6 +21,6 @@ class ListeController extends Controller
         $pueblos = Pueblo::where('name', 'LIKE', '%' . $request->search . '%')->get();
         $eventos = Event::where('name', 'LIKE', '%' . $request->search . '%')->get();
 
-        return view('eventos.lista', compact('pueblos', 'eventos'));
+        return view('eventos.lista', compact('eventos', 'pueblos'));
     }
 }

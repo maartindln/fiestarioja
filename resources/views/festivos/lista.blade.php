@@ -1,7 +1,7 @@
-@if($pueblos->isEmpty())
-    <p class="text-center text-4xl text-green-950 mb-5">No se encontro el pueblo.</p>
+@if($eventos->isEmpty())
+    <p class="text-center text-4xl text-green-950 mb-5">No se encontro el evento.</p>
 @else
-    @foreach($pueblos as $pueblo)
-        @include('pueblos.pueblos', ['pueblo' => $pueblo])
+    @foreach($eventos as $evento)
+        @include('festivos.festivos', ['event' => $events])
     @endforeach
 @endif

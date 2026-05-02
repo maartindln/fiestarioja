@@ -27,7 +27,7 @@ class PueblosController extends Controller
     }
 
     // Obtener un pueblo específico
-    public function show($id)
+    public function showp($id)
     {
         return response()->json(Pueblo::with('events')->findOrFail($id));
     }

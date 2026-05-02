@@ -16,8 +16,8 @@
     <input
       type="text"
       id="buscador-pueblos"
-      placeholder="Buscar festivo..."
-      class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded mb-6 focus:outline-none focus:ring-2 focus:ring-green-500"
+      placeholder="Buscar pueblo..."
+      class="w-full sm:w-1/2 px-4 py-2 border border-green-950 text-green-950 bg-amber-50 rounded mb-6 focus:outline-none focus:ring-1 focus:ring-green-500"
     />
 
     <!-- Lista de pueblos que se actualiza -->

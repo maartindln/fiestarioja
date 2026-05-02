@@ -3,32 +3,32 @@
 namespace App\Http\Controllers\Festivos;
 
 use Illuminate\Http\Request;
-use App\Models\Pueblo;
+use App\Models\Event;
 use App\Http\Controllers\Controller;
 
 class FestivosController extends Controller
 {
     // Obtener todos los eventos
-    public function index()
+    public function indexe()
     {
-        return response()->json(Pueblo::all());
+        return response()->json(Event::all());
     }
 
-    // Crear un nuevo pueblo (opcional)
+    // Crear un nuevo evento (opcional)
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:pueblos,name',
+            'name' => 'required|unique:events,name',
             'description' => 'nullable|string',
         ]);
 
-        $pueblo = Pueblo::create($request->all());
-        return response()->json($pueblo);
+        $event = Event::create($request->all());
+        return response()->json($event);
     }
 
-    // Obtener un pueblo específico
-    public function show($id)
+    // Obtener un evento específico
+    public function showe($id)
     {
-        return response()->json(Pueblo::with('events')->findOrFail($id));
+        return response()->json(Event::with('pueblos')->findOrFail($id));
     }
 }
