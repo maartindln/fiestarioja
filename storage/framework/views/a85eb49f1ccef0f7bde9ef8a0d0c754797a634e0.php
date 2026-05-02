@@ -3,7 +3,7 @@
         <div class="bg-green-600 py-4 px-6 rounded-l-lg flex items-center">
             <i class="fa-solid fa-circle-check text-white text-2xl"></i>
         </div>
-        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+        <div class="px-4 py-6 bg-white text-green-950 rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
         <div><?php echo e(session('success')); ?></div>
             <button onclick="closeAlert(this)">
                 <i class="fa-solid fa-xmark mr-4 ml-4"></i>
@@ -17,7 +17,7 @@
         <div class="bg-red-600 py-4 px-6 rounded-l-lg flex items-center">
             <i class="fa-solid fa-circle-xmark text-white text-2xl"></i>
         </div>
-        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+        <div class="px-4 py-6 bg-white text-red-700 rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
         <div><?php echo e(session('error')); ?></div>
             <button onclick="closeAlert(this)">
                 <i class="fa-solid fa-xmark mr-4 ml-4"></i>
@@ -31,7 +31,7 @@
         <div class="bg-red-600 py-4 px-6 rounded-l-lg flex items-center">
             <i class="fa-solid fa-circle-xmark text-white text-2xl"></i>
         </div>
-        <div class="px-4 py-6 bg-white rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
+        <div class="px-4 py-6 bg-white text-red-700 rounded-r-lg flex justify-between items-center w-full border border-l-transparent border-gray-200">
             <div>
                 <ul class="list-inside text-sm text-red-700">
                     <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
