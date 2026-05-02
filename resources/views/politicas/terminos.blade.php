@@ -28,7 +28,7 @@
                 <h3 class="text-xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-check-double text-green-500 text-sm"></i> 1. Aceptación de los Términos
                 </h3>
-                <p>Al acceder, registrarse o utilizar **FiestaRioja**, el usuario declara haber leído, entendido y aceptado vincularse legalmente a estos términos. Si no está de acuerdo con alguna parte de este contrato, <span class="text-red-400 font-bold">debe abandonar el sitio de inmediato</span>. El uso continuado de la plataforma tras cualquier modificación implica la aceptación de los nuevos términos.</p>
+                <p>Al acceder, registrarse o utilizar FiestaRioja, el usuario declara haber leído, entendido y aceptado vincularse legalmente a estos términos. Si no está de acuerdo con alguna parte de este contrato, <span class="text-red-400 font-bold">debe abandonar el sitio de inmediato</span>. El uso continuado de la plataforma tras cualquier modificación implica la aceptación de los nuevos términos.</p>
             </section>
 
             <!-- 2. Usos Prohibidos -->
@@ -63,7 +63,7 @@
                 <h3 class="text-xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-calendar-xmark text-green-500 text-sm"></i> 4. Veracidad de Eventos
                 </h3>
-                <p>La información sobre fiestas y eventos proviene de fuentes públicas y terceros. **FiestaRioja** no es el organizador ni promotor. Por tanto:</p>
+                <p>La información sobre fiestas y eventos proviene de fuentes públicas y terceros. FiestaRioja no es el organizador ni promotor. Por tanto:</p>
                 <ul class="list-disc pl-5 mt-3 space-y-2 marker:text-yellow-400">
                     <li>Cualquier reclamación sobre cancelaciones o cambios debe dirigirse al organizador final (Ayuntamiento o Promotor).</li>
                     <li>No nos responsabilizamos de la denegación de acceso a locales por parte de terceros.</li>
@@ -75,7 +75,7 @@
                 <h3 class="text-xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-scale-balanced text-green-500 text-sm"></i> 5. Ley Aplicable y Jurisdicción
                 </h3>
-                <p>Para la resolución de todas las controversias o cuestiones relacionadas con este sitio web o de las actividades en él desarrolladas, será de aplicación la **legislación española**. Las partes se someten expresamente a los Juzgados y Tribunales de **Logroño (La Rioja)**, renunciando a cualquier otro fuero que pudiera corresponderles.</p>
+                <p>Para la resolución de todas las controversias o cuestiones relacionadas con este sitio web o de las actividades en él desarrolladas, será de aplicación la legislación española. Las partes se someten expresamente a los Juzgados y Tribunales de Logroño (La Rioja), renunciando a cualquier otro fuero que pudiera corresponderles.</p>
             </section>
 
         </div>
