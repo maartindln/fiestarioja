@@ -31,7 +31,7 @@
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
-                    <i class="fa-regular fa-user mr-3 text-lg"></i>
+                    <i class="fa-solid fa-user mr-3 text-lg"></i>
                     <span class="text-sm">Usuarios</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
@@ -46,7 +46,7 @@
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
-                    <i class="fa-regular fa-map mr-3 text-lg"></i>
+                    <i class="fa-solid fa-map mr-3 text-lg"></i>
                     <span class="text-sm">Pueblos</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
@@ -61,7 +61,7 @@
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
-                    <i class="fa-regular fa-calendar mr-3 text-lg"></i>
+                    <i class="fa-solid fa-calendar mr-3 text-lg"></i>
                     <span class="text-sm">Eventos</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
