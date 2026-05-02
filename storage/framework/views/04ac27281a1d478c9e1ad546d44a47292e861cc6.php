@@ -12,10 +12,13 @@
     </div>
   <div class="w-full bg-amber-50">
 
-    <div class="w-full overflow-hidden">
-        <video class="w-full h-auto object-cover" autoplay loop muted playsinline>
+    <div class="w-full px-4 sm:px-8"> 
+      <div class="max-w-5xl mx-auto overflow-hidden rounded-2xl">
+          <video class="w-full h-auto object-cover" autoplay loop muted playsinline>
             <source src="./images/STG_boost.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
         </video>
+      </div>
     </div>
 
     <div class="px-4 py-10 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">

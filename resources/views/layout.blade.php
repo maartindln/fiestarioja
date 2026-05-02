@@ -116,7 +116,7 @@
 
                                 @if ($admin)
                                     <a href="{{ route('admin') }}" class="group flex items-center px-4 py-2.5 text-sm text-amber-50/90 hover:bg-green-800 hover:text-white transition-colors">
-                                        <i class="fa-solid fa-shield-halved w-5 text-center mr-3 text-yellow-400 group-hover:scale-110 transition-transform"></i>
+                                        <i class="fa-solid fa-crown w-5 text-center mr-3 text-yellow-400 group-hover:scale-110 transition-transform"></i>
                                         Administración
                                     </a>
                                 @endif
