@@ -71,11 +71,11 @@
                     <a href="<?php echo e(route('calendar')); ?>" class="<?php echo e(request()->routeIs('calendar') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white'); ?> px-4 py-2 rounded-lg text-sm font-semibold transition-all">
                         Calendario
                     </a>
-                    <a href="<?php echo e(route('listp')); ?>" class="<?php echo e(request()->routeIs('listp') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white'); ?> px-4 py-2 rounded-lg text-sm font-semibold transition-all">
-                        Pueblos
-                    </a>
                     <a href="<?php echo e(route('liste')); ?>" class="<?php echo e(request()->routeIs('liste') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white'); ?> px-4 py-2 rounded-lg text-sm font-semibold transition-all">
                         Eventos
+                    </a>
+                    <a href="<?php echo e(route('listp')); ?>" class="<?php echo e(request()->routeIs('listp') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white'); ?> px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                        Pueblos
                     </a>
                 </div>
 
@@ -161,20 +161,18 @@
                 <a href="<?php echo e(route('calendar')); ?>" class="<?php echo e(request()->routeIs('calendar') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800'); ?> block rounded-md px-3 py-3 text-base font-bold transition-colors">
                     <i class="fa-solid fa-calendar-days w-6 text-center mr-2 opacity-80"></i> Calendario
                 </a>
+                <a href="<?php echo e(route('liste')); ?>" class="<?php echo e(request()->routeIs('liste') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800'); ?> block rounded-md px-3 py-3 text-base font-bold transition-colors">
+                    <i class="fa-solid fa-champagne-glasses w-6 text-center mr-2 opacity-80"></i> Eventos
+                </a>
                 <a href="<?php echo e(route('listp')); ?>" class="<?php echo e(request()->routeIs('listp') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800'); ?> block rounded-md px-3 py-3 text-base font-bold transition-colors">
                     <i class="fa-solid fa-map-location-dot w-6 text-center mr-2 opacity-80"></i> Pueblos
-                </a>
-                <a href="<?php echo e(route('liste')); ?>" class="<?php echo e(request()->routeIs('liste') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800'); ?> block rounded-md px-3 py-3 text-base font-bold transition-colors">
-                    <i class="fa-solid fa-calendar-days w-6 text-center mr-2 opacity-80"></i> Eventos
                 </a>
             </div>
         </div>
     </nav>
 
     <main class="flex-grow w-full">
-        <div id="alert-container" class="fixed top-20 inset-x-0 mx-auto w-full max-w-md z-40 px-4 sm:px-0">
-            <?php echo $__env->make('alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-        </div>
+        <?php echo $__env->make('alerts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <?php echo $__env->yieldContent('content'); ?>
     </main>
 

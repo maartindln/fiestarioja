@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FiestaRioja - Regístrate</title>
-    
+
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('images/logos/LOG_TEXT_AMARILLO.png') }}" type="image/png">
-    
+
     <!-- Fuentes e Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+
     <style>
         /* Pequeño ajuste para suavizar el autofill del navegador y que no rompa el fondo oscuro */
         input:-webkit-autofill,
-        input:-webkit-autofill:hover, 
-        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
         input:-webkit-autofill:active{
             -webkit-box-shadow: 0 0 0 30px #14532d inset !important;
             -webkit-text-fill-color: #fef3c7 !important;
@@ -28,38 +28,7 @@
     </style>
 </head>
 <body class="bg-green-950 font-sans text-gray-100 min-h-screen flex flex-col justify-center relative overflow-x-hidden selection:bg-yellow-400 selection:text-green-950">
-
-    <!-- Alertas Flash -->
-    <div id="alert-container" class="fixed top-4 inset-x-0 mx-auto w-full max-w-md z-50 flex flex-col gap-3 px-4 sm:px-0">
-        @if (session('success'))
-            <div class="alert flex w-full shadow-2xl rounded-xl overflow-hidden animate__animated animate__fadeInDown border border-green-500/30">
-                <div class="bg-green-600 w-16 flex items-center justify-center shrink-0">
-                    <i class="fa-solid fa-circle-check text-white text-2xl"></i>
-                </div>
-                <div class="p-4 bg-green-900/95 backdrop-blur-md flex justify-between items-center w-full">
-                    <div class="text-green-50 font-medium">{{ session('success') }}</div>
-                    <button onclick="closeAlert(this)" class="text-green-400 hover:text-white transition-colors ml-4 focus:outline-none">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert flex w-full shadow-2xl rounded-xl overflow-hidden animate__animated animate__fadeInDown border border-red-500/30">
-                <div class="bg-red-600 w-16 flex items-center justify-center shrink-0">
-                    <i class="fa-solid fa-circle-xmark text-white text-2xl"></i>
-                </div>
-                <div class="p-4 bg-red-900/95 backdrop-blur-md flex justify-between items-center w-full">
-                    <div class="text-red-50 font-medium">{{ session('error') }}</div>
-                    <button onclick="closeAlert(this)" class="text-red-400 hover:text-white transition-colors ml-4 focus:outline-none">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        @endif
-    </div>
-
+    @include('alerts')
     <!-- Botón Volver -->
     <div class="absolute top-6 left-6 z-20">
         <button onclick="window.history.back()" class="group flex items-center gap-2 px-4 py-2 text-sm font-bold text-amber-50 bg-green-900/50 border border-green-800 rounded-full shadow-md hover:bg-yellow-400 hover:text-green-950 hover:border-yellow-400 focus:outline-none transition-all duration-300">
@@ -70,10 +39,10 @@
 
     <!-- Contenedor Principal -->
     <div class="flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 py-12 w-full z-10">
-        
+
         <!-- Tarjeta del Formulario -->
         <div class="w-full max-w-md bg-green-900/40 backdrop-blur-sm p-8 sm:p-10 rounded-3xl shadow-2xl border border-green-800/50">
-            
+
             <!-- Cabecera -->
             <div class="text-center mb-10">
                 <img class="mx-auto h-32 sm:h-40 w-auto hover:scale-105 transition-transform duration-500 drop-shadow-lg mb-6" src="{{ asset('images/logos/LOG_TEXT_AMARILLO.png') }}" alt="Logo FiestaRioja">
@@ -84,7 +53,7 @@
             <!-- Formulario -->
             <form method="POST" action="{{ route('register') }}" class="space-y-5">
                 @csrf
-                
+
                 <!-- Nombre -->
                 <div>
                     <label for="name" class="block text-sm font-semibold text-yellow-400/90 ml-1 mb-1">Nombre</label>
@@ -154,15 +123,15 @@
                     </button>
                 </div>
             </form>
-            
+
             <!-- Link al login (Opcional, muy recomendado) -->
             <div class="mt-8 text-center text-sm text-green-300">
-                ¿Ya tienes una cuenta? 
+                ¿Ya tienes una cuenta?
                 <a href="{{ route('login') }}" class="font-bold text-yellow-400 hover:text-yellow-300 hover:underline transition-all">
                     Inicia sesión aquí
                 </a>
             </div>
-            
+
         </div>
     </div>
 

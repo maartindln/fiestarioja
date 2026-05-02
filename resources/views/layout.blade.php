@@ -71,11 +71,11 @@
                     <a href="{{ route('calendar') }}" class="{{ request()->routeIs('calendar') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
                         Calendario
                     </a>
-                    <a href="{{ route('listp') }}" class="{{ request()->routeIs('listp') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
-                        Pueblos
-                    </a>
                     <a href="{{ route('liste') }}" class="{{ request()->routeIs('liste') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
                         Eventos
+                    </a>
+                    <a href="{{ route('listp') }}" class="{{ request()->routeIs('listp') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                        Pueblos
                     </a>
                 </div>
 
@@ -161,20 +161,18 @@
                 <a href="{{ route('calendar') }}" class="{{ request()->routeIs('calendar') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800' }} block rounded-md px-3 py-3 text-base font-bold transition-colors">
                     <i class="fa-solid fa-calendar-days w-6 text-center mr-2 opacity-80"></i> Calendario
                 </a>
+                <a href="{{ route('liste') }}" class="{{ request()->routeIs('liste') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800' }} block rounded-md px-3 py-3 text-base font-bold transition-colors">
+                    <i class="fa-solid fa-champagne-glasses w-6 text-center mr-2 opacity-80"></i> Eventos
+                </a>
                 <a href="{{ route('listp') }}" class="{{ request()->routeIs('listp') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800' }} block rounded-md px-3 py-3 text-base font-bold transition-colors">
                     <i class="fa-solid fa-map-location-dot w-6 text-center mr-2 opacity-80"></i> Pueblos
-                </a>
-                <a href="{{ route('liste') }}" class="{{ request()->routeIs('liste') ? 'bg-yellow-400 text-green-950' : 'text-amber-50 hover:bg-green-800' }} block rounded-md px-3 py-3 text-base font-bold transition-colors">
-                    <i class="fa-solid fa-calendar-days w-6 text-center mr-2 opacity-80"></i> Eventos
                 </a>
             </div>
         </div>
     </nav>
 
     <main class="flex-grow w-full">
-        <div id="alert-container" class="fixed top-20 inset-x-0 mx-auto w-full max-w-md z-40 px-4 sm:px-0">
-            @include('alerts')
-        </div>
+        @include('alerts')
         @yield('content')
     </main>
 

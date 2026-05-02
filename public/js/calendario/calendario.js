@@ -4,7 +4,7 @@ var dataCel = $(".c-cal__cel");
 var dateObj = new Date();
 var month = dateObj.getUTCMonth() + 1;
 var day = dateObj.getUTCDate();
-var year = dateObj.getUTCFullYear();
+var currentYear = dateObj.getUTCFullYear();
 var monthText = [
   "Enero",
   "Febrero",
