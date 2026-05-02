@@ -14,4 +14,4 @@ class PrivController extends Controller
         // Esto busca el archivo en resources/views/politicas/priv.blade.php
         return view('politicas.priv');
     }
-}}
+}
