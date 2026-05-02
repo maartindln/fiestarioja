@@ -4,9 +4,9 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="w-full min-h-screen bg-green-950 py-12 px-4 sm:px-6 lg:px-8 font-sans text-gray-100 flex justify-center items-start">
-    
+
     <div class="w-full max-w-5xl bg-green-900/40 backdrop-blur-md p-6 sm:p-12 rounded-3xl shadow-2xl border border-green-800/50 mt-4 animate__animated animate__fadeIn">
-        
+
         <div class="text-center mb-10">
             <h2 class="text-3xl font-extrabold text-yellow-400 drop-shadow-md mb-2">Aviso Legal y Condiciones de Uso</h2>
             <p class="text-green-400 text-xs tracking-widest uppercase">Versión Extendida de Protección Jurídica</p>
@@ -85,4 +85,5 @@
     strong { color: #facc15; font-weight: 600; }
 </style>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\UniServerZ\www\FIESTARIOJA\fiestarioja\resources\views/politicas/priv.blade.php ENDPATH**/ ?>

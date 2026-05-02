@@ -71,10 +71,10 @@
                     <a href="{{ route('calendar') }}" class="{{ request()->routeIs('calendar') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
                         Calendario
                     </a>
-                    <a href="{{ route('listp') }}" class="{{ request()->routeIs('list') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                    <a href="{{ route('listp') }}" class="{{ request()->routeIs('listp') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
                         Pueblos
                     </a>
-                    <a href="{{ route('liste') }}" class="{{ request()->routeIs('events') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                    <a href="{{ route('liste') }}" class="{{ request()->routeIs('liste') ? 'bg-yellow-400 text-green-950 shadow-sm' : 'text-amber-50/90 hover:bg-green-800 hover:text-white' }} px-4 py-2 rounded-lg text-sm font-semibold transition-all">
                         Eventos
                     </a>
                 </div>
@@ -188,10 +188,9 @@
 
             <!-- Navegación Footer -->
             <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-10 text-sm font-medium">
-                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Sobre nosotros</a>
                 <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Contacto</a>
                 <a href="{{ route('priv') }}" class="text-amber-50 hover:text-yellow-400 transition-colors">Política de Privacidad</a>
-                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Términos de Uso</a>
+                <a href="{{ route('term') }}" class="text-amber-50 hover:text-yellow-400 transition-colors">Términos de Uso</a>
             </nav>
 
             <!-- Redes Sociales -->
