@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactoController;
-use App\Http\Controllers\ContactusController;
 use App\Http\Controllers\PrivController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\EventsController;
-use App\Http\Controllers\PueblosController;
-use App\Http\Controllers\ListController;
+use App\Http\Controllers\Pueblos\PueblosController;
+use App\Http\Controllers\Pueblos\ListpController;
+use App\Http\Controllers\Festivos\FestivosController;
+use App\Http\Controllers\Festivos\ListeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\UserController;
@@ -31,16 +32,24 @@ Route::get('/politicas/privacidad', [PrivController::class, 'politicas'])->name(
 
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 
-Route::get('/listado', [ListController::class, 'listado'])->name('list');
-Route::get('/listado/search', [ListController::class, 'search'])->name('pueblos.search');
 // Pueblos
-Route::get('/pueblos', [PueblosController::class, 'index']);
-Route::get('/pueblos/{id}', [PueblosController::class, 'show']);
+Route::get('/listadop', [ListpController::class, 'listadop'])->name('listp');
+Route::get('/listadop/search', [ListpController::class, 'psearch'])->name('pueblos.search');
+Route::get('/pueblos', [PueblosController::class, 'indexp']);
+Route::get('/pueblos/{id}', [PueblosController::class, 'showp']);
 
+// Festivos
+Route::get('/listadoe', [ListeController::class, 'listadoe'])->name('liste');
+Route::get('/listadoe/search', [ListeController::class, 'esearch'])->name('eventos.search');
+Route::get('/eventos', [FestivosController::class, 'indexe']);
+Route::get('/eventos/{id}', [FestivosController::class, 'showe']);
+
+// Perfil
 Route::get('/perfil',[PerfilController::class,'perfil'])->name('perfil')->middleware('auth');
 Route::post('perfil/perfil-edit', [PerfilController::class, 'edit'])->name('edit')->middleware('auth');
 Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->name('perfil.update-avatar')->middleware('auth');
 
+// Eventos
 Route::post('/events', [EventsController::class, 'store'])->name('events.store')->middleware('admin');
 Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('admin');
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('admin');

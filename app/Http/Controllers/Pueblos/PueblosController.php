@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pueblos;
 
 use Illuminate\Http\Request;
 use App\Models\Pueblo;
+use App\Http\Controllers\Controller;
 
 class PueblosController extends Controller
 {
     // Obtener todos los pueblos
-    public function index()
+    public function indexp()
     {
         return response()->json(Pueblo::all());
     }
