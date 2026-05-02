@@ -20,7 +20,7 @@
     />
 
     <!-- Lista de eventos que se actualiza -->
-    <div id="lista-eventos" class="w-full flex flex-col gap-4">
+    <div id="lista-eventos" class="w-full flex flex-col gap-4 mb-24">
       <?php echo $__env->make('festivos.lista', ['eventos' => $events], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
   </div>

@@ -6,9 +6,16 @@
         <div class="flex items-center gap-4 sm:gap-6">
             <!-- Imagen con efecto zoom al pasar el ratón -->
             <div class="overflow-hidden rounded-lg shadow-sm hidden md:block w-20 h-20 sm:w-28 sm:h-28 shrink-0 bg-gray-100">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                     src="{{ $event->image ?? asset('images/placeholder.png') }}"
-                     alt="{{ $event->name }}">
+                <i class="fa-solid fa-party-horn"></i>
+            </div>
+            <div class="flex flex-col justify-center">
+                <h2 class="sm:text-3xl text-xl font-bold text-green-950 mb-1 group-hover:text-green-800 transition-colors">{{ $evento->name }}</h2>
+                <h2 class="sm:text-3xl text-xl font-bold text-green-950 mb-1 group-hover:text-green-800 transition-colors">{{ $evento->pueblo->name }}</h2>
+                <h3 class="sm:text-lg text-sm text-gray-600 font-medium flex items-center gap-2 leading-none">
+                    <span>{{ $evento->dateIni }}</span>
+                    <i class="fa-solid fa-arrow-right text-yellow-400 flex items-center justify-center"></i>
+                    <span>{{ $evento->dateFin }}</span>
+                </h3>
             </div>
         </div>
 
@@ -34,79 +41,21 @@
 
             <!-- Cabecera -->
             <div class="mb-6">
-                <h2 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3">{{ $pueblo->name }}</h2>
-                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">{{ $pueblo->description ?? 'Descripción del pueblo no disponible en este momento.' }}</p>
+                <h2 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3">{{ $evento->name }}</h2>
+                <h3 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3">{{ $evento->pueblo->name }}</h3>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">{{ $evento->description ?? 'Descripción del pueblo no disponible en este momento.' }}</p>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed flex items-center gap-2">
+                    <span>{{ $evento->dateIni }}</span>
+                    <i class="fa-solid fa-arrow-right text-yellow-400"></i>
+                    <span>{{ $evento->dateFin }}</span>
+                </p>
+                <a href="{{ asset('storage/carteles/' . $evento->cartel) }}" target="_blank" class="inline-block">
+                    <span class="bg-yellow-400 text-green-950 font-semibold px-4 py-2 rounded-lg shadow hover:bg-yellow-300 transition flex items-center gap-2">
+                        <i class="fa-solid fa-image"></i>
+                        Ver cartel
+                    </span>
+                </a>
             </div>
-
-            <!-- Carrusel Alpine.js -->
-            <div x-data="{
-                    currentImage: 0,
-                    images: {{ $pueblo->image ? (is_string($pueblo->image) ? json_encode([$pueblo->image]) : json_encode($pueblo->image)) : '[]' }}
-                }"
-                class="relative mb-8 rounded-xl overflow-hidden shadow-lg bg-green-900/50 group">
-
-                <img :src="images.length > 0 ? images[currentImage] : '{{ asset('images/placeholder.png') }}'"
-                     class="w-full h-64 sm:h-80 object-cover transition-all duration-300">
-
-                <!-- Controles del carrusel (solo se muestran si hay más de 1 imagen) -->
-                <template x-if="images.length > 1">
-                    <div>
-                        <button @click="currentImage = (currentImage === 0 ? (images.length - 1) : currentImage - 1)"
-                            class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 backdrop-blur-sm transition opacity-0 group-hover:opacity-100">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        </button>
-
-                        <button @click="currentImage = (currentImage === images.length - 1 ? 0 : currentImage + 1)"
-                            class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 backdrop-blur-sm transition opacity-0 group-hover:opacity-100">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </button>
-
-                        <!-- Indicadores (Puntitos) -->
-                        <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2 bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                            <template x-for="(img, index) in images" :key="index">
-                                <button @click="currentImage = index"
-                                        :class="{'bg-yellow-400 w-4': currentImage === index, 'bg-white/50 w-2 hover:bg-white': currentImage !== index}"
-                                        class="h-2 rounded-full transition-all duration-300"></button>
-                            </template>
-                        </div>
-                    </div>
-                </template>
-            </div>
-
-            <!-- Sección Eventos -->
-            <div class="mb-8">
-                <h3 class="text-yellow-400 font-bold mb-4 text-2xl border-b border-green-800 pb-2">Eventos Destacados</h3>
-
-                @if($pueblo->events->count())
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                        @foreach($pueblo->events as $event)
-                        <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank" class="block h-full">
-                            <div class="h-full p-5 bg-green-900/60 rounded-xl hover:bg-green-800 transition-colors flex flex-col border border-green-800/50 hover:border-yellow-500/50 shadow-sm hover:shadow-md">
-                                <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-green-950 font-medium text-sm sm:text-base mb-3">
-                                    <div class="px-3 py-1 bg-yellow-400 rounded-md shadow-sm">
-                                        <span class="font-bold">Ini:</span> {{ $event->dateIni }}
-                                    </div>
-                                    <span class="text-yellow-400 font-bold hidden sm:inline">→</span>
-                                    <div class="px-3 py-1 bg-yellow-400 rounded-md shadow-sm">
-                                        <span class="font-bold">Fin:</span> {{ $event->dateFin }}
-                                    </div>
-                                </div>
-                                <div class="mt-auto text-amber-50 font-bold text-2xl sm:text-3xl tracking-wide">
-                                    {{ $event->name }}
-                                </div>
-                            </div>
-                        </a>
-                        @endforeach
-                    </div>
-                @else
-                    <div class="w-full bg-green-900/40 border border-green-800 rounded-xl p-6 text-center">
-                        <p class="text-amber-50/70 text-lg font-medium">
-                            No hay eventos programados en este momento para este pueblo.
-                        </p>
-                    </div>
-                @endif
-            </div>
-
             <!-- Sección Mapa -->
             <div>
                 <h3 class="text-yellow-400 font-bold mb-4 text-2xl border-b border-green-800 pb-2">Cómo llegar</h3>
@@ -117,7 +66,7 @@
                         style="border:0"
                         loading="lazy"
                         allowfullscreen
-                        src="https://www.google.com/maps?q={{ $pueblo->latitude }},{{ $pueblo->longitude }}&z=15&output=embed">
+                        src="https://www.google.com/maps?q={{ $evento->pueblo->latitude }},{{ $evento->pueblo->longitude }}&z=15&output=embed">
                     </iframe>
                 </div>
             </div>

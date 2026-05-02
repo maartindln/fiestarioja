@@ -20,7 +20,7 @@
     />
 
     <!-- Lista de pueblos que se actualiza -->
-    <div id="lista-pueblos" class="w-full flex flex-col gap-4">
+    <div id="lista-pueblos" class="w-full flex flex-col gap-4 mb-24">
       <?php echo $__env->make('pueblos.lista', ['pueblos' => $pueblos], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
   </div>

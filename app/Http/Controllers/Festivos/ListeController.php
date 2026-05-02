@@ -18,9 +18,16 @@ class ListeController extends Controller
 
     public function esearch(Request $request)
     {
-        $pueblos = Pueblo::where('name', 'LIKE', '%' . $request->search . '%')->get();
-        $eventos = Event::where('name', 'LIKE', '%' . $request->search . '%')->get();
+        $search = $request->search;
 
-        return view('eventos.lista', compact('eventos', 'pueblos'));
+        $pueblos = Pueblo::where('name', 'LIKE', "%$search%")->get();
+
+        $eventos = Event::where('name', 'LIKE', "%$search%")
+            ->orWhereHas('pueblo', function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%$search%");
+            })
+            ->get();
+
+        return view('festivos.lista', compact('eventos', 'pueblos'));
     }
 }

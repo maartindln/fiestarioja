@@ -1,16 +1,16 @@
 <div x-data="{ open: false }" class="w-full">
-    
+
     <!-- Fila del pueblo (Toda la fila es clickable) -->
     <div @click="open = true" class="group w-full bg-white px-4 py-4 sm:px-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-green-500/50 hover:bg-yellow-500/10 transition-all duration-300 flex justify-between items-center cursor-pointer mb-2">
-        
+
         <div class="flex items-center gap-4 sm:gap-6">
             <!-- Imagen con efecto zoom al pasar el ratón -->
             <div class="overflow-hidden rounded-lg shadow-sm hidden md:block w-20 h-20 sm:w-28 sm:h-28 shrink-0 bg-gray-100">
-                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                     src="{{ $pueblo->image ?? asset('images/placeholder.png') }}" 
+                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                     src="{{ $pueblo->image ?? asset('images/placeholder.png') }}"
                      alt="{{ $pueblo->name }}">
             </div>
-            
+
             <div class="flex flex-col justify-center">
                 <h2 class="sm:text-3xl text-xl font-bold text-green-950 mb-1 group-hover:text-green-800 transition-colors">{{ $pueblo->name }}</h2>
                 <h3 class="sm:text-lg text-sm text-gray-600 font-medium">
@@ -31,10 +31,10 @@
     <!-- Ventana modal -->
     <!-- Usamos x-cloak o style="display: none;" para que no parpadee al cargar la página -->
     <div x-show="open" style="display: none;" x-transition.opacity.duration.300ms class="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4 sm:p-6">
-        
+
         <!-- Contenedor interior con Scroll -->
         <div @click.away="open = false" x-transition.scale.origin.bottom.duration.300ms class="bg-green-950 p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative flex flex-col scrollbar-hide">
-            
+
             <!-- Botón de Cerrar Flotante -->
             <button @click="open = false" class="sticky top-0 float-right ml-auto -mt-2 -mr-2 mb-4 text-green-950 bg-yellow-400 rounded-full w-10 h-10 flex items-center justify-center hover:bg-yellow-300 hover:scale-105 transition-all shadow-lg z-10 text-xl font-bold">
                 ✕
@@ -50,12 +50,12 @@
             <div x-data="{
                     currentImage: 0,
                     images: {{ $pueblo->image ? (is_string($pueblo->image) ? json_encode([$pueblo->image]) : json_encode($pueblo->image)) : '[]' }}
-                }" 
+                }"
                 class="relative mb-8 rounded-xl overflow-hidden shadow-lg bg-green-900/50 group">
-                
+
                 <img :src="images.length > 0 ? images[currentImage] : '{{ asset('images/placeholder.png') }}'"
                      class="w-full h-64 sm:h-80 object-cover transition-all duration-300">
-                
+
                 <!-- Controles del carrusel (solo se muestran si hay más de 1 imagen) -->
                 <template x-if="images.length > 1">
                     <div>
@@ -63,7 +63,7 @@
                             class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 backdrop-blur-sm transition opacity-0 group-hover:opacity-100">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                         </button>
-                        
+
                         <button @click="currentImage = (currentImage === images.length - 1 ? 0 : currentImage + 1)"
                             class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/70 backdrop-blur-sm transition opacity-0 group-hover:opacity-100">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -84,7 +84,7 @@
             <!-- Sección Eventos -->
             <div class="mb-8">
                 <h3 class="text-yellow-400 font-bold mb-4 text-2xl border-b border-green-800 pb-2">Eventos Destacados</h3>
-                
+
                 @if($pueblo->events->count())
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                         @foreach($pueblo->events as $event)
@@ -94,7 +94,7 @@
                                     <div class="px-3 py-1 bg-yellow-400 rounded-md shadow-sm">
                                         <span class="font-bold">Ini:</span> {{ $event->dateIni }}
                                     </div>
-                                    <span class="text-yellow-400 font-bold hidden sm:inline">→</span>
+                                    <i class="fa-solid fa-arrow-right text-yellow-400 flex items-center justify-center"></i>
                                     <div class="px-3 py-1 bg-yellow-400 rounded-md shadow-sm">
                                         <span class="font-bold">Fin:</span> {{ $event->dateFin }}
                                     </div>

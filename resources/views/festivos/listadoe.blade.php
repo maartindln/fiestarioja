@@ -21,7 +21,7 @@
     />
 
     <!-- Lista de eventos que se actualiza -->
-    <div id="lista-eventos" class="w-full flex flex-col gap-4">
+    <div id="lista-eventos" class="w-full flex flex-col gap-4 mb-24">
       @include('festivos.lista', ['eventos' => $events])
     </div>
   </div>

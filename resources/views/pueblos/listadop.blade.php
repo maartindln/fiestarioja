@@ -21,7 +21,7 @@
     />
 
     <!-- Lista de pueblos que se actualiza -->
-    <div id="lista-pueblos" class="w-full flex flex-col gap-4">
+    <div id="lista-pueblos" class="w-full flex flex-col gap-4 mb-24">
       @include('pueblos.lista', ['pueblos' => $pueblos])
     </div>
   </div>
