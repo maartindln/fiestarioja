@@ -163,13 +163,13 @@ function fill_table(month, month_length, indexMonth) {
         <form id="addEvent" method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
             @csrf
             <input placeholder="Nombre del evento" type="text" name="name" required>
-            <label>Fecha inicio:</label>
+            <label class="text-green-950">Fecha inicio:</label>
             <input type="date" name="dateIni" required>
-            <label>Fecha fin:</label>
+            <label class="text-green-950">Fecha fin:</label>
             <input type="date" name="dateFin" required>
-            <label>Cartel:</label>
+            <label class="text-green-950">Cartel:</label>
             <input type="file" name="cartel" accept="image/*,application/pdf">
-            <label>Pueblo:</label>
+            <label class="text-green-950">Pueblo:</label>
             <select name="pueblo_id" required>
                 <option value="">Selecciona un pueblo</option>
                 @foreach($pueblos as $pueblo)
