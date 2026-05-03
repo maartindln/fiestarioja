@@ -12,7 +12,7 @@
     </div>
   <div class="w-full bg-amber-50">
 
-    <div class="w-full px-4 sm:px-8"> 
+    <div class="w-full px-4 sm:px-8">
       <div class="max-w-5xl mx-auto overflow-hidden">
           <video class="w-full h-auto object-cover" autoplay loop muted playsinline>
             <source src="./images/STG_boost.mp4" type="video/mp4">
@@ -115,11 +115,11 @@
   <div class="grid gap-5 mb-8 md:grid-cols-2 lg:grid-cols-3">
 
     <div class="transition-transform duration-300 hover:-translate-y-2">
-        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" class="p-5 bg-white border rounded shadow-sm">
+        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" class="p-5 bg-amber-50 border rounded shadow-sm">
             <div class="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-amber-100 text-yellow-600">
               <i class="fa-solid fa-star text-xl"></i>
             </div>
-            <h6 class="mb-2 font-semibold leading-5">Favoritos</h6>
+            <h6 class="mb-2 font-semibold leading-5 text-green-950">Favoritos</h6>
             <p class="text-sm text-gray-900">
             Guarda las fiestas que no te quieres perder y crea tu propio itinerario personalizado.
             </p>
@@ -128,11 +128,11 @@
 
 
     <div class="transition-transform duration-300 hover:-translate-y-2">
-        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" class="p-5 bg-white border rounded shadow-sm">
+        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" class="p-5 bg-amber-50 border rounded shadow-sm">
             <div class="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-amber-100 text-yellow-600">
             <i class="fa-solid fa-bell text-xl"></i>
             </div>
-            <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
+            <h6 class="mb-2 font-semibold leading-5 text-green-950">Notificaciones</h6>
             <p class="text-sm text-gray-900">
             Recibe notificaciones sobre cambios de fechas o nuevos eventos en tus municipios preferidos.
             </p>
@@ -140,11 +140,11 @@
     </div>
 
     <div class="transition-transform duration-300 hover:-translate-y-2">
-        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" class="p-5 bg-white border rounded shadow-sm">
+        <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" class="p-5 bg-amber-50 border rounded shadow-sm">
             <div class="w-12 h-12 mb-6 flex items-center justify-center rounded-xl bg-amber-100 text-yellow-600">
             <i class="fa-solid fa-users text-xl"></i>
             </div>
-            <h6 class="mb-2 font-semibold leading-5">The doctor said</h6>
+            <h6 class="mb-2 font-semibold leading-5 text-green-950">Comunidad</h6>
             <p class="text-sm text-gray-900">
             Comenta y comparte fotos de las festividades con otros miembros de la comunidad.
             </p>
@@ -152,19 +152,29 @@
     </div>
 
   </div>
-  <div class="text-center">
-    <a href="{{route('register')}}" class="inline-flex items-center justify-center w-full h-12 px-6 font-bold tracking-wide text-green-950 rounded shadow-md md:w-auto bg-yellow-400 hover:bg-yellow-500">
-      REGISTRATE
-    </a>
-  </div>
-</div>
+  @guest
+    <div class="text-center">
+        <a href="{{ route('register') }}"
+        class="inline-flex items-center justify-center w-full h-12 px-6 font-bold tracking-wide text-green-950 rounded shadow-md md:w-auto bg-yellow-400 hover:bg-yellow-500">
+        REGISTRATE
+        </a>
+    </div>
+    @endguest
+    @auth
+    <div class="text-center">
+        <span class="inline-flex items-center justify-center w-full h-12 px-6 font-bold tracking-wide text-green-950 rounded shadow-md md:w-auto bg-amber-50">
+        ¡¡Ya eres parte de la comunidad!!
+        </span>
+    </div>
+    @endauth
+    </div>
 <!-- Contacto -->
 <div id="contacto" class="mb-10"></div>
 <section class="bg-amber-50">
     <div class="relative bg-green-950 pb-20 overflow-hidden">
         <div class="relative z-10 container mx-auto px-4">
             <div class="flex flex-col lg:flex-row justify-between gap-8 py-16">
-                <div class="lg:w-1/2 text-white">
+                <div class="lg:w-1/2 text-amber-50">
                     <h2 class="text-2xl md:text-4xl font-bold mb-3">¿Échas en falta algo?</h2>
                     <p class="text-lg leading-relaxed">
                         Si conoces algun festivo que tendrá lugar en la comunidad y no está publicado háznoslo saber.
@@ -172,8 +182,8 @@
                 </div>
 
                 <div data-aos="fade-left" data-aos-duration="600" class="lg:w-2/5">
-                    <div class="bg-white rounded-xl shadow-lg -mb-24 p-6 md:p-10">
-                        <div class="bg-white rounded-xl p-6 md:p-8">
+                    <div class="bg-amber-50 rounded-xl shadow-lg -mb-24 p-6 md:p-10">
+                        <div class="bg-amber-50 rounded-xl p-6 md:p-8">
                             <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-3">Contáctanos</h2>
                             <p class="text-base text-gray-600 mb-6">
                                 Utiliza el siguiente cuestionario para informarnos de nuevas festividades.
@@ -196,8 +206,8 @@
                                     <textarea name="descripcion" placeholder="Breve descripción" class="w-full bg-blue-100/20 text-gray-800 rounded-lg border border-transparent focus:border-blue-300 focus:outline-none px-4 py-3" rows="3"></textarea>
                                 </div>
                                 <div class="text-end">
-                                    <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-green-950 font-bold px-6 py-3 rounded-lg transition">
-                                        <i class="fa-solid fa-paper-plane mr-4 text-green-950"></i>ENVIAR
+                                    <button type="submit" class="bg-green-950 hover:bg-green-800 text-yellow-400 hover:text-yellow-500 font-bold px-6 py-3 rounded-lg transition">
+                                        <i class="fa-solid fa-paper-plane mr-4 text-yellow-400 hover:text-yellow-500"></i>ENVIAR
                                     </button>
                                 </div>
                             </form>

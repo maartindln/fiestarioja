@@ -420,10 +420,14 @@
 	 box-sizing: border-box;
 	 -moz-box-sizing: border-box;
 	 -webkit-box-sizing: border-box;
+     color: #052E16;
 }
  input::-ms-expand, textarea::-ms-expand, select::-ms-expand {
 	 display: none;
 }
  input {
 	 height: 40px;
+}
+input::placeholder {
+    color: #052E16;
 }
