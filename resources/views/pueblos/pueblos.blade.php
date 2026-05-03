@@ -29,7 +29,6 @@
     </div>
 
     <!-- Ventana modal -->
-    <!-- Usamos x-cloak o style="display: none;" para que no parpadee al cargar la página -->
     <div x-show="open" style="display: none;" x-transition.opacity.duration.300ms class="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4 sm:p-6">
 
         <!-- Contenedor interior con Scroll -->
