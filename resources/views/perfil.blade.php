@@ -4,18 +4,18 @@
 @section('content')
 <!-- Contenedor principal con fondo oscuro -->
 <div class="w-full min-h-screen bg-green-950 py-12 px-4 sm:px-6 lg:px-8 font-sans text-gray-100 flex justify-center items-start">
-    
+
     <!-- Tarjeta Principal del Perfil -->
     <div class="w-full max-w-2xl bg-green-900/40 backdrop-blur-md p-8 sm:p-12 rounded-3xl shadow-2xl border border-green-800/50 mt-4 sm:mt-10 animate__animated animate__fadeIn">
-        
+
         <!-- Cabecera y Avatar -->
         <div class="flex flex-col items-center justify-center mb-10">
             <h2 class="text-3xl font-extrabold tracking-tight text-yellow-400 drop-shadow-md mb-8">Mi Perfil</h2>
-            
+
             <div class="relative group">
                 <!-- Anillo decorativo animado al hacer hover -->
                 <div class="absolute -inset-1 bg-gradient-to-r from-yellow-400 to-green-500 rounded-full blur opacity-25 group-hover:opacity-60 transition duration-500"></div>
-                
+
                 @if (Auth::user()->avatar)
                     <img id="profilePic" src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Avatar de {{ Auth::user()->name }}"
                          class="relative object-cover w-40 h-40 rounded-full cursor-pointer border-4 border-green-950 shadow-xl transition-transform duration-300 group-hover:scale-105">
@@ -23,7 +23,7 @@
                     <img id="profilePic" src="{{ asset('images/default-profile.jpg') }}" alt="Avatar por defecto"
                          class="relative object-cover w-40 h-40 rounded-full cursor-pointer border-4 border-green-950 shadow-xl transition-transform duration-300 group-hover:scale-105">
                 @endif
-                
+
                 <!-- Icono de cámara superpuesto -->
                 <div class="absolute bottom-2 right-2 bg-yellow-400 p-2.5 rounded-full text-green-950 shadow-lg pointer-events-none group-hover:scale-110 transition-transform duration-300 border-2 border-green-950">
                     <i class="fa-solid fa-camera"></i>
@@ -35,9 +35,9 @@
         <!-- Formulario de Datos del Usuario -->
         <form id="perfilForm" action="{{ route('edit') }}" method="POST" class="w-full flex flex-col gap-5">
             @csrf
-            
+
             <h3 class="font-bold text-xl text-yellow-400/90 border-b border-green-800/50 pb-2 mb-2">Datos de usuario</h3>
-            
+
             <!-- Campo de Usuario -->
             <div>
                 <label class="block text-sm font-semibold text-yellow-400/90 ml-1 mb-1">Usuario</label>
@@ -102,7 +102,7 @@
 
             <!-- Controles / Botones -->
             <div class="flex flex-col sm:flex-row items-center gap-4 mt-6 pt-6 border-t border-green-800/50">
-                
+
                 <!-- Botón Editar / Cancelar -->
                 <button type="button" id="btnToggleEdit" class="mx-auto block group flex justify-center items-center gap-2 w-full sm:w-1/2 rounded-xl bg-green-900 border border-green-700 px-4 py-3.5 text-base font-bold text-yellow-400 hover:bg-green-800 hover:border-yellow-400 transition-all duration-300">
                     <span id="btnToggleText">Editar Perfil</span>
@@ -123,7 +123,7 @@
 <div id="uploadModal" class="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300">
     <div class="bg-green-900 border border-green-800 rounded-3xl p-8 w-full max-w-sm shadow-2xl transform scale-95 transition-transform duration-300" id="modalContent">
         <h3 class="text-2xl font-extrabold text-yellow-400 mb-6 text-center">Actualizar Avatar</h3>
-        
+
         <form id="uploadForm" enctype="multipart/form-data" action="{{ route('perfil.update-avatar') }}" method="POST" class="flex flex-col gap-6">
             @csrf
             <div class="relative">
@@ -133,7 +133,7 @@
                     <span class="text-sm font-medium text-green-300 group-hover:text-amber-50" id="fileName">Seleccionar imagen</span>
                 </label>
             </div>
-            
+
             <div class="flex justify-between gap-4 mt-2">
                 <button type="button" id="cancelBtn" class="w-1/2 py-2.5 rounded-xl font-bold text-green-200 bg-green-950 hover:bg-green-800 hover:text-white transition-colors">
                     Cancelar
@@ -155,12 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnToggleText = document.getElementById('btnToggleText');
     const btnToggleIcon = document.getElementById('btnToggleIcon');
     const btnGuardar = document.getElementById('btnGuardar');
-    
+
     const inputs = document.querySelectorAll('.perfil-input');
     const clearBtns = document.querySelectorAll('.btn-clear');
     const eyeBtns = document.querySelectorAll('.btn-eye');
     const passwordGroups = document.querySelectorAll('.password-group');
-    
+
     let isEditing = false;
 
     btnToggleEdit.addEventListener('click', function(e) {
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnToggleIcon.className = 'fa-solid fa-xmark group-hover:scale-110 transition-transform';
             btnToggleEdit.classList.replace('text-yellow-400', 'text-red-400');
             btnToggleEdit.classList.replace('hover:border-yellow-400', 'hover:border-red-400');
-            
+
             btnGuardar.classList.remove('hidden');
 
             // Habilitar inputs y cambiar estilos
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnToggleIcon.className = 'fa-solid fa-pen-to-square group-hover:scale-110 transition-transform';
             btnToggleEdit.classList.replace('text-red-400', 'text-yellow-400');
             btnToggleEdit.classList.replace('hover:border-red-400', 'hover:border-yellow-400');
-            
+
             btnGuardar.classList.add('hidden');
 
             // Deshabilitar inputs
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 input.disabled = true;
                 input.classList.add('bg-green-950/80', 'border-transparent', 'text-gray-400', 'cursor-not-allowed');
                 input.classList.remove('bg-green-950', 'border-green-600', 'text-amber-50', 'focus:border-yellow-400', 'focus:ring-2', 'focus:ring-yellow-400/30');
-                
+
                 // Si es contraseña, resetear valor al cancelar
                 if(input.type === 'password' || input.name === 'contrasena') {
                     input.value = '';
@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     cancelBtn.addEventListener('click', closeModal);
-    
+
     // Cerrar al hacer clic fuera del modal
     uploadModal.addEventListener('click', (e) => {
         if (e.target === uploadModal) closeModal();

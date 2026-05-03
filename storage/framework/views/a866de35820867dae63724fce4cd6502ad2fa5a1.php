@@ -25,13 +25,13 @@
             <span class="text-yellow-400 font-bold">ADMIN</span>
             <li class="mb-1 group">
                 <a href="<?php echo e(route('admin')); ?>" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="fa-regular fa-house mr-3 text-lg"></i>
+                    <i class="fa-solid fa-house mr-3 text-lg"></i>
                     <span class="text-sm">General</span>
                 </a>
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
-                    <i class="fa-regular fa-user mr-3 text-lg"></i>
+                    <i class="fa-solid fa-user mr-3 text-lg"></i>
                     <span class="text-sm">Usuarios</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
@@ -46,7 +46,7 @@
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
-                    <i class="fa-regular fa-map mr-3 text-lg"></i>
+                    <i class="fa-solid fa-map mr-3 text-lg"></i>
                     <span class="text-sm">Pueblos</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
@@ -61,7 +61,7 @@
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-yellow-200 hover:bg-yellow-200 hover:text-green-950 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-green-950 group-[.selected]:bg-yellow-200 group-[.selected]:text-green-950 sidebar-dropdown-toggle">
-                    <i class="fa-regular fa-calendar mr-3 text-lg"></i>
+                    <i class="fa-solid fa-calendar mr-3 text-lg"></i>
                     <span class="text-sm">Eventos</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
@@ -103,7 +103,7 @@
                 <li class="dropdown ml-3">
                     <button type="button" class="dropdown-toggle flex items-center">
                         <div class="flex-shrink-0 w-10 h-10 relative">
-                            <div class="p-1 bg-white rounded-full focus:outline-none focus:ring">
+                            <div class="p-1 bg-green-950 rounded-full focus:outline-none focus:ring">
                                 <?php if(Auth::user()->avatar): ?>
                                     <img class="w-8 h-8 rounded-full" src="<?php echo e(asset('storage/' . Auth::user()->avatar)); ?>" alt="User"/>
                                 <?php else: ?>
