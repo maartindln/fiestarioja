@@ -65,6 +65,11 @@ class AdminController extends Controller
         }
     }
 
+    public function registrarpueblo()
+    {
+        return view('admin.registrarpueblo'); 
+    }
+
    public function updatePueblo(Request $request, $id)
     {
         try {
@@ -91,10 +96,17 @@ class AdminController extends Controller
         }
     }
 
+    public function registrarevento()
+    {
+        $pueblos = \App\Models\Pueblo::all(); 
+        return view('admin.registrarevento', compact('pueblos'));
+    }
     public function allevents()
     {
-        $events = Event::all();
-        return view('admin.allevents')->with('events', $events);
+        $events = Event::with('pueblo')->get(); 
+        $pueblos = \App\Models\Pueblo::all(); 
+
+        return view('admin.allevents', compact('events', 'pueblos'));
     }
 
      public function updateEvent(Request $request, $id)

@@ -1,11 +1,16 @@
 @extends('admin/admin')
-@section('titulo', 'Usuarios')
+@section('titulo', 'Eventos')
 @section('content')
 <div class="p-6">
     <div class="max-w-7xl mx-auto">
-        <div class="mb-6">
-            <div class="text-sm text-gray-500 uppercase tracking-wide">Eventos</div>
-            <h2 class="text-2xl font-bold text-gray-900">Organiza los eventos que hay programados</h2>
+        <div class="mb-6 flex justify-between items-center">
+            <div>
+                <div class="text-sm text-gray-500 uppercase tracking-wide">Eventos</div>
+                <h2 class="text-2xl font-bold text-gray-900">Organiza los eventos que hay programados</h2>
+            </div>
+            <a href="{{ route('admin.registrarevento') }}" class="bg-yellow-400 text-green-950 px-4 py-2 rounded-lg font-bold shadow-md hover:bg-yellow-300 transition">
+                <i class="fa-solid fa-plus mr-2"></i>NUEVO EVENTO
+            </a>
         </div>
 
         <div class="bg-white rounded-lg shadow">
@@ -29,55 +34,79 @@
                     </thead>
                     <tbody>
                         @foreach ($events as $event)
-                            <tr id="user-{{ $event->id }}" class="hover:bg-gray-50">
+                            <tr id="event-row-{{ $event->id }}" class="hover:bg-gray-50">
                                 <td class="px-4 py-2 text-center border">{{ $event->id }}</td>
-                                <td class="px-4 py-2 text-center border" id="user-name-{{ $event->id }}">
+                                
+                                <!-- Pueblo -->
+                                <td class="px-4 py-2 text-center border" id="event-pueblo-{{ $event->id }}">
                                     <span>{{ $event->pueblo->name }}</span>
+                                    <select id="edit-pueblo-{{ $event->id }}" class="hidden w-full border rounded px-1 py-1 text-sm">
+                                        @foreach($pueblos as $pueblo)
+                                            <option value="{{ $pueblo->id }}" {{ $event->pueblo_id == $pueblo->id ? 'selected' : '' }}>
+                                                {{ $pueblo->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </td>
-                                <td class="px-4 py-2 text-center border" id="user-email-{{ $event->id }}">
+
+                                <!-- Nombre -->
+                                <td class="px-4 py-2 text-center border" id="event-name-{{ $event->id }}">
                                     <span>{{ $event->name }}</span>
+                                    <input type="text" id="edit-name-{{ $event->id }}" value="{{ $event->name }}" 
+                                        class="hidden w-full border rounded px-1 py-1 text-sm text-center">
                                 </td>
-                                <td class="px-4 py-2 text-center border">
+
+                                <!-- Fecha Inicio -->
+                                <td class="px-4 py-2 text-center border" id="event-dateIni-{{ $event->id }}">
                                     <span>{{ $event->dateIni }}</span>
+                                    <input type="date" id="edit-dateIni-{{ $event->id }}" value="{{ $event->dateIni }}" 
+                                        class="hidden w-full border rounded px-1 py-1 text-sm text-center">
                                 </td>
-                                <td class="px-4 py-2 text-center border">
+
+                                <!-- Fecha Fin -->
+                                <td class="px-4 py-2 text-center border" id="event-dateFin-{{ $event->id }}">
                                     <span>{{ $event->dateFin }}</span>
+                                    <input type="date" id="edit-dateFin-{{ $event->id }}" value="{{ $event->dateFin }}" 
+                                        class="hidden w-full border rounded px-1 py-1 text-sm text-center">
                                 </td>
+
+                                <!-- Cartel -->
                                 <td class="px-4 py-2 text-center border">
-                                    <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank" class="text-blue-600 underline">
-                                        <span>{{ $event->cartel }}</span>
+                                    <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank" class="text-blue-600 underline text-xs">
+                                        {{ Str::limit($event->cartel, 15) }}
                                     </a>
                                 </td>
+
                                 <td class="px-4 py-2 text-center border">
                                     <div class="flex justify-center gap-4" id="icons-{{ $event->id }}">
-                                        <button onclick="toggleEditFields({{ $event->id }})" class="text-blue-600 hover:text-blue-800 transition">
-                                            <i class="fa-solid fa-pen-to-square animate__animated fs-5"
-                                                onmouseover="this.classList.add('animate__swing');"
-                                                onanimationend="this.classList.remove('animate__swing');"></i>
+                                        <button onclick="toggleEditFields({{ $event->id }})" class="text-blue-600 hover:text-blue-800">
+                                            <i class="fa-solid fa-pen-to-square fs-5"></i>
                                         </button>
-                                        <button onclick="confirmDelete({{ $event->id }})" class="text-red-600 hover:text-red-800 transition">
-                                            <i class="fa-solid fa-trash animate__animated fs-5"
-                                                onmouseover="this.classList.add('animate__swing');"
-                                                onanimationend="this.classList.remove('animate__swing');"></i>
+                                        <button onclick="confirmDelete({{ $event->id }})" class="text-red-600 hover:text-red-800">
+                                            <i class="fa-solid fa-trash fs-5"></i>
                                         </button>
                                     </div>
+
+                                    <!-- Botones de Guardar/Cancelar -->
+                                    <div id="save-actions-{{ $event->id }}" class="hidden flex flex-col gap-1 items-center">
+                                        <button class="px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700 w-full"
+                                            onclick="saveChanges({{ $event->id }})">Guardar</button>
+                                        <button class="text-xs text-gray-500 hover:underline" 
+                                            onclick="toggleEditFields({{ $event->id }})">Cancelar</button>
+                                    </div>
+
+                                    <!-- Formulario para Eliminar -->
                                     <form id="delete-form-{{ $event->id }}" action="{{ route('delete-event', $event->id) }}" method="POST" class="hidden">
-                                        @csrf
-                                        @method('DELETE')
+                                        @csrf @method('DELETE')
                                     </form>
 
-                                    <!-- Guardar cambios -->
-                                    <button class="hidden mt-2 px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
-                                        id="save-{{ $event->id }}" onclick="saveChanges({{ $event->id }})">
-                                        Guardar
-                                    </button>
-
-                                    <!-- Formulario oculto -->
-                                    <form id="update-form-{{ $event->id }}" action="{{ route('users.update', $event->id) }}" method="POST" class="hidden">
-                                        @csrf
-                                        <input type="hidden" name="name" id="hidden-name-{{ $event->id }}" value="{{ $event->name }}">
-                                        <input type="hidden" name="email" id="hidden-email-{{ $event->id }}" value="{{ $event->email }}">
-                                        <input type="hidden" name="role" id="hidden-role-{{ $event->id }}" value="{{ $event->role }}">
+                                    <!-- Formulario oculto para Update -->
+                                    <form id="update-form-{{ $event->id }}" action="{{ route('events.update', $event->id) }}" method="POST" class="hidden">
+                                        @csrf @method('PUT')
+                                        <input type="hidden" name="name" id="hidden-name-{{ $event->id }}">
+                                        <input type="hidden" name="pueblo_id" id="hidden-pueblo-{{ $event->id }}">
+                                        <input type="hidden" name="dateIni" id="hidden-dateIni-{{ $event->id }}">
+                                        <input type="hidden" name="dateFin" id="hidden-dateFin-{{ $event->id }}">
                                     </form>
                                 </td>
                             </tr>
@@ -88,94 +117,58 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function confirmDelete(itemId) {
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡Esta acción no se puede deshacer!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar',
-            buttonsStyling: false,
-            customClass: {
-                confirmButton: 'bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded mr-2',
-                cancelButton:'bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded'
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form-' + itemId).submit();
-            } else {
-                Swal.fire({
-                    title: 'Cancelado',
-                    text: 'La acción ha sido cancelada',
-                    icon: 'error',
-                    confirmButtonText: 'Entendido',
-                    buttonsStyling: false,
-                    customClass: {
-                        confirmButton: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded'
-                    }
-                });
-            }
-        });
-    }
+    function toggleEditFields(id) {
+        const row = document.getElementById('event-row-' + id);
+        const spans = row.querySelectorAll('span');
+        const inputs = row.querySelectorAll('input, select');
+        const iconsDiv = document.getElementById('icons-' + id);
+        const saveActions = document.getElementById('save-actions-' + id);
 
-    function toggleEditFields(userId) {
-        const nameCell = document.getElementById('user-name-' + userId);
-        const emailCell = document.getElementById('user-email-' + userId);
-        const roleCell = document.getElementById('user-role-' + userId);
-        const iconsDiv = document.getElementById('icons-' + userId);
-        const saveButton = document.getElementById('save-' + userId);
+        const isEditing = iconsDiv.classList.contains('hidden');
 
-        const nameSpan = nameCell.querySelector('span');
-        const emailSpan = emailCell.querySelector('span');
-        const roleSpan = roleCell.querySelector('span');
-
-        const nameInput = nameCell.querySelector('input');
-        const emailInput = emailCell.querySelector('input');
-        const roleSelect = roleCell.querySelector('select');
-
-        // Alternar entre mostrar inputs/select y spans
-        if (nameInput.style.display === "none" && emailInput.style.display === "none" && roleSelect.style.display ===
-                "none") {
-            // Mostrar inputs y select, ocultar spans
-            nameInput.style.display = "inline-block";
-            emailInput.style.display = "inline-block";
-            roleSelect.style.display = "inline-block";
-            nameSpan.style.display = "none";
-            emailSpan.style.display = "none";
-            roleSpan.style.display = "none";
-
-            iconsDiv.style.display = "none";
-            saveButton.style.display = "inline-block";
+        if (!isEditing) {
+            // Entrar en modo edición
+            spans.forEach(s => s.classList.add('hidden'));
+            inputs.forEach(i => i.classList.remove('hidden'));
+            iconsDiv.classList.add('hidden');
+            saveActions.classList.remove('hidden');
         } else {
-            // Ocultar inputs y select, mostrar spans
-            nameInput.style.display = "none";
-            emailInput.style.display = "none";
-            roleSelect.style.display = "none";
-            nameSpan.style.display = "inline-block";
-            emailSpan.style.display = "inline-block";
-            roleSpan.style.display = "inline-block";
-
-            iconsDiv.style.display = "flex";
-            saveButton.style.display = "none";
+            // Salir de modo edición
+            spans.forEach(s => s.classList.remove('hidden'));
+            inputs.forEach(i => i.classList.add('hidden'));
+            iconsDiv.classList.remove('hidden');
+            saveActions.classList.add('hidden');
         }
     }
 
-    function saveChanges(userId) {
-        // Obtener los valores de los inputs y select
-        const nameInput = document.getElementById('edit-name-' + userId);
-        const emailInput = document.getElementById('edit-email-' + userId);
-        const roleSelect = document.getElementById('edit-role-' + userId);
+    function saveChanges(id) {
+        // Mapear valores de los inputs a los campos ocultos del form
+        document.getElementById('hidden-name-' + id).value = document.getElementById('edit-name-' + id).value;
+        document.getElementById('hidden-pueblo-' + id).value = document.getElementById('edit-pueblo-' + id).value;
+        document.getElementById('hidden-dateIni-' + id).value = document.getElementById('edit-dateIni-' + id).value;
+        document.getElementById('hidden-dateFin-' + id).value = document.getElementById('edit-dateFin-' + id).value;
 
-        // Actualizar los campos ocultos en el formulario
-        document.getElementById('hidden-name-' + userId).value = nameInput.value;
-        document.getElementById('hidden-email-' + userId).value = emailInput.value;
-        document.getElementById('hidden-role-' + userId).value = roleSelect.value;
+        document.getElementById('update-form-' + id).submit();
+    }
 
-        // Enviar el formulario tradicional para actualizar el usuario
-        document.getElementById('update-form-' + userId).submit();
+    function confirmDelete(id) {
+        Swal.fire({
+            title: '¿Eliminar evento?',
+            text: "Se borrará permanentemente",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, borrar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
     }
 </script>
 @endsection

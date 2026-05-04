@@ -43,6 +43,7 @@ class EventsController extends Controller
 
         $request->validate([
             'name' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
             'dateIni' => 'sometimes|required|date',
             'dateFin' => 'sometimes|required|date|after_or_equal:dateIni',
             'cartel' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -51,14 +52,18 @@ class EventsController extends Controller
 
         if ($request->hasFile('cartel')) {
             if ($event->cartel) {
-                Storage::disk('public')->delete($event->cartel);
+                // Asegúrate de borrar la ruta correcta
+                Storage::disk('public')->delete('carteles/' . $event->cartel);
             }
-            $event->cartel = $request->file('cartel')->store('carteles', 'public');
+            $file = $request->file('cartel');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->storeAs('public/carteles', $filename);
+            $event->cartel = $filename;
         }
 
         $event->update($request->only(['name','dateIni','dateFin','pueblo_id']));
 
-        return response()->json($event);
+        return redirect()->back()->with('success', 'Evento actualizado correctamente');
     }
 
     // Eliminar un evento
@@ -67,11 +72,11 @@ class EventsController extends Controller
         $event = Event::findOrFail($id);
 
         if ($event->cartel) {
-            Storage::disk('public')->delete($event->cartel);
+            Storage::disk('public')->delete('carteles/' . $event->cartel);
         }
 
         $event->delete();
 
-        return response()->json(['message' => 'Evento eliminado']);
+        return redirect()->back()->with('success', 'Evento eliminado correctamente');
     }
 }

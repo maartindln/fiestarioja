@@ -18,13 +18,9 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
+// Rutas Públicas Principales
 Route::get('/', [HomeController::class, 'inicio'])->name('index');
 Route::post('/mails/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 
@@ -33,39 +29,48 @@ Route::get('/politicas/terminos', [PrivController::class, 'terminos'])->name('te
 
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 
-// Pueblos
+// Pueblos (Vistas Públicas) - Manejadas por ListpController
 Route::get('/listadop', [ListpController::class, 'listadop'])->name('listp');
 Route::get('/listadop/search', [ListpController::class, 'psearch'])->name('pueblos.search');
-Route::get('/pueblos', [PueblosController::class, 'indexp']);
-Route::get('/pueblos/{id}', [PueblosController::class, 'showp']);
+Route::get('/pueblos/{id}', [PueblosController::class, 'showp']); // Detalle individual
 
-// Festivos
+// Festivos/Eventos (Vistas Públicas)
 Route::get('/listadoe', [ListeController::class, 'listadoe'])->name('liste');
 Route::get('/listadoe/search', [ListeController::class, 'esearch'])->name('eventos.search');
-Route::get('/eventos', [FestivosController::class, 'indexe']);
 Route::get('/eventos/{id}', [FestivosController::class, 'showe']);
 
-// Perfil
-Route::get('/perfil',[PerfilController::class,'perfil'])->name('perfil')->middleware('auth');
-Route::post('perfil/perfil-edit', [PerfilController::class, 'edit'])->name('edit')->middleware('auth');
-Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->name('perfil.update-avatar')->middleware('auth');
+// Perfil y Autenticación de Usuario
+Route::middleware('auth')->group(function () {
+    Route::get('/perfil', [PerfilController::class, 'perfil'])->name('perfil');
+    Route::post('perfil/perfil-edit', [PerfilController::class, 'edit'])->name('edit');
+    Route::post('/perfil/update-avatar', [UserController::class, 'updateAvatar'])->name('perfil.update-avatar');
+});
 
-// Eventos
-Route::post('/events', [EventsController::class, 'store'])->name('events.store')->middleware('admin');
-Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('admin');
-Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('admin');
+// --- ZONA ADMIN (Protegida por Middleware auth y admin) ---
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    
+    Route::get('/', [AdminController::class, 'admin'])->name('admin');
 
-// Admin
-Route::get('/admin', [AdminController::class, 'admin'])->name('admin')->middleware('admin');
-Route::get('/admin/users', [AdminController::class, 'allusers'])->name('allusers')->middleware('admin');
-Route::get('/admin/registeruser', [AdminController::class, 'registeruser'])->name('registeruser')->middleware('admin');
-Route::get('/admin/pueblos', [AdminController::class, 'allpueblos'])->name('allpueblos')->middleware('admin');
-Route::post('/admin/update-user/{id}', [AdminController::class, 'updateUser'])->name('users.update')->middleware('admin');
-Route::delete('/admin/users/{id}', [AdminController::class, 'destroyUser'])->name('delete-user')->middleware('admin');
-Route::post('/admin/update-pueblo/{id}', [AdminController::class, 'updatePueblo'])->name('pueblo.update')->middleware('admin');
-Route::delete('/admin/pueblo/{id}', [AdminController::class, 'destroyPueblo'])->name('delete-pueblo')->middleware('admin');
-Route::get('/admin/eventos', [AdminController::class, 'allevents'])->name('allevents')->middleware('admin');
-Route::post('/admin/update-event/{id}', [AdminController::class, 'updateEvent'])->name('Event.update')->middleware('admin');
-Route::delete('/admin/eventos/{id}', [AdminController::class, 'destroyEvent'])->name('delete-event')->middleware('admin');
+    // Gestión de Usuarios
+    Route::get('/users', [AdminController::class, 'allusers'])->name('allusers');
+    Route::get('/registeruser', [AdminController::class, 'registeruser'])->name('registeruser');
+    Route::post('/update-user/{id}', [AdminController::class, 'updateUser'])->name('users.update');
+    Route::delete('/users/{id}', [AdminController::class, 'destroyUser'])->name('delete-user');
+
+    // Gestión de Pueblos - Acciones procesadas por PueblosController
+    Route::get('/pueblos', [AdminController::class, 'allpueblos'])->name('allpueblos');
+    Route::get('/registrarpueblo', [AdminController::class, 'registrarpueblo'])->name('admin.registrarpueblo');
+    Route::post('/registrarpueblo', [PueblosController::class, 'store'])->name('pueblos.store');
+    Route::put('/update-pueblo/{id}', [PueblosController::class, 'update'])->name('pueblos.update');
+    Route::delete('/pueblo/{id}', [PueblosController::class, 'destroy'])->name('delete-pueblo');
+
+    // Gestión de Eventos - Acciones procesadas por EventsController
+    Route::get('/eventos', [AdminController::class, 'allevents'])->name('allevents');
+    Route::get('/registrarevento', [AdminController::class, 'registrarevento'])->name('admin.registrarevento');
+    Route::post('/eventos', [EventsController::class, 'store'])->name('events.store');
+    Route::put('/update-event/{id}', [EventsController::class, 'update'])->name('events.update');
+    Route::delete('/eventos/{id}', [EventsController::class, 'destroy'])->name('delete-event');
+
+});
 
 Auth::routes();

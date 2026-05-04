@@ -6,8 +6,12 @@
         <div class="flex items-center gap-4 sm:gap-6">
             <!-- Imagen con efecto zoom al pasar el ratón -->
             <div class="overflow-hidden rounded-lg shadow-sm hidden md:block w-20 h-20 sm:w-28 sm:h-28 shrink-0 bg-gray-100">
+                @php
+                    // Solución al error de la imagen 575a99.jpg: validamos que sea string antes de imprimir
+                    $thumb = is_string($pueblo->image) ? asset('storage/pueblos/' . $pueblo->image) : asset('images/placeholder.png');
+                @endphp
                 <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                     src="{{ $pueblo->image ?? asset('images/placeholder.png') }}"
+                     src="{{ $thumb }}"
                      alt="{{ $pueblo->name }}">
             </div>
 
@@ -29,7 +33,11 @@
     </div>
 
     <!-- Ventana modal -->
-    <div x-show="open" style="display: none;" x-transition.opacity.duration.300ms class="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4 sm:p-6">
+    <div x-show="open" 
+         x-cloak 
+         style="display: none;" 
+         x-transition.opacity.duration.300ms 
+         class="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4 sm:p-6">
 
         <!-- Contenedor interior con Scroll -->
         <div @click.away="open = false" x-transition.scale.origin.bottom.duration.300ms class="bg-green-950 p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative flex flex-col scrollbar-hide">
@@ -42,20 +50,32 @@
             <!-- Cabecera -->
             <div class="mb-6">
                 <h2 class="text-amber-50 text-3xl sm:text-4xl font-extrabold mb-3">{{ $pueblo->name }}</h2>
-                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">{{ $pueblo->description ?? 'Descripción del pueblo no disponible en este momento.' }}</p>
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed">{{ $pueblo->como_llegar ?? 'Descripción del pueblo no disponible en este momento.' }}</p>
             </div>
 
             <!-- Carrusel Alpine.js -->
+            @php
+                // Preparamos el array de imágenes para Alpine evitando errores de codificación
+                $images = [];
+                if ($pueblo->image) {
+                    if (is_array($pueblo->image)) {
+                        foreach($pueblo->image as $img) { $images[] = asset('storage/pueblos/' . $img); }
+                    } else {
+                        $images[] = asset('storage/pueblos/' . $pueblo->image);
+                    }
+                }
+            @endphp
+
             <div x-data="{
                     currentImage: 0,
-                    images: {{ $pueblo->image ? (is_string($pueblo->image) ? json_encode([$pueblo->image]) : json_encode($pueblo->image)) : '[]' }}
+                    images: {{ json_encode($images) }}
                 }"
                 class="relative mb-8 rounded-xl overflow-hidden shadow-lg bg-green-900/50 group">
 
                 <img :src="images.length > 0 ? images[currentImage] : '{{ asset('images/placeholder.png') }}'"
                      class="w-full h-64 sm:h-80 object-cover transition-all duration-300">
 
-                <!-- Controles del carrusel (solo se muestran si hay más de 1 imagen) -->
+                <!-- Controles del carrusel -->
                 <template x-if="images.length > 1">
                     <div>
                         <button @click="currentImage = (currentImage === 0 ? (images.length - 1) : currentImage - 1)"
@@ -68,7 +88,6 @@
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
 
-                        <!-- Indicadores (Puntitos) -->
                         <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2 bg-black/30 px-3 py-1.5 rounded-full backdrop-blur-sm">
                             <template x-for="(img, index) in images" :key="index">
                                 <button @click="currentImage = index"
