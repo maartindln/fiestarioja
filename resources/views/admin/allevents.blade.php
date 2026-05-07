@@ -8,7 +8,7 @@
                 <div class="text-sm text-gray-500 uppercase tracking-wide">Eventos</div>
                 <h2 class="text-2xl font-bold text-gray-900">Organiza los eventos que hay programados</h2>
             </div>
-            <a href="{{ route('admin.registrarevento') }}" class="bg-yellow-400 text-green-950 px-4 py-2 rounded-lg font-bold shadow-md hover:bg-yellow-300 transition">
+            <a href="{{ route('registerevent') }}" class="bg-yellow-400 text-green-950 px-4 py-2 rounded-lg font-bold shadow-md hover:bg-yellow-300 transition">
                 <i class="fa-solid fa-plus mr-2"></i>NUEVO EVENTO
             </a>
         </div>
@@ -36,7 +36,7 @@
                         @foreach ($events as $event)
                             <tr id="event-row-{{ $event->id }}" class="hover:bg-gray-50">
                                 <td class="px-4 py-2 text-center border">{{ $event->id }}</td>
-                                
+
                                 <!-- Pueblo -->
                                 <td class="px-4 py-2 text-center border" id="event-pueblo-{{ $event->id }}">
                                     <span>{{ $event->pueblo->name }}</span>
@@ -52,21 +52,21 @@
                                 <!-- Nombre -->
                                 <td class="px-4 py-2 text-center border" id="event-name-{{ $event->id }}">
                                     <span>{{ $event->name }}</span>
-                                    <input type="text" id="edit-name-{{ $event->id }}" value="{{ $event->name }}" 
+                                    <input type="text" id="edit-name-{{ $event->id }}" value="{{ $event->name }}"
                                         class="hidden w-full border rounded px-1 py-1 text-sm text-center">
                                 </td>
 
                                 <!-- Fecha Inicio -->
                                 <td class="px-4 py-2 text-center border" id="event-dateIni-{{ $event->id }}">
                                     <span>{{ $event->dateIni }}</span>
-                                    <input type="date" id="edit-dateIni-{{ $event->id }}" value="{{ $event->dateIni }}" 
+                                    <input type="date" id="edit-dateIni-{{ $event->id }}" value="{{ $event->dateIni }}"
                                         class="hidden w-full border rounded px-1 py-1 text-sm text-center">
                                 </td>
 
                                 <!-- Fecha Fin -->
                                 <td class="px-4 py-2 text-center border" id="event-dateFin-{{ $event->id }}">
                                     <span>{{ $event->dateFin }}</span>
-                                    <input type="date" id="edit-dateFin-{{ $event->id }}" value="{{ $event->dateFin }}" 
+                                    <input type="date" id="edit-dateFin-{{ $event->id }}" value="{{ $event->dateFin }}"
                                         class="hidden w-full border rounded px-1 py-1 text-sm text-center">
                                 </td>
 
@@ -91,7 +91,7 @@
                                     <div id="save-actions-{{ $event->id }}" class="hidden flex flex-col gap-1 items-center">
                                         <button class="px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700 w-full"
                                             onclick="saveChanges({{ $event->id }})">Guardar</button>
-                                        <button class="text-xs text-gray-500 hover:underline" 
+                                        <button class="text-xs text-gray-500 hover:underline"
                                             onclick="toggleEditFields({{ $event->id }})">Cancelar</button>
                                     </div>
 
@@ -154,19 +154,33 @@
         document.getElementById('update-form-' + id).submit();
     }
 
-    function confirmDelete(id) {
+    function confirmDelete(itemId) {
         Swal.fire({
-            title: '¿Eliminar evento?',
-            text: "Se borrará permanentemente",
+            title: '¿Estás seguro?',
+            text: "¡Esta acción no se puede deshacer!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Sí, borrar',
-            cancelButtonText: 'Cancelar'
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar',
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded mr-2',
+                cancelButton:'bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded'
+            }
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('delete-form-' + id).submit();
+                document.getElementById('delete-form-' + itemId).submit();
+            } else {
+                Swal.fire({
+                    title: 'Cancelado',
+                    text: 'La acción ha sido cancelada',
+                    icon: 'error',
+                    confirmButtonText: 'Entendido',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded'
+                    }
+                });
             }
         });
     }

@@ -1,6 +1,5 @@
 @extends('admin/admin')
 @section('titulo', 'Gestión de Pueblos')
-
 @section('content')
 <div class="p-6">
     <div class="max-w-7xl mx-auto">
@@ -9,7 +8,7 @@
                 <div class="text-sm text-gray-500 uppercase tracking-wide">Pueblos</div>
                 <h2 class="text-2xl font-bold text-gray-900">Organiza los pueblos con los que trabajas</h2>
             </div>
-            <a href="{{ route('admin.registrarpueblo') }}" class="bg-yellow-400 text-green-950 px-4 py-2 rounded-lg font-bold shadow-md hover:bg-yellow-300 transition">
+            <a href="{{ route('registerpueblo') }}" class="bg-yellow-400 text-green-950 px-4 py-2 rounded-lg font-bold shadow-md hover:bg-yellow-300 transition">
                 <i class="fa-solid fa-plus mr-2"></i>NUEVO PUEBLO
             </a>
         </div>
@@ -34,25 +33,25 @@
                         @foreach ($pueblos as $pueblo)
                             <tr id="pueblo-row-{{ $pueblo->id }}" class="hover:bg-gray-50">
                                 <td class="px-4 py-2 text-center border">{{ $pueblo->id }}</td>
-                                
+
                                 <!-- Nombre -->
                                 <td class="px-4 py-2 text-center border">
                                     <span class="span-data-{{ $pueblo->id }}">{{ $pueblo->name }}</span>
-                                    <input type="text" id="edit-name-{{ $pueblo->id }}" value="{{ $pueblo->name }}" 
+                                    <input type="text" id="edit-name-{{ $pueblo->id }}" value="{{ $pueblo->name }}"
                                         class="hidden input-edit-{{ $pueblo->id }} border rounded px-2 py-1 w-full text-center">
                                 </td>
 
                                 <!-- Latitud -->
                                 <td class="px-4 py-2 text-center border">
                                     <span class="span-data-{{ $pueblo->id }}">{{ $pueblo->latitude }}</span>
-                                    <input type="text" id="edit-lat-{{ $pueblo->id }}" value="{{ $pueblo->latitude }}" 
+                                    <input type="text" id="edit-lat-{{ $pueblo->id }}" value="{{ $pueblo->latitude }}"
                                         class="hidden input-edit-{{ $pueblo->id }} border rounded px-2 py-1 w-full text-center">
                                 </td>
 
                                 <!-- Longitud -->
                                 <td class="px-4 py-2 text-center border">
                                     <span class="span-data-{{ $pueblo->id }}">{{ $pueblo->longitude }}</span>
-                                    <input type="text" id="edit-lng-{{ $pueblo->id }}" value="{{ $pueblo->longitude }}" 
+                                    <input type="text" id="edit-lng-{{ $pueblo->id }}" value="{{ $pueblo->longitude }}"
                                         class="hidden input-edit-{{ $pueblo->id }} border rounded px-2 py-1 w-full text-center">
                                 </td>
 
@@ -121,19 +120,33 @@
         document.getElementById('update-form-' + id).submit();
     }
 
-    function confirmDelete(id) {
+    function confirmDelete(itemId) {
         Swal.fire({
-            title: '¿Eliminar pueblo?',
-            text: "Se borrarán también sus eventos asociados",
+            title: '¿Estás seguro?',
+            text: "¡Esta acción no se puede deshacer!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
             confirmButtonText: 'Sí, eliminar',
-            cancelButtonText: 'Cancelar'
+            cancelButtonText: 'Cancelar',
+            buttonsStyling: false,
+            customClass: {
+                confirmButton: 'bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded mr-2',
+                cancelButton:'bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded'
+            }
         }).then((result) => {
             if (result.isConfirmed) {
-                document.getElementById('delete-form-' + id).submit();
+                document.getElementById('delete-form-' + itemId).submit();
+            } else {
+                Swal.fire({
+                    title: 'Cancelado',
+                    text: 'La acción ha sido cancelada',
+                    icon: 'error',
+                    confirmButtonText: 'Entendido',
+                    buttonsStyling: false,
+                    customClass: {
+                        confirmButton: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded'
+                    }
+                });
             }
         });
     }

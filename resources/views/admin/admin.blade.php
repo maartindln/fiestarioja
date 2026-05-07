@@ -55,6 +55,8 @@
                         <a href="{{ route('allpueblos') }}" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Todos los pueblos</a>
                     </li>
                     <li class="mb-4">
+                        <a href="{{ route('registerpueblo') }}" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Registrar Pueblos</a>
+                    </li>
                 </ul>
             </li>
             <li class="mb-1 group">
@@ -66,6 +68,9 @@
                 <ul class="pl-7 mt-2 hidden group-[.selected]:block">
                     <li class="mb-4">
                         <a href="{{ route('allevents') }}" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Todos los eventos</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="{{ route('registerevent') }}" class="text-yellow-200 text-sm flex items-center hover:text-yellow-400 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Registrar Eventos</a>
                     </li>
                 </ul>
             </li>

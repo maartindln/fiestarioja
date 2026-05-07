@@ -48,25 +48,25 @@ Route::middleware('auth')->group(function () {
 
 // --- ZONA ADMIN (Protegida por Middleware auth y admin) ---
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    
+
     Route::get('/', [AdminController::class, 'admin'])->name('admin');
 
     // Gestión de Usuarios
     Route::get('/users', [AdminController::class, 'allusers'])->name('allusers');
     Route::get('/registeruser', [AdminController::class, 'registeruser'])->name('registeruser');
-    Route::post('/update-user/{id}', [AdminController::class, 'updateUser'])->name('users.update');
+    Route::put('/update-user/{id}', [AdminController::class, 'updateUser'])->name('users.update');
     Route::delete('/users/{id}', [AdminController::class, 'destroyUser'])->name('delete-user');
 
     // Gestión de Pueblos - Acciones procesadas por PueblosController
     Route::get('/pueblos', [AdminController::class, 'allpueblos'])->name('allpueblos');
-    Route::get('/registrarpueblo', [AdminController::class, 'registrarpueblo'])->name('admin.registrarpueblo');
+    Route::get('/registrarpueblo', [AdminController::class, 'registrarpueblo'])->name('registerpueblo');
     Route::post('/registrarpueblo', [PueblosController::class, 'store'])->name('pueblos.store');
     Route::put('/update-pueblo/{id}', [PueblosController::class, 'update'])->name('pueblos.update');
     Route::delete('/pueblo/{id}', [PueblosController::class, 'destroy'])->name('delete-pueblo');
 
     // Gestión de Eventos - Acciones procesadas por EventsController
     Route::get('/eventos', [AdminController::class, 'allevents'])->name('allevents');
-    Route::get('/registrarevento', [AdminController::class, 'registrarevento'])->name('admin.registrarevento');
+    Route::get('/registrarevento', [AdminController::class, 'registrarevento'])->name('registerevent');
     Route::post('/eventos', [EventsController::class, 'store'])->name('events.store');
     Route::put('/update-event/{id}', [EventsController::class, 'update'])->name('events.update');
     Route::delete('/eventos/{id}', [EventsController::class, 'destroy'])->name('delete-event');
