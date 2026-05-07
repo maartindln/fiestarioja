@@ -1,190 +1,310 @@
 @extends('layout')
 @section('titulo', 'Calendario')
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/calendario.css') }}">
-<script>
-  // fill the month table with column headings
-function day_title(day_name) {
-    document.write("<div class='c-cal__col'>" + day_name + "</div>");
-  }
-  // fills the month table with numbers
-function fill_table(month, month_length, indexMonth) {
-    day = 1;
-    // begin the new month table
-    document.write("<div class='c-main c-main-" + indexMonth + "'>");
-    //document.write("<b>"+month+" "+year+"</b>")
 
-    // column headings
-    document.write("<div class='c-cal__row'>");
-    day_title("Lun");
-    day_title("Mar");
-    day_title("Mie");
-    day_title("Jue");
-    day_title("Vie");
-    day_title("Sab");
-    day_title("Dom");
-    document.write("</div>");
-    document.write("<div class='c-cal__row'>");
-    for (var i = 1; i < start_day; i++) {
-      if (start_day > 7) {
-      } else {
-        document.write("<div class='c-cal__cel'></div>");
-      }
-    }
-    for (var i = start_day; i < 8; i++) {
-      document.write(
-        "<div data-day='" + year + "-" +
-          indexMonth +
-          "-0" +
-          day +
-          "'class='c-cal__cel'><p>" +
-          day +
-          "</p></div>"
-      );
-      day++;
-    }
-    document.write("</div>");
-    while (day <= month_length) {
-      document.write("<div class='c-cal__row'>");
-      for (var i = 1; i <= 7 && day <= month_length; i++) {
-        if (day >= 1 && day <= 9) {
-          document.write(
-            "<div data-day='" + year + "-" +
-              indexMonth +
-              "-0" +
-              day +
-              "'class='c-cal__cel'><p>" +
-              day +
-              "</p></div>"
-          );
-          day++;
-        } else {
-          document.write(
-            "<div data-day='" + year + "-" +
-              indexMonth +
-              "-" +
-              day +
-              "' class='c-cal__cel'><p>" +
-              day +
-              "</p></div>"
-          );
-          day++;
-        }
-      }
-      document.write("</div>");
-      start_day = i;
-    }
-    document.write("</div>");
-  }
-</script>
-<header>
-  <div class="wrapper">
-    <div class="c-monthyear">
-    <div class="c-month">
-        <span id="prev" class="prev fa fa-angle-left text-amber-50" aria-hidden="true"></span>
-        <div id="c-paginator">
-          <span class="c-paginator__month text-green-950">ENERO</span>
-          <span class="c-paginator__month text-green-950">FEBRERO</span>
-          <span class="c-paginator__month text-green-950">MARZO</span>
-          <span class="c-paginator__month text-green-950">ABRIL</span>
-          <span class="c-paginator__month text-green-950">MAYO</span>
-          <span class="c-paginator__month text-green-950">JUNIO</span>
-          <span class="c-paginator__month text-green-950">JULIO</span>
-          <span class="c-paginator__month text-green-950">AGOSTO</span>
-          <span class="c-paginator__month text-green-950">SEPTIEMBRE</span>
-          <span class="c-paginator__month text-green-950">OCTUBRE</span>
-          <span class="c-paginator__month text-green-950">NOVIEMBRE</span>
-          <span class="c-paginator__month text-green-950">DICIEMBRE</span>
+@php
+    $email = auth()->user()->email ?? null;
+    $isAdmin = $email ? DB::table('users')->where('email', $email)->where('role', 'Administrador')->exists() : false;
+@endphp
+
+{{-- ========== HEADER ========== --}}
+<header class="fixed top-0 left-0 right-0 z-50 h-20 bg-yellow-400 shadow-md flex items-center px-4 md:px-8">
+    <div class="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
+
+        {{-- Navegación de meses --}}
+        <div class="flex items-center gap-2 min-w-0">
+            <button id="btn-prev"
+                class="w-9 h-9 rounded-full bg-green-950 text-amber-50 flex items-center justify-center hover:bg-green-600 transition shrink-0">
+                <i class="fa fa-angle-left"></i>
+            </button>
+            <span id="header-month" class="font-bold text-green-950 text-sm md:text-base w-28 text-center tracking-widest uppercase truncate"></span>
+            <button id="btn-next"
+                class="w-9 h-9 rounded-full bg-green-950 text-amber-50 flex items-center justify-center hover:bg-green-600 transition shrink-0">
+                <i class="fa fa-angle-right"></i>
+            </button>
         </div>
-        <span id="next" class="next fa fa-angle-right text-amber-50" aria-hidden="true"></span>
-      </div>
-      <span class="c-paginator__year text-green-950 font-bold" id="year"></span>
+
+        {{-- Año --}}
+        <span id="header-year" class="font-black text-green-950 text-lg md:text-xl tracking-widest hidden sm:block"></span>
+
+        {{-- Botón hoy --}}
+        <button id="btn-today"
+            class="bg-green-950 text-amber-50 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-green-600 transition shrink-0">
+            HOY
+        </button>
     </div>
-    <div class="c-sort">
-      <a class="o-btn c-today__btn" href="javascript:;">HOY</a>
-    </div>
-  </div>
 </header>
-<div class="wrapper">
-  <div class="c-calendar">
-    <div class="c-calendar__style c-aside">
-        @auth
-        @php
-            $email = Auth::user()->email;
-            $admin = DB::table('users')->where('email', $email)->where('role', 'Administrador')->first();
-        @endphp
-        @if ($admin)
-        <a class="c-add o-btn js-event__add text-amber-50" href="javascript:;">Añadir evento <span class="fa fa-plus"></span></a>
-        @endif
-        @endauth
-      <div class="c-aside__day">
-        <span class="c-aside__num text-green-950"></span> <span class="c-aside__month text-green-950"></span>
-      </div>
-    <div class="c-aside__eventList space-y-2">
-        @foreach($events as $event)
-            <div class="c-aside__eventItem flex justify-between items-center p-2 bg-green-950 rounded shadow-sm hover:bg-green-950/70 transition-colors">
-                <i class="fa-solid fa-caret-right text-amber-50"></i>
-                <span class="text-amber-50 font-medium">{{ $event->pueblo->name }}</span>
-                <a href="{{ asset('storage/carteles/' . $event->cartel) }}" target="_blank">
-                <button class="bg-amber-50 text-green-950 px-4 py-2 rounded hover:bg-amber-50/70 transition-colors" data-event-id="{{ $event->id }}">
-                    Abrir
-                </button>
-                </a>
+
+{{-- ========== LAYOUT PRINCIPAL ========== --}}
+<div class="pt-20 min-h-screen bg-amber-50/30">
+    <div class="max-w-7xl mx-auto p-4 flex flex-col lg:flex-row gap-4">
+
+        {{-- ========== SIDEBAR ========== --}}
+        <aside class="w-full lg:w-72 shrink-0 bg-amber-50 rounded-2xl shadow-lg p-5 flex flex-col gap-4 order-2 lg:order-1">
+
+            {{-- Día seleccionado --}}
+            <div class="text-center border-b border-green-950/10 pb-4">
+                <p id="aside-day" class="text-5xl font-black text-green-950 leading-none">--</p>
+                <p id="aside-month" class="text-sm font-semibold text-green-700 uppercase tracking-widest mt-1"></p>
             </div>
-        @endforeach
-    </div>
-    </div>
-    <div class="c-cal__container c-calendar__style">
-      <script>
-        year = new Date().getFullYear();
-        document.getElementById("year").textContent = year;
-        // first day of the week of the new year
-        today = new Date("January 1, " + year);
-        start_day = today.getDay();
-        fill_table("January", 31, "01");
-        fill_table("February", 28, "02");
-        fill_table("March", 31, "03");
-        fill_table("April", 30, "04");
-        fill_table("May", 31, "05");
-        fill_table("June", 30, "06");
-        fill_table("July", 31, "07");
-        fill_table("August", 31, "08");
-        fill_table("September", 30, "09");
-        fill_table("October", 31, "10");
-        fill_table("November", 30, "11");
-        fill_table("December", 31, "12");
-      </script>
-    </div>
-  </div>
-    <div class="c-event__creator c-calendar__style js-event__creator">
-        <a href="javascript:;" class="o-btn js-event__close text-amber-50">
-            CERRAR <span class="fa fa-close text-amber-50"></span>
-        </a>
-        <form id="addEvent" method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
-            @csrf
-            <input placeholder="Nombre del evento" type="text" name="name" required>
-            <label class="text-green-950">Fecha inicio:</label>
-            <input type="date" name="dateIni" required>
-            <label class="text-green-950">Fecha fin:</label>
-            <input type="date" name="dateFin" required>
-            <label class="text-green-950">Cartel:</label>
-            <input type="file" name="cartel" accept="image/*,application/pdf">
-            <label class="text-green-950">Pueblo:</label>
-            <select name="pueblo_id" required>
-                <option value="">Selecciona un pueblo</option>
-                @foreach($pueblos as $pueblo)
-                    <option value="{{ $pueblo->id }}">{{ $pueblo->name }}</option>
+
+            {{-- Botón añadir (solo admin) --}}
+            @if ($isAdmin)
+            <button id="btn-add-event"
+                class="w-full bg-green-950 text-amber-50 rounded-full py-2 text-xs font-bold uppercase tracking-widest hover:bg-green-600 transition flex items-center justify-center gap-2">
+                <i class="fa fa-plus"></i> Añadir evento
+            </button>
+            @endif
+
+            {{-- Lista de eventos --}}
+            <div id="event-list" class="flex flex-col gap-2 overflow-y-auto max-h-72 lg:max-h-[calc(100vh-320px)]">
+                <p class="text-green-950/40 text-xs text-center mt-4">Selecciona un día para ver los eventos</p>
+            </div>
+        </aside>
+
+        {{-- ========== CALENDARIO ========== --}}
+        <main class="flex-1 bg-amber-50 rounded-2xl shadow-lg p-4 overflow-hidden order-1 lg:order-2">
+
+            {{-- Cabecera días de la semana --}}
+            <div class="grid grid-cols-7 mb-2">
+                @foreach(['L','M','X','J','V','S','D'] as $d)
+                    <div class="text-center text-xs font-bold text-green-950/50 uppercase tracking-widest py-2">{{ $d }}</div>
                 @endforeach
-            </select>
-            <br><br>
-            <button type="submit" class="o-btn text-amber-50">GUARDAR <span class="fa fa-save text-amber-50"></span></button>
+            </div>
+
+            {{-- Grid de días (generado por JS) --}}
+            <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
+        </main>
+    </div>
+</div>
+
+{{-- ========== MODAL AÑADIR EVENTO ========== --}}
+@if ($isAdmin)
+<div id="modal-event"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-green-950/60 backdrop-blur-sm hidden">
+    <div class="bg-amber-50 rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
+
+        <button id="btn-close-modal"
+            class="absolute top-4 right-4 text-green-950/40 hover:text-green-950 transition text-lg">
+            <i class="fa fa-times"></i>
+        </button>
+
+        <h2 class="text-lg font-black text-green-950 uppercase tracking-widest mb-5">Nuevo evento</h2>
+
+        <form id="form-event" method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data"
+            class="flex flex-col gap-3">
+            @csrf
+
+            <input type="text" name="name" placeholder="Nombre del evento" required
+                class="w-full bg-green-950/5 border border-green-950/20 rounded-xl px-4 py-2.5 text-green-950 text-sm placeholder-green-950/40 focus:outline-none focus:ring-2 focus:ring-green-600">
+
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <label class="text-xs font-semibold text-green-950/60 uppercase tracking-wider">Fecha inicio</label>
+                    <input type="date" name="dateIni" id="input-date-ini" required
+                        class="w-full bg-green-950/5 border border-green-950/20 rounded-xl px-4 py-2.5 text-green-950 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 mt-1">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-green-950/60 uppercase tracking-wider">Fecha fin</label>
+                    <input type="date" name="dateFin" required
+                        class="w-full bg-green-950/5 border border-green-950/20 rounded-xl px-4 py-2.5 text-green-950 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 mt-1">
+                </div>
+            </div>
+
+            <div>
+                <label class="text-xs font-semibold text-green-950/60 uppercase tracking-wider">Cartel</label>
+                <input type="file" name="cartel" accept="image/*,application/pdf"
+                    class="w-full bg-green-950/5 border border-green-950/20 rounded-xl px-4 py-2.5 text-green-950 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 mt-1">
+            </div>
+
+            <div>
+                <label class="text-xs font-semibold text-green-950/60 uppercase tracking-wider">Pueblo</label>
+                <select name="pueblo_id" required
+                    class="w-full bg-green-950/5 border border-green-950/20 rounded-xl px-4 py-2.5 text-green-950 text-sm focus:outline-none focus:ring-2 focus:ring-green-600 mt-1 appearance-none">
+                    <option value="">Selecciona un pueblo</option>
+                    @foreach($pueblos as $pueblo)
+                        <option value="{{ $pueblo->id }}">{{ $pueblo->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-green-950 text-amber-50 rounded-full py-2.5 font-bold uppercase tracking-widest text-sm hover:bg-green-600 transition mt-2">
+                <i class="fa fa-save mr-2"></i>Guardar
+            </button>
         </form>
     </div>
 </div>
+@endif
+
+{{-- ========== DATOS PARA JS ========== --}}
 <script>
-  var pueblos = @json($pueblos->pluck('name', 'id'));
-  var events = @json($events);
+    var events  = @json($events);
+    var pueblos = @json($pueblos->pluck('name', 'id'));
+    var isAdmin = @json($isAdmin);
+
+    var MONTHS = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
+                  "Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+
+    var today     = new Date();
+    var todayY    = today.getFullYear();
+    var todayM    = today.getMonth();   // 0-based
+    var todayD    = today.getDate();
+
+    var currentY  = todayY;
+    var currentM  = todayM; // 0-based
+
+    // Pad helper
+    function pad(n){ return String(n).padStart(2,'0'); }
+
+    // Formato YYYY-MM-DD
+    function fmtDate(y,m,d){ return y+'-'+pad(m+1)+'-'+pad(d); }
+
+    // ---- Construir el grid ----
+    function buildGrid(year, month) {
+        var grid    = document.getElementById('cal-grid');
+        var daysInMonth = new Date(year, month+1, 0).getDate();
+        // 0=Sun→6=Sat, queremos 0=Lun→6=Dom
+        var firstDow = (new Date(year, month, 1).getDay() + 6) % 7;
+
+        // Días con evento
+        var eventDays = {};
+        events.forEach(function(ev){
+            var ini = new Date(ev.dateIni + 'T00:00:00');
+            var fin = new Date(ev.dateFin + 'T00:00:00');
+            for(var d = new Date(ini); d <= fin; d.setDate(d.getDate()+1)){
+                if(d.getFullYear()===year && d.getMonth()===month){
+                    eventDays[d.getDate()] = true;
+                }
+            }
+        });
+
+        var html = '';
+
+        // Celdas vacías al inicio
+        for(var i=0; i<firstDow; i++){
+            html += '<div class="aspect-square"></div>';
+        }
+
+        // Días
+        for(var d=1; d<=daysInMonth; d++){
+            var dateStr  = fmtDate(year, month, d);
+            var isToday  = (d===todayD && month===todayM && year===todayY);
+            var hasEvent = !!eventDays[d];
+
+            html += '<div data-date="'+dateStr+'" onclick="selectDay(this)"'
+                  + ' class="cal-cell aspect-square flex items-center justify-center relative cursor-pointer rounded-full'
+                  + ' hover:bg-green-100 transition select-none group'
+                  + (isToday ? ' bg-yellow-400' : '')
+                  + '">'
+                  + '<span class="text-xs md:text-sm font-semibold '
+                  + (isToday ? 'text-green-950' : 'text-green-950')
+                  + '">'+ d +'</span>'
+                  + (hasEvent ? '<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-green-600"></span>' : '')
+                  + '</div>';
+        }
+
+        grid.innerHTML = html;
+    }
+
+    // ---- Seleccionar día ----
+    function selectDay(el) {
+        document.querySelectorAll('.cal-cell').forEach(function(c){
+            c.classList.remove('ring-2','ring-green-950','bg-green-950','!text-amber-50');
+            c.querySelector('span').classList.remove('text-amber-50');
+        });
+        el.classList.add('ring-2','ring-green-950','bg-green-950');
+        el.querySelector('span').classList.add('text-amber-50');
+
+        var date = el.dataset.date;
+        var parts = date.split('-');
+        document.getElementById('aside-day').textContent   = parts[2];
+        document.getElementById('aside-month').textContent = MONTHS[parseInt(parts[1],10)-1];
+
+        fillSidebar(date);
+    }
+
+    // ---- Sidebar eventos ----
+    function fillSidebar(dateStr) {
+        var list = document.getElementById('event-list');
+        var sel  = new Date(dateStr + 'T00:00:00');
+        var found = events.filter(function(ev){
+            return sel >= new Date(ev.dateIni+'T00:00:00') && sel <= new Date(ev.dateFin+'T00:00:00');
+        });
+
+        if(!found.length){
+            list.innerHTML = '<p class="text-green-950/40 text-xs text-center mt-4">Sin eventos este día</p>';
+            return;
+        }
+
+        list.innerHTML = found.map(function(ev){
+            return '<div class="flex items-center justify-between gap-2 bg-green-950 rounded-xl px-3 py-2">'
+                 + '<i class="fa-solid fa-caret-right text-amber-50 shrink-0"></i>'
+                 + '<span class="text-amber-50 text-sm font-medium flex-1 truncate">'+(ev.pueblo ? ev.pueblo.name : '')+'</span>'
+                 + (ev.cartel
+                    ? '<a href="storage/carteles/'+ev.cartel+'" target="_blank">'
+                    + '<button class="bg-amber-50 text-green-950 px-3 py-1 rounded-lg text-xs font-bold hover:bg-yellow-300 transition shrink-0">Abrir</button>'
+                    + '</a>'
+                    : '')
+                 + '</div>';
+        }).join('');
+    }
+
+    // ---- Header ----
+    function updateHeader(){
+        document.getElementById('header-month').textContent = MONTHS[currentM];
+        document.getElementById('header-year').textContent  = currentY;
+    }
+
+    // ---- Render completo ----
+    function render(){ buildGrid(currentY, currentM); updateHeader(); }
+
+    // ---- Botones ----
+    document.getElementById('btn-prev').addEventListener('click', function(){
+        if(currentM === 0){ currentM = 11; currentY--; } else { currentM--; }
+        render();
+    });
+    document.getElementById('btn-next').addEventListener('click', function(){
+        if(currentM === 11){ currentM = 0; currentY++; } else { currentM++; }
+        render();
+    });
+    document.getElementById('btn-today').addEventListener('click', function(){
+        currentY = todayY; currentM = todayM;
+        render();
+        // Seleccionar celda de hoy
+        setTimeout(function(){
+            var todayCell = document.querySelector('[data-date="'+fmtDate(todayY,todayM,todayD)+'"]');
+            if(todayCell) selectDay(todayCell);
+        }, 0);
+    });
+
+    // ---- Modal ----
+    @if($isAdmin)
+    document.getElementById('btn-add-event').addEventListener('click', function(){
+        document.getElementById('modal-event').classList.remove('hidden');
+    });
+    document.getElementById('btn-close-modal').addEventListener('click', function(){
+        document.getElementById('modal-event').classList.add('hidden');
+    });
+    document.getElementById('modal-event').addEventListener('click', function(e){
+        if(e.target === this) this.classList.add('hidden');
+    });
+    @endif
+
+    // ---- Init ----
+    render();
+
+    // Resaltar hoy al cargar
+    setTimeout(function(){
+        var todayCell = document.querySelector('[data-date="'+fmtDate(todayY,todayM,todayD)+'"]');
+        if(todayCell){
+            selectDay(todayCell);
+        } else {
+            document.getElementById('aside-day').textContent   = pad(todayD);
+            document.getElementById('aside-month').textContent = MONTHS[todayM];
+            fillSidebar(fmtDate(todayY,todayM,todayD));
+        }
+    }, 0);
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="js/calendario/calendario.js"></script>
+
 @endsection

@@ -27,7 +27,7 @@
 </style>
 
 <div class="min-h-screen bg-green-950 py-12 px-4 sm:px-6 lg:px-8 flex justify-center items-center">
-    
+
     <!-- Botón Volver -->
     <div class="absolute top-6 left-6 z-20">
         <button onclick="window.history.back()" class="group flex items-center gap-2 px-4 py-2 text-sm font-bold text-amber-50 bg-green-900/50 border border-green-800 rounded-full shadow-md hover:bg-yellow-400 hover:text-green-950 transition-all duration-300">
@@ -38,7 +38,7 @@
 
     <!-- Tarjeta Principal -->
     <div class="w-full max-w-2xl bg-green-900/40 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-green-800/50 animate__animated animate__fadeIn">
-        
+
         <!-- Cabecera -->
         <div class="text-center mb-8">
             <div class="bg-yellow-400 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-yellow-400/20">
