@@ -7,19 +7,17 @@
     $isAdmin = $email ? DB::table('users')->where('email', $email)->where('role', 'Administrador')->exists() : false;
 @endphp
 
-{{-- ========== HEADER ========== --}}
-<header class="fixed top-0 left-0 right-0 z-50 h-20 bg-yellow-400 shadow-md flex items-center px-4 md:px-8">
+<header class="top-0 left-0 right-0 z-50 h-20 bg-yellow-400 shadow-md flex items-center px-4 md:px-8">
     <div class="max-w-7xl w-full mx-auto flex items-center justify-between gap-4">
 
-        {{-- Navegación de meses --}}
         <div class="flex items-center gap-2 min-w-0">
             <button id="btn-prev"
-                class="w-9 h-9 rounded-full bg-green-950 text-amber-50 flex items-center justify-center hover:bg-green-600 transition shrink-0">
+                class="w-9 h-9 rounded-full bg-green-950 text-amber-50 flex items-center justify-center hover:bg-green-800 transition shrink-0">
                 <i class="fa fa-angle-left"></i>
             </button>
             <span id="header-month" class="font-bold text-green-950 text-sm md:text-base w-28 text-center tracking-widest uppercase truncate"></span>
             <button id="btn-next"
-                class="w-9 h-9 rounded-full bg-green-950 text-amber-50 flex items-center justify-center hover:bg-green-600 transition shrink-0">
+                class="w-9 h-9 rounded-full bg-green-950 text-amber-50 flex items-center justify-center hover:bg-green-800 transition shrink-0">
                 <i class="fa fa-angle-right"></i>
             </button>
         </div>
@@ -29,36 +27,36 @@
 
         {{-- Botón hoy --}}
         <button id="btn-today"
-            class="bg-green-950 text-amber-50 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-green-600 transition shrink-0">
+            class="bg-green-950 text-amber-50 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-green-800 transition shrink-0">
             HOY
         </button>
     </div>
 </header>
 
 {{-- ========== LAYOUT PRINCIPAL ========== --}}
-<div class="pt-20 min-h-screen bg-amber-50/30">
+<div class="py-16 min-h-screen bg-green-950">
     <div class="max-w-7xl mx-auto p-4 flex flex-col lg:flex-row gap-4">
 
         {{-- ========== SIDEBAR ========== --}}
         <aside class="w-full lg:w-72 shrink-0 bg-amber-50 rounded-2xl shadow-lg p-5 flex flex-col gap-4 order-2 lg:order-1">
 
             {{-- Día seleccionado --}}
-            <div class="text-center border-b border-green-950/10 pb-4">
+            <div class="text-center border-b border-green-950 pb-4">
                 <p id="aside-day" class="text-5xl font-black text-green-950 leading-none">--</p>
-                <p id="aside-month" class="text-sm font-semibold text-green-700 uppercase tracking-widest mt-1"></p>
+                <p id="aside-month" class="text-sm font-semibold text-green-950 uppercase tracking-widest mt-1"></p>
             </div>
 
             {{-- Botón añadir (solo admin) --}}
             @if ($isAdmin)
             <button id="btn-add-event"
-                class="w-full bg-green-950 text-amber-50 rounded-full py-2 text-xs font-bold uppercase tracking-widest hover:bg-green-600 transition flex items-center justify-center gap-2">
+                class="w-full bg-green-950 text-amber-50 rounded-full py-2 text-xs font-bold uppercase tracking-widest hover:bg-green-800 transition flex items-center justify-center gap-2">
                 <i class="fa fa-plus"></i> Añadir evento
             </button>
             @endif
 
             {{-- Lista de eventos --}}
             <div id="event-list" class="flex flex-col gap-2 overflow-y-auto max-h-72 lg:max-h-[calc(100vh-320px)]">
-                <p class="text-green-950/40 text-xs text-center mt-4">Selecciona un día para ver los eventos</p>
+                <p class="text-green-950 text-xs text-center mt-4">Selecciona un día para ver los eventos</p>
             </div>
         </aside>
 
@@ -85,7 +83,7 @@
     <div class="bg-amber-50 rounded-2xl shadow-2xl w-full max-w-md p-6 relative">
 
         <button id="btn-close-modal"
-            class="absolute top-4 right-4 text-green-950/40 hover:text-green-950 transition text-lg">
+            class="absolute top-4 right-4 text-green-950/40 hover:text-red-700 transition text-lg">
             <i class="fa fa-times"></i>
         </button>
 
@@ -129,7 +127,7 @@
             </div>
 
             <button type="submit"
-                class="w-full bg-green-950 text-amber-50 rounded-full py-2.5 font-bold uppercase tracking-widest text-sm hover:bg-green-600 transition mt-2">
+                class="w-full bg-green-950 text-amber-50 rounded-full py-2.5 font-bold uppercase tracking-widest text-sm hover:bg-green-800 transition mt-2">
                 <i class="fa fa-save mr-2"></i>Guardar
             </button>
         </form>
@@ -194,13 +192,13 @@
 
             html += '<div data-date="'+dateStr+'" onclick="selectDay(this)"'
                   + ' class="cal-cell aspect-square flex items-center justify-center relative cursor-pointer rounded-full'
-                  + ' hover:bg-green-100 transition select-none group'
+                  + ' hover:bg-yellow-400/50 transition select-none group'
                   + (isToday ? ' bg-yellow-400' : '')
                   + '">'
                   + '<span class="text-xs md:text-sm font-semibold '
                   + (isToday ? 'text-green-950' : 'text-green-950')
                   + '">'+ d +'</span>'
-                  + (hasEvent ? '<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-green-600"></span>' : '')
+                  + (hasEvent ? '<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-yellow-400 border-2 border-green-950"></span>' : '')
                   + '</div>';
         }
 
@@ -210,10 +208,10 @@
     // ---- Seleccionar día ----
     function selectDay(el) {
         document.querySelectorAll('.cal-cell').forEach(function(c){
-            c.classList.remove('ring-2','ring-green-950','bg-green-950','!text-amber-50');
+            c.classList.remove('ring-2','ring-green-950','bg-yellow-400','!text-amber-50');
             c.querySelector('span').classList.remove('text-amber-50');
         });
-        el.classList.add('ring-2','ring-green-950','bg-green-950');
+        el.classList.add('ring-2','ring-green-950','bg-yellow-400');
         el.querySelector('span').classList.add('text-amber-50');
 
         var date = el.dataset.date;
@@ -238,15 +236,15 @@
         }
 
         list.innerHTML = found.map(function(ev){
-            return '<div class="flex items-center justify-between gap-2 bg-green-950 rounded-xl px-3 py-2">'
-                 + '<i class="fa-solid fa-caret-right text-amber-50 shrink-0"></i>'
-                 + '<span class="text-amber-50 text-sm font-medium flex-1 truncate">'+(ev.pueblo ? ev.pueblo.name : '')+'</span>'
-                 + (ev.cartel
-                    ? '<a href="storage/carteles/'+ev.cartel+'" target="_blank">'
-                    + '<button class="bg-amber-50 text-green-950 px-3 py-1 rounded-lg text-xs font-bold hover:bg-yellow-300 transition shrink-0">Abrir</button>'
-                    + '</a>'
-                    : '')
-                 + '</div>';
+            return `<div class="flex items-center justify-between gap-2 bg-green-950 rounded-xl px-3 py-2">
+                <i class="fa-solid fa-caret-right text-amber-50 shrink-0"></i>
+                <span class="text-amber-50 text-sm font-medium flex-1 truncate">${ev.name} - ${ev.pueblo ? ev.pueblo.name : ''}</span>
+                ${ev.cartel
+                    ? `<a href="storage/carteles/${ev.cartel}" target="_blank">
+                        <button class="bg-amber-50 text-green-950 px-3 py-1 rounded-lg text-xs font-bold hover:bg-yellow-300 transition shrink-0">Abrir</button>
+                    </a>`
+                    : ''}
+            </div>`;
         }).join('');
     }
 
@@ -291,7 +289,6 @@
     });
     @endif
 
-    // ---- Init ----
     render();
 
     // Resaltar hoy al cargar

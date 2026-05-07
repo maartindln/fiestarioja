@@ -12,7 +12,7 @@ class CalendarController extends Controller
     public function calendario()
     {
         $pueblos = Pueblo::all();
-        $events = Event::all();
+        $events = Event::with('pueblo')->get();
         return view('calendario', compact('pueblos','events'));
     }
 }

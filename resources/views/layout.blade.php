@@ -15,7 +15,7 @@
 
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
@@ -40,7 +40,7 @@
 
 <body class="bg-green-950 flex flex-col min-h-screen text-amber-50 font-sans selection:bg-yellow-400 selection:text-green-950">
 
-    <nav x-data="{ mobileMenuOpen: false, profileDropdownOpen: false }" class="bg-green-950 sticky top-0 z-50 border-b border-yellow-400/50 shadow-md backdrop-blur-md bg-opacity-95">
+    <nav x-data="{ mobileMenuOpen: false, profileDropdownOpen: false }" class="bg-green-950 sticky top-0 z-50 border-b border-yellow-400 shadow-md backdrop-blur-md bg-opacity-95">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="flex h-16 items-center">
 
@@ -176,7 +176,7 @@
         @yield('content')
     </main>
 
-    <footer class="bg-green-950 border-t border-green-900 pt-12 pb-8 px-4 sm:px-6 lg:px-8 mt-auto">
+    <footer class="bg-green-950 border-t border-yellow-400 pt-12 pb-8 px-4 sm:px-6 lg:px-8 mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col items-center">
 
             <!-- Logo en footer -->
