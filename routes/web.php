@@ -26,6 +26,7 @@ Route::post('/mails/contacto', [ContactoController::class, 'enviar'])->name('con
 
 Route::get('/politicas/privacidad', [PrivController::class, 'politicas'])->name('priv');
 Route::get('/politicas/terminos', [PrivController::class, 'terminos'])->name('term');
+Route::get('/politicas/contacto', [PrivController::class, 'conta'])->name('conta');
 
 Route::get('/calendario', [CalendarController::class, 'calendario'])->name('calendar');
 

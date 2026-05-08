@@ -186,7 +186,7 @@
 
             <!-- Navegación Footer -->
             <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-10 text-sm font-medium">
-                <a href="#" class="text-amber-50 hover:text-yellow-400 transition-colors">Contacto</a>
+                <a href="{{ route('conta') }}" class="text-amber-50 hover:text-yellow-400 transition-colors">Contacto</a>
                 <a href="{{ route('priv') }}" class="text-amber-50 hover:text-yellow-400 transition-colors">Política de Privacidad</a>
                 <a href="{{ route('term') }}" class="text-amber-50 hover:text-yellow-400 transition-colors">Términos de Uso</a>
             </nav>

@@ -17,4 +17,8 @@ class PrivController extends Controller
     {
         return view('politicas.terminos');
     }
+    public function conta()
+    {
+        return view('politicas.contacto');
+    }
 }
