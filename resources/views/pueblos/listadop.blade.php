@@ -1,51 +1,68 @@
 @extends('layout')
 @section('titulo', 'Listado')
 @section('content')
-<div class="w-full h-full overflow-hidden bg-amber-50">
-  <div class="sm:px-20 px-6 flex flex-col gap-4 justify-center items-center">
 
-    <!-- Heading -->
-    <div class="w-fit sm:my-20 my-10">
-      <h2 class="sm:text-5xl font-bold text-green-950 pb-2">PUEBLOS</h2>
-      <div class="rounded-t-full border-[1px] border-gray-500 dark:border-gray-400 overflow-hidden">
-        <hr class="border-[3px] border-green-400 border-green-600 w-[40%]" />
-      </div>
+<div class="w-full min-h-screen bg-green-950">
+    {{-- LA FRANJA AMARILLA --}}
+    <div class="h-20 bg-yellow-400 shadow-md flex items-center px-4 md:px-8 mb-10">
+        <div class="max-w-7xl w-full mx-auto flex items-center justify-between">
+            <span class="font-black text-green-950 text-lg md:text-xl tracking-widest uppercase">
+                Explora los pueblos
+            </span>
+            <div class="bg-green-950 text-amber-50 px-4 py-1.5 rounded-full text-xs font-bold uppercase">
+                {{ count($pueblos) }} PUEBLOS TOTALES
+            </div>
+        </div>
     </div>
 
-    <!-- Buscador -->
-    <input
-      type="text"
-      id="buscador-pueblos"
-      placeholder="Buscar pueblo..."
-      class="w-full sm:w-1/2 px-4 py-2 border border-green-950 text-green-950 bg-amber-50 rounded mb-6 focus:outline-none focus:ring-1 focus:ring-green-500"
-    />
+    <div class="sm:px-20 px-6 flex flex-col items-center">
+        
+        {{-- BUSCADOR CON LUPITA --}}
+        <div class="w-full sm:w-1/2 mb-12">
+            <div class="relative flex items-center">
+                <input
+                    type="text"
+                    id="buscador-pueblos"
+                    placeholder="Buscar pueblo..."
+                    class="w-full px-5 py-3 pr-12 border-2 border-yellow-400/20 text-green-950 bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-sm"
+                />
+                {{-- La lupita con pointer-events-none para que el clic la atraviese --}}
+                <div class="absolute right-4 text-green-950/40 pointer-events-none">
+                    <i class="fa fa-search text-lg"></i>
+                </div>
+            </div>
+        </div>
 
-    <!-- Lista de pueblos que se actualiza -->
-    <div id="lista-pueblos" class="w-full flex flex-col gap-4 mb-24">
-      @include('pueblos.lista', ['pueblos' => $pueblos])
+        {{-- LISTA DE PUEBLOS --}}
+        <div id="lista-pueblos" class="w-full flex flex-col gap-6 mb-24 max-w-7xl">
+            @include('pueblos.lista', ['pueblos' => $pueblos])
+        </div>
     </div>
-  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
+        // Limpiar buscador al cargar
         $('#buscador-pueblos').val('');
-    });
-  $('#buscador-pueblos').on('keyup', function () {
-    let search = $(this).val();
 
-    $.ajax({
-      url: "{{ route('pueblos.search') }}",
-      method: 'GET',
-      data: { search: search },
-      success: function (data) {
-        $('#lista-pueblos').html(data);
-      },
-      error: function() {
-        console.error('Error en la petición AJAX.');
-      }
+        // Búsqueda AJAX
+        $('#buscador-pueblos').on('keyup', function () {
+            let search = $(this).val();
+
+            $.ajax({
+                url: "{{ route('pueblos.search') }}",
+                method: 'GET',
+                data: { search: search },
+                success: function (data) {
+                    $('#lista-pueblos').html(data);
+                },
+                error: function() {
+                    console.error('Error en la búsqueda de pueblos.');
+                }
+            });
+        });
     });
-  });
 </script>
+
 @endsection
