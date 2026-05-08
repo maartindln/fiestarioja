@@ -1,7 +1,7 @@
 <div x-data="{ open: false }" class="w-full">
 
     <!-- Fila del evento (Toda la fila es clickable) -->
-    <div @click="open = true" class="group w-full bg-white px-4 py-4 sm:px-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-green-500/50 hover:bg-yellow-500/10 transition-all duration-300 flex justify-between items-center cursor-pointer mb-2">
+    <div @click="open = true" class="group w-full bg-white px-4 py-4 sm:px-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-green-500/50 hover:bg-yellow-400/80 transition-all duration-300 flex justify-between items-center cursor-pointer mb-2">
 
         <div class="flex items-center gap-4 sm:gap-6">
             <!-- Imagen con efecto zoom al pasar el ratón -->
