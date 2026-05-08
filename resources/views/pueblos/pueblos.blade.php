@@ -33,10 +33,10 @@
     </div>
 
     <!-- Ventana modal -->
-    <div x-show="open" 
-         x-cloak 
-         style="display: none;" 
-         x-transition.opacity.duration.300ms 
+    <div x-show="open"
+         x-cloak
+         style="display: none;"
+         x-transition.opacity.duration.300ms
          class="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 p-4 sm:p-6">
 
         <!-- Contenedor interior con Scroll -->
