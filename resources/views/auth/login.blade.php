@@ -83,6 +83,12 @@
                                 class="block w-full pl-11 pr-4 py-3 rounded-xl bg-green-950/50 border border-green-800 text-amber-50 placeholder-green-700 focus:bg-green-950 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400/30 transition-all duration-300 outline-none"
                                 placeholder="••••••••">
                         </div>
+                        <div class="mt-2 text-sm text-green-300">
+                            ¿Olvidaste tu contraseña?
+                            <a href="{{ route('password.request') }}" class="font-bold text-yellow-400 hover:text-yellow-300 hover:underline transition-all">
+                                Recuperala aquí
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Botón Submit -->
