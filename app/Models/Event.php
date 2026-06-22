@@ -25,4 +25,5 @@ class Event extends Model
     {
         return $this->belongsTo(Pueblo::class);
     }
+
 }
